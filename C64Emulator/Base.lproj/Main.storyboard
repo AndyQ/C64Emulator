@@ -1,14 +1,139 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FLl-wI-s45">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Select Game-->
+        <scene sceneID="L5K-gd-XiJ">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gFo-6m-AGd" customClass="DiskViewController" customModule="C64Emulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="76w-MB-exS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hiy-iW-vKs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X1Y-3I-6g7">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qe3-BS-cm8">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="68N-CI-ARj" style="IBUITableViewCellStyleDefault" id="zMG-As-Pqa">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zMG-As-Pqa" id="KWE-VA-dzO">
+                                            <frame key="frameInset" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68N-CI-ARj">
+                                                    <frame key="frameInset" minX="15" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gFo-6m-AGd" id="6lU-Mh-NfA"/>
+                                    <outlet property="delegate" destination="gFo-6m-AGd" id="axK-kf-ob2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hiy-iW-vKs" firstAttribute="top" secondItem="qe3-BS-cm8" secondAttribute="bottom" id="PR7-UZ-bB7"/>
+                            <constraint firstAttribute="trailing" secondItem="qe3-BS-cm8" secondAttribute="trailing" id="ifk-Mx-yF3"/>
+                            <constraint firstItem="qe3-BS-cm8" firstAttribute="top" secondItem="76w-MB-exS" secondAttribute="bottom" id="kzn-qq-Edk"/>
+                            <constraint firstItem="qe3-BS-cm8" firstAttribute="leading" secondItem="X1Y-3I-6g7" secondAttribute="leading" id="uGu-Sn-71l"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Select Game" id="T0A-oW-zF1">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="Wy9-pd-xkv">
+                            <connections>
+                                <action selector="startPressed:" destination="gFo-6m-AGd" id="DBN-xn-gGN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="qe3-BS-cm8" id="o37-6Z-eJF"/>
+                        <segue destination="A0z-CM-3oB" kind="show" identifier="showDiskContents" id="xOY-Tu-Sqe"/>
+                        <segue destination="7an-AV-FQx" kind="presentation" identifier="showEmulator" id="DKk-pj-xGu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G5x-T6-Kam" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113" y="-132"/>
+        </scene>
+        <!--Select file-->
+        <scene sceneID="Qrs-5J-hDa">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="A0z-CM-3oB" customClass="DiskContentsViewController" customModule="C64Emulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NS1-rU-3sl"/>
+                        <viewControllerLayoutGuide type="bottom" id="0iA-BU-p4S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1s5-06-lXy">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q8h-nN-yTy">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="6Ot-ei-LjU" style="IBUITableViewCellStyleDefault" id="gio-90-bCk">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gio-90-bCk" id="4SB-AP-AmL">
+                                            <frame key="frameInset" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Ot-ei-LjU">
+                                                    <frame key="frameInset" minX="15" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="A0z-CM-3oB" id="m9a-a0-hn2"/>
+                                    <outlet property="delegate" destination="A0z-CM-3oB" id="wXQ-WF-0mF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q8h-nN-yTy" firstAttribute="leading" secondItem="1s5-06-lXy" secondAttribute="leading" id="6lm-At-Ata"/>
+                            <constraint firstItem="0iA-BU-p4S" firstAttribute="top" secondItem="Q8h-nN-yTy" secondAttribute="bottom" id="KbR-10-IAl"/>
+                            <constraint firstAttribute="trailing" secondItem="Q8h-nN-yTy" secondAttribute="trailing" id="Zwh-2E-yTU"/>
+                            <constraint firstItem="Q8h-nN-yTy" firstAttribute="top" secondItem="1s5-06-lXy" secondAttribute="top" id="jRw-tm-rFs"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Select file" id="ZwR-BU-5Q6"/>
+                    <connections>
+                        <outlet property="tableView" destination="Q8h-nN-yTy" id="DeU-Jd-I9I"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showEmulator2" id="4Xt-9Z-3dv"/>
+                        <segue destination="7an-AV-FQx" kind="presentation" identifier="showEmulator" id="0TI-BY-7pb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egf-vZ-NaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940" y="-111"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="C64Emulator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +141,366 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3M-pf-poy" userLabel="VICE View" customClass="VICEGLView">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" updatesFrequently="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="272" id="aAE-5b-PjL"/>
+                                    <constraint firstAttribute="width" constant="384" id="ez8-A0-Pj8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s3M-pf-poy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Y0-v0-EOp"/>
+                            <constraint firstItem="s3M-pf-poy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kMt-sv-2GR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="viceEmuView" destination="s3M-pf-poy" id="ta1-fi-itr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1810" y="-101"/>
+        </scene>
+        <!--Emulation View Controller-->
+        <scene sceneID="6sF-wZ-Qt1">
+            <objects>
+                <viewController storyboardIdentifier="EmulatorViewController" id="7an-AV-FQx" customClass="EmulatorViewController" customModule="C64Emulator" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qnk-EK-Iqz"/>
+                        <viewControllerLayoutGuide type="bottom" id="KKo-5B-CHS"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="center" id="7M3-7m-ceJ" customClass="EmulationBackgroundView" customModule="C64Emulator">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="heA-yA-tgm" userLabel="VICE View" customClass="VICEGLView">
+                                <frame key="frameInset" minX="0.0%" minY="33.67%" width="384" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" updatesFrequently="YES"/>
+                                </accessibility>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBH-QB-dtp">
+                                <frame key="frameInset" minY="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <barButtonItem style="done" systemItem="done" id="1I4-wP-Bmy">
+                                        <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="clickDoneButton:" destination="7an-AV-FQx" id="b5G-5s-2Pk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bRg-jc-Sr9"/>
+                                </items>
+                                <color key="barTintColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7an-AV-FQx" id="rcS-bX-0gb"/>
+                                </connections>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxZ-vO-2hR">
+                                <frame key="frameInset" minY="38" width="20" height="8" maxX="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="DriveLED"/>
+                            </imageView>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2n-HB-goF">
+                                <frame key="frameInset" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" id="EHn-qy-BZ4">
+                                        <view key="customView" contentMode="scaleToFill" id="PF9-M0-63d" customClass="MPVolumeView">
+                                            <rect key="frame" x="16" y="11" width="161" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </view>
+                                        <color key="tintColor" red="0.57268750670000002" green="0.47606483100000002" blue="0.99824684860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uuh-Vn-gve"/>
+                                    <barButtonItem style="plain" id="ZOY-xx-avr">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nBc-bo-CP4">
+                                            <rect key="frame" x="121" y="3" width="53" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="hud_restart">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clickRestartButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="8Ji-tt-VKA"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="clickRestartButton:" destination="7an-AV-FQx" id="QFh-zF-yT4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="GXS-6D-UhL">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fdU-VE-cd8">
+                                            <rect key="frame" x="184" y="3" width="53" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="hud_pause">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clickPlayPauseButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="SEy-9R-3Rk"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="clickPlayPauseButton:" destination="7an-AV-FQx" id="c8C-VL-isF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="GIe-5E-iGq">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pnq-Uv-SZ5">
+                                            <rect key="frame" x="247" y="3" width="53" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="hud_warp">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clickWarpButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="ZOT-dY-n6h"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="clickWarpButton:" destination="7an-AV-FQx" id="ipi-zy-Oan"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rtY-m2-S4a"/>
+                                    <barButtonItem image="joystick" width="32" style="plain" id="aWc-yj-Vp9">
+                                        <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="clickJoystickButton:" destination="7an-AV-FQx" id="xnc-lz-esG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="keyboard" width="32" style="plain" id="75e-SS-unF">
+                                        <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="clickKeyboardButton:" destination="7an-AV-FQx" id="CkB-Dz-lhm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="settings_icon" width="32" style="plain" id="sH5-TI-hGD">
+                                        <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="clickSettingsButton:" destination="7an-AV-FQx" id="FRh-bF-Whw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
+                            <imageView multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="hud_joystick" translatesAutoresizingMaskIntoConstraints="NO" id="KyZ-gL-TWb" customClass="JoystickView" customModule="C64Emulator">
+                                <frame key="frameInset" width="180" height="180" maxY="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Joystick"/>
+                                <connections>
+                                    <outlet property="_emulationViewController" destination="7an-AV-FQx" id="HWX-UR-9bb"/>
+                                </connections>
+                            </imageView>
+                            <imageView multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="hud_firebutton" translatesAutoresizingMaskIntoConstraints="NO" id="Q4F-lj-xhc" customClass="FireButtonView" customModule="C64Emulator">
+                                <frame key="frameInset" width="180" height="180" maxX="-16" maxY="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="FireButton"/>
+                                <connections>
+                                    <outlet property="_emulationViewController" destination="7an-AV-FQx" id="RLH-CP-MPz"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RjI-GY-MhV">
+                                <frame key="frameInset" minX="62" minY="30" height="24" maxX="62"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1N-ps-oD3">
+                                <frame key="frameInset" height="88"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBJ-p2-i6n">
+                                        <frame key="frameInset" height="44" maxY="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <items>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="iU8-nr-iO5"/>
+                                            <barButtonItem style="plain" id="8Nl-HV-nHH">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AlI-hS-RM5">
+                                                    <rect key="frame" x="98" y="3" width="53" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="hud_restart">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickRestartButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="Kgp-4G-bod"/>
+                                                    </connections>
+                                                </button>
+                                                <connections>
+                                                    <action selector="clickRestartButton:" destination="7an-AV-FQx" id="s3w-Pa-8QG"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="y2t-Sk-NtG">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RAn-cY-c1x">
+                                                    <rect key="frame" x="161" y="3" width="53" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="hud_pause">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickPlayPauseButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="IJ9-54-oWz"/>
+                                                    </connections>
+                                                </button>
+                                                <connections>
+                                                    <action selector="clickPlayPauseButton:" destination="7an-AV-FQx" id="Ie9-6u-KRe"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="36m-FV-Wzx">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tBW-1a-WFT">
+                                                    <rect key="frame" x="224" y="3" width="53" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="hud_warp">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickWarpButton:" destination="7an-AV-FQx" eventType="touchUpInside" id="c8U-Js-Uel"/>
+                                                    </connections>
+                                                </button>
+                                                <connections>
+                                                    <action selector="clickWarpButton:" destination="7an-AV-FQx" id="ugp-Ni-rCz"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="aJ8-Qf-KWV"/>
+                                        </items>
+                                        <color key="barTintColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </toolbar>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kr-Cg-i5I">
+                                        <frame key="frameInset" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <items>
+                                            <barButtonItem style="plain" id="gnm-d4-WWw">
+                                                <view key="customView" contentMode="scaleToFill" id="dNi-Y0-e92" customClass="MPVolumeView">
+                                                    <rect key="frame" x="16" y="11" width="169" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </view>
+                                                <color key="tintColor" red="0.57268750670000002" green="0.47606483100000002" blue="0.99824684860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="iej-ZF-tbr"/>
+                                            <barButtonItem image="joystick" width="32" style="plain" id="3k0-dN-KL1">
+                                                <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="clickJoystickButton:" destination="7an-AV-FQx" id="L9I-FV-w73"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="keyboard" width="32" style="plain" id="4np-I3-TRO">
+                                                <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="clickKeyboardButton:" destination="7an-AV-FQx" id="6bA-5f-CWD"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="settings_icon" width="32" style="plain" id="FeG-mx-OtR">
+                                                <color key="tintColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="clickSettingsButton:" destination="7an-AV-FQx" id="PVN-3a-MID"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                        <color key="barTintColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </toolbar>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NCI-bt-54h">
+                                        <frame key="frameInset" height="3" maxY="43"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <outlet property="_emulationViewController" destination="7an-AV-FQx" id="kTo-AQ-fO8"/>
+                        </connections>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="_bottomToolBar" destination="I2n-HB-goF" id="8hN-vZ-tdw"/>
+                        <outlet property="_driveLedView" destination="kxZ-vO-2hR" id="bXH-0b-Njh"/>
+                        <outlet property="_emulationBackgroundView" destination="7M3-7m-ceJ" id="h2d-YT-Ddw"/>
+                        <outlet property="_fireButtonView" destination="Q4F-lj-xhc" id="LAb-as-xWD"/>
+                        <outlet property="_joystickModeButton" destination="aWc-yj-Vp9" id="03w-ew-ip8"/>
+                        <outlet property="_joystickModeButton2" destination="3k0-dN-KL1" id="Zxm-cA-OrL"/>
+                        <outlet property="_joystickView" destination="KyZ-gL-TWb" id="VUa-AB-Z8U"/>
+                        <outlet property="_playPauseButton" destination="RAn-cY-c1x" id="hWh-Ea-9f2"/>
+                        <outlet property="_playPauseButton2" destination="fdU-VE-cd8" id="e2p-sh-PXt"/>
+                        <outlet property="_portraitBottomToolBarView" destination="f1N-ps-oD3" id="Hjr-ts-z2b"/>
+                        <outlet property="_titleLabel" destination="RjI-GY-MhV" id="eXi-wk-8GD"/>
+                        <outlet property="_toolBar" destination="CBH-QB-dtp" id="7hf-ML-l09"/>
+                        <outlet property="_viceView" destination="heA-yA-tgm" id="8bX-KE-0iD"/>
+                        <outlet property="_warpButton" destination="pnq-Uv-SZ5" id="raX-7c-RSC"/>
+                        <outlet property="_warpButton2" destination="tBW-1a-WFT" id="lif-yT-J2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jdq-rX-4Mu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="611"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cy1-Xd-Rwt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FLl-wI-s45" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lgH-D0-RSW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gFo-6m-AGd" kind="relationship" relationship="rootViewController" id="3Ey-P1-Af5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5fY-kq-h4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-802.39999999999998" y="-131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hud_firebutton" width="160" height="160"/>
+        <image name="hud_joystick" width="160" height="160"/>
+        <image name="hud_pause" width="18" height="23"/>
+        <image name="hud_restart" width="18" height="16"/>
+        <image name="hud_warp" width="28" height="16"/>
+        <image name="joystick" width="24" height="24"/>
+        <image name="keyboard" width="24" height="16"/>
+        <image name="settings_icon" width="50" height="48"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DKk-pj-xGu"/>
+    </inferredMetricsTieBreakers>
 </document>

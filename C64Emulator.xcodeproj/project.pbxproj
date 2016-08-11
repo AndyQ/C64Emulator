@@ -12,7 +12,45 @@
 		A14115AF1D5B18F3007A1A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115AD1D5B18F3007A1A55 /* Main.storyboard */; };
 		A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14115B01D5B18F3007A1A55 /* Assets.xcassets */; };
 		A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115B21D5B18F3007A1A55 /* LaunchScreen.storyboard */; };
+		A14115D31D5B1AA7007A1A55 /* games in Resources */ = {isa = PBXBuildFile; fileRef = A14115D21D5B1AA7007A1A55 /* games */; };
+		A14115D41D5B2109007A1A55 /* liblibx64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115CB1D5B196B007A1A55 /* liblibx64.a */; };
+		A14115D71D5B2138007A1A55 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115D61D5B2138007A1A55 /* AudioToolbox.framework */; };
+		A14115D91D5B2176007A1A55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115D81D5B2176007A1A55 /* Foundation.framework */; };
+		A14115DB1D5B217C007A1A55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115DA1D5B217C007A1A55 /* UIKit.framework */; };
+		A14115DD1D5B218D007A1A55 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115DC1D5B218D007A1A55 /* libz.tbd */; };
+		A14115DF1D5B228E007A1A55 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115DE1D5B228E007A1A55 /* libc++.tbd */; };
+		A14115E71D5B2491007A1A55 /* crt_shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A14115E41D5B2491007A1A55 /* crt_shader.fsh */; };
+		A14115E81D5B2491007A1A55 /* crt_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A14115E51D5B2491007A1A55 /* crt_shader.vsh */; };
+		A14115E91D5B2491007A1A55 /* ROM in Resources */ = {isa = PBXBuildFile; fileRef = A14115E61D5B2491007A1A55 /* ROM */; };
+		A14115EB1D5B294B007A1A55 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115EA1D5B294B007A1A55 /* DiskViewController.swift */; };
+		A14115ED1D5B2A66007A1A55 /* DiskContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115EC1D5B2A66007A1A55 /* DiskContentsViewController.swift */; };
+		A14115F01D5B3513007A1A55 /* diskimage.c in Sources */ = {isa = PBXBuildFile; fileRef = A14115EE1D5B3513007A1A55 /* diskimage.c */; };
+		A14115F31D5B36E2007A1A55 /* D64Image.m in Sources */ = {isa = PBXBuildFile; fileRef = A14115F21D5B36E2007A1A55 /* D64Image.m */; };
+		A14115F51D5B4270007A1A55 /* EmulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115F41D5B4270007A1A55 /* EmulatorViewController.swift */; };
+		A14115F71D5B7D36007A1A55 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115F61D5B7D36007A1A55 /* JoystickView.swift */; };
+		A14115F91D5B7D61007A1A55 /* FireButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115F81D5B7D61007A1A55 /* FireButtonView.swift */; };
+		A14115FB1D5B7D89007A1A55 /* EmulatorBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115FA1D5B7D89007A1A55 /* EmulatorBackgroundView.swift */; };
+		A14115FE1D5B9BFB007A1A55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */; };
+		A14116001D5B9C10007A1A55 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */; };
+		A14116011D5B9EFF007A1A55 /* games.db in Resources */ = {isa = PBXBuildFile; fileRef = A14115FC1D5B9988007A1A55 /* games.db */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A14115CA1D5B196B007A1A55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A14115C11D5B1966007A1A55 /* libx64.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F7B476015284DAD00B63B6D;
+			remoteInfo = libx64;
+		};
+		A14115CC1D5B1983007A1A55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A14115C11D5B1966007A1A55 /* libx64.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F7B475F15284DAD00B63B6D;
+			remoteInfo = libx64;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A14115A61D5B18F3007A1A55 /* C64Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = C64Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +60,30 @@
 		A14115B01D5B18F3007A1A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14115B31D5B18F3007A1A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14115B51D5B18F3007A1A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A14115C11D5B1966007A1A55 /* libx64.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libx64.xcodeproj; path = C64Emulator/libx64.xcodeproj; sourceTree = "<group>"; };
+		A14115CE1D5B19D7007A1A55 /* C64Emulator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "C64Emulator-Bridging-Header.h"; sourceTree = "<group>"; };
+		A14115D21D5B1AA7007A1A55 /* games */ = {isa = PBXFileReference; lastKnownFileType = folder; name = games; path = ../games; sourceTree = "<group>"; };
+		A14115D61D5B2138007A1A55 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A14115D81D5B2176007A1A55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A14115DA1D5B217C007A1A55 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A14115DC1D5B218D007A1A55 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A14115DE1D5B228E007A1A55 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A14115E41D5B2491007A1A55 /* crt_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = crt_shader.fsh; sourceTree = "<group>"; };
+		A14115E51D5B2491007A1A55 /* crt_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = crt_shader.vsh; sourceTree = "<group>"; };
+		A14115E61D5B2491007A1A55 /* ROM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ROM; sourceTree = "<group>"; };
+		A14115EA1D5B294B007A1A55 /* DiskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
+		A14115EC1D5B2A66007A1A55 /* DiskContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskContentsViewController.swift; sourceTree = "<group>"; };
+		A14115EE1D5B3513007A1A55 /* diskimage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = diskimage.c; sourceTree = "<group>"; };
+		A14115EF1D5B3513007A1A55 /* diskimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diskimage.h; sourceTree = "<group>"; };
+		A14115F11D5B36E2007A1A55 /* D64Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D64Image.h; sourceTree = "<group>"; };
+		A14115F21D5B36E2007A1A55 /* D64Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D64Image.m; sourceTree = "<group>"; };
+		A14115F41D5B4270007A1A55 /* EmulatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulatorViewController.swift; sourceTree = "<group>"; };
+		A14115F61D5B7D36007A1A55 /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		A14115F81D5B7D61007A1A55 /* FireButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireButtonView.swift; sourceTree = "<group>"; };
+		A14115FA1D5B7D89007A1A55 /* EmulatorBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulatorBackgroundView.swift; sourceTree = "<group>"; };
+		A14115FC1D5B9988007A1A55 /* games.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = games.db; sourceTree = "<group>"; };
+		A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +91,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14115FE1D5B9BFB007A1A55 /* libsqlite3.tbd in Frameworks */,
+				A14115DF1D5B228E007A1A55 /* libc++.tbd in Frameworks */,
+				A14115DD1D5B218D007A1A55 /* libz.tbd in Frameworks */,
+				A14115DB1D5B217C007A1A55 /* UIKit.framework in Frameworks */,
+				A14115D91D5B2176007A1A55 /* Foundation.framework in Frameworks */,
+				A14115D71D5B2138007A1A55 /* AudioToolbox.framework in Frameworks */,
+				A14115D41D5B2109007A1A55 /* liblibx64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				A14115A81D5B18F3007A1A55 /* C64Emulator */,
+				A14115E31D5B2475007A1A55 /* Resources */,
+				A14115C11D5B1966007A1A55 /* libx64.xcodeproj */,
 				A14115A71D5B18F3007A1A55 /* Products */,
+				A14115D51D5B2138007A1A55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +128,58 @@
 			children = (
 				A14115A91D5B18F3007A1A55 /* AppDelegate.swift */,
 				A14115AB1D5B18F3007A1A55 /* ViewController.swift */,
+				A14115EA1D5B294B007A1A55 /* DiskViewController.swift */,
+				A14115EC1D5B2A66007A1A55 /* DiskContentsViewController.swift */,
+				A14115F41D5B4270007A1A55 /* EmulatorViewController.swift */,
+				A14115FA1D5B7D89007A1A55 /* EmulatorBackgroundView.swift */,
+				A14115F61D5B7D36007A1A55 /* JoystickView.swift */,
+				A14115F81D5B7D61007A1A55 /* FireButtonView.swift */,
 				A14115AD1D5B18F3007A1A55 /* Main.storyboard */,
+				A14115F11D5B36E2007A1A55 /* D64Image.h */,
+				A14115F21D5B36E2007A1A55 /* D64Image.m */,
+				A14115EE1D5B3513007A1A55 /* diskimage.c */,
+				A14115EF1D5B3513007A1A55 /* diskimage.h */,
+				A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */,
 				A14115B01D5B18F3007A1A55 /* Assets.xcassets */,
 				A14115B21D5B18F3007A1A55 /* LaunchScreen.storyboard */,
 				A14115B51D5B18F3007A1A55 /* Info.plist */,
+				A14115CE1D5B19D7007A1A55 /* C64Emulator-Bridging-Header.h */,
 			);
 			path = C64Emulator;
+			sourceTree = "<group>";
+		};
+		A14115C71D5B196B007A1A55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A14115CB1D5B196B007A1A55 /* liblibx64.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A14115D51D5B2138007A1A55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */,
+				A14115DE1D5B228E007A1A55 /* libc++.tbd */,
+				A14115DC1D5B218D007A1A55 /* libz.tbd */,
+				A14115DA1D5B217C007A1A55 /* UIKit.framework */,
+				A14115D81D5B2176007A1A55 /* Foundation.framework */,
+				A14115D61D5B2138007A1A55 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A14115E31D5B2475007A1A55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A14115FC1D5B9988007A1A55 /* games.db */,
+				A14115E41D5B2491007A1A55 /* crt_shader.fsh */,
+				A14115E51D5B2491007A1A55 /* crt_shader.vsh */,
+				A14115E61D5B2491007A1A55 /* ROM */,
+				A14115D21D5B1AA7007A1A55 /* games */,
+			);
+			name = Resources;
+			path = C64Emulator/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +196,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A14115CD1D5B1983007A1A55 /* PBXTargetDependency */,
 			);
 			name = C64Emulator;
 			productName = C64Emulator;
@@ -97,6 +216,7 @@
 					A14115A51D5B18F3007A1A55 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A4ZM73UFF5;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -112,6 +232,12 @@
 			mainGroup = A141159D1D5B18F3007A1A55;
 			productRefGroup = A14115A71D5B18F3007A1A55 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A14115C71D5B196B007A1A55 /* Products */;
+					ProjectRef = A14115C11D5B1966007A1A55 /* libx64.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A14115A51D5B18F3007A1A55 /* C64Emulator */,
@@ -119,13 +245,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		A14115CB1D5B196B007A1A55 /* liblibx64.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibx64.a;
+			remoteRef = A14115CA1D5B196B007A1A55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		A14115A41D5B18F3007A1A55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */,
+				A14116011D5B9EFF007A1A55 /* games.db in Resources */,
 				A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */,
+				A14115D31D5B1AA7007A1A55 /* games in Resources */,
+				A14115E71D5B2491007A1A55 /* crt_shader.fsh in Resources */,
+				A14115E81D5B2491007A1A55 /* crt_shader.vsh in Resources */,
+				A14115E91D5B2491007A1A55 /* ROM in Resources */,
 				A14115AF1D5B18F3007A1A55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,12 +278,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14115F71D5B7D36007A1A55 /* JoystickView.swift in Sources */,
+				A14116001D5B9C10007A1A55 /* DatabaseManager.swift in Sources */,
+				A14115F31D5B36E2007A1A55 /* D64Image.m in Sources */,
 				A14115AC1D5B18F3007A1A55 /* ViewController.swift in Sources */,
+				A14115EB1D5B294B007A1A55 /* DiskViewController.swift in Sources */,
+				A14115F01D5B3513007A1A55 /* diskimage.c in Sources */,
+				A14115ED1D5B2A66007A1A55 /* DiskContentsViewController.swift in Sources */,
+				A14115F91D5B7D61007A1A55 /* FireButtonView.swift in Sources */,
+				A14115F51D5B4270007A1A55 /* EmulatorViewController.swift in Sources */,
 				A14115AA1D5B18F3007A1A55 /* AppDelegate.swift in Sources */,
+				A14115FB1D5B7D89007A1A55 /* EmulatorBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A14115CD1D5B1983007A1A55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libx64;
+			targetProxy = A14115CC1D5B1983007A1A55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A14115AD1D5B18F3007A1A55 /* Main.storyboard */ = {
@@ -260,26 +418,40 @@
 		A14115B91D5B18F3007A1A55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.C64Emulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "C64Emulator/libx64/vice/src C64Emulator/libx64/vice/src/c64 C64Emulator/libx64/vice/src/sid C64Emulator/libx64/vice/src/vicii C64Emulator/libx64/vice/src/arch/unix/ios/cocoa_touch C64Emulator/libx64/vice/src/arch/unix/ios C64Emulator/libx64/vice/src/arch/unix C64Emulator/libx64/vice/src/c64/cart C64Emulator/libx64/vice/src/drive C64Emulator/libx64/vice/src/c64exp C64Emulator/libx64/vice/src/video C64Emulator/libx64/vice/src/userport C64Emulator/libx64/vice/src/tape C64Emulator/libx64/vice/src/raster C64Emulator/libx64/vice/src/viciisc";
 			};
 			name = Debug;
 		};
 		A14115BA1D5B18F3007A1A55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.C64Emulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "C64Emulator/libx64/vice/src C64Emulator/libx64/vice/src/c64 C64Emulator/libx64/vice/src/sid C64Emulator/libx64/vice/src/vicii C64Emulator/libx64/vice/src/arch/unix/ios/cocoa_touch C64Emulator/libx64/vice/src/arch/unix/ios C64Emulator/libx64/vice/src/arch/unix C64Emulator/libx64/vice/src/c64/cart C64Emulator/libx64/vice/src/drive C64Emulator/libx64/vice/src/c64exp C64Emulator/libx64/vice/src/video C64Emulator/libx64/vice/src/userport C64Emulator/libx64/vice/src/tape C64Emulator/libx64/vice/src/raster C64Emulator/libx64/vice/src/viciisc";
 			};
 			name = Release;
 		};
