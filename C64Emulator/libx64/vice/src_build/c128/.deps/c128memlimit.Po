@@ -1,0 +1,10 @@
+c128memlimit.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memlimit.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memlimit.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memlimit.h:

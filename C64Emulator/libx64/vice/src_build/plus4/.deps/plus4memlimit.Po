@@ -1,0 +1,22 @@
+plus4memlimit.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memlimit.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memcsory256k.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memhannes256k.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memlimit.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memcsory256k.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memhannes256k.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memlimit.h:

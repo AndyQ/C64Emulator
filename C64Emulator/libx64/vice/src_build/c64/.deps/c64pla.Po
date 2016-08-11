@@ -1,0 +1,18 @@
+c64pla.o: /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64pla.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64pla.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/datasette.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64pla.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/datasette.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:

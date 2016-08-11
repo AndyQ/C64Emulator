@@ -1,0 +1,109 @@
+vicii-fetch.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-fetch.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  ../../src/debug.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64cartmem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/dma.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/log.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-changes.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-sprite-status.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-sprite.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-fetch.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-irq.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-sprites.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+../../src/debug.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64cartmem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/dma.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/log.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-changes.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-sprite-status.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-sprite.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-fetch.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-irq.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-sprites.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h:

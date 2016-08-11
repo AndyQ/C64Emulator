@@ -1,0 +1,6 @@
+cs8900.o: /Users/sid/Sources/vice-emu/trunk/vice/src/core/cs8900.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

@@ -1,0 +1,7 @@
+vic20embedded.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20embedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

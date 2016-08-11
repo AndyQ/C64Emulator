@@ -1,0 +1,25 @@
+vic20printer.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20printer.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/via.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/via.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic.h:

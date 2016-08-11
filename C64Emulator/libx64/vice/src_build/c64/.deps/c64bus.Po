@@ -1,0 +1,21 @@
+c64bus.o: /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64bus.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/iecbus.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-bus.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/parallel.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/serial.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/iecbus.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-bus.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/parallel.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/serial.h:

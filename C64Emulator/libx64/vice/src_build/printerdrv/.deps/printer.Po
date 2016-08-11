@@ -1,0 +1,82 @@
+printer.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/printer.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/driver-select.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-ascii.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-mps803.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-nl10.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-raw.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/interface-serial.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/interface-userport.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-graphics.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-select.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-text.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printer.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/driver-select.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-ascii.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-mps803.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-nl10.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/drv-raw.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/interface-serial.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/interface-userport.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-graphics.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-select.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printerdrv/output-text.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printer.h:

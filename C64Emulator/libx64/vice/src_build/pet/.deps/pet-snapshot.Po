@@ -1,0 +1,103 @@
+pet-snapshot.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet-snapshot.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/crtc/crtc.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive-snapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/ioutil.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/log.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet-snapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/petacia.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/petmemsnapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/petpia.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/pets.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/snapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sound.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/tape/tape-snapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/via.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/crtc/crtc.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive-snapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/ioutil.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/log.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet-snapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/petacia.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/petmemsnapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/petpia.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/pets.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/snapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sound.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/tape/tape-snapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/via.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h:

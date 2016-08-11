@@ -1,0 +1,253 @@
+crt.o: /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/crt.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h \
+  ../../../src/config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h \
+  /usr/bin/../lib/clang/3.1/include/stdarg.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cartridge.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sound.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/crt.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resources.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay2.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay3.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay4.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/atomicpower.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64-generic.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64tpi.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/comal80.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/capture.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep256.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep7x8.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/diashowmaker.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/dinamic.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/easyflash.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/epyxfastload.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/exos.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/final.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/finalplus.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/final3.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/formel64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/freezeframe.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/freezemachine.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/funplay.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/gamekiller.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/gs.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ide64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/isepic.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/kcs.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/kingsoft.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mach5.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicdesk.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicformel.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicvoice.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mikroass.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mmc64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mmcreplay.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ocean.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/pagefox.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/prophet64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/retroreplay.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/rexep256.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/rexutility.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ross.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/silverrock128.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/simonsbasic.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/stardos.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/stb.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/snapshot64.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supergames.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supersnapshot4.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supersnapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/superexplode5.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/warpspeed.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/westermann.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/zaxxon.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/util.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../../src/config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h:
+
+/usr/bin/../lib/clang/3.1/include/stdarg.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cartridge.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sound.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/crt.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resources.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay2.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay3.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/actionreplay4.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/atomicpower.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64-generic.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64tpi.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/comal80.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/capture.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep256.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/delaep7x8.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/diashowmaker.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/dinamic.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/easyflash.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/epyxfastload.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/exos.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/final.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/finalplus.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/final3.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/formel64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/freezeframe.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/freezemachine.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/funplay.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/gamekiller.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/gs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ide64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/isepic.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/kcs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/kingsoft.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mach5.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicdesk.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicformel.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/magicvoice.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mikroass.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mmc64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/mmcreplay.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ocean.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/pagefox.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/prophet64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/retroreplay.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/rexep256.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/rexutility.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/ross.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/silverrock128.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/simonsbasic.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/stardos.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/stb.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/snapshot64.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supergames.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supersnapshot4.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/supersnapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/superexplode5.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/warpspeed.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/westermann.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/zaxxon.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/util.h:

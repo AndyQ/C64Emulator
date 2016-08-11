@@ -1,0 +1,15 @@
+voice.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid/voice.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/voice.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h \
+  siddefs.h /Users/sid/Sources/vice-emu/trunk/vice/src/resid/wave.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/envelope.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/voice.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h:
+
+siddefs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/wave.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/envelope.h:

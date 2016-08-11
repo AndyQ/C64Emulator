@@ -1,0 +1,237 @@
+machine.o: /Users/sid/Sources/vice-emu/trunk/vice/src/machine.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h config.h \
+  /usr/bin/../lib/clang/3.1/include/stdarg.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdlib.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/wait.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/signal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/appleapiopts.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/signal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/signal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_structs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_structs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_structs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/mach/i386/_structs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/resource.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/endian.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/endian.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_endian.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/libkern/_OSByteOrder.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/alloca.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/attach.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/autostart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/clkguard.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cmdline.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/console.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/rtc/ds1216e.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/time.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_structs.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/fliplist.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/fsdevice.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/gfxoutput.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/interrupt.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/debug.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/log.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/kbdbuf.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/lib.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-video.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/monitor_network.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/network.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resources.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/romset.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sound.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sysfile.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/tape.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/traps.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/uiapi.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vsync.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/zfile.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/macosx/joy.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+config.h:
+
+/usr/bin/../lib/clang/3.1/include/stdarg.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdlib.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/wait.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/signal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/appleapiopts.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/signal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/signal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_structs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_structs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_structs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/mach/i386/_structs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/resource.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/endian.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/endian.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_endian.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/libkern/_OSByteOrder.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/libkern/i386/_OSByteOrder.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/alloca.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/attach.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/autostart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/clkguard.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cmdline.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/console.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/rtc/ds1216e.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/time.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_structs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/fliplist.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/fsdevice.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/gfxoutput.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/interrupt.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/debug.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/log.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/kbdbuf.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/lib.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-video.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/monitor_network.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/network.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resources.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/romset.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sound.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sysfile.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/tape.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/traps.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/uiapi.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/video.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vsync.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/zfile.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/macosx/joy.h:

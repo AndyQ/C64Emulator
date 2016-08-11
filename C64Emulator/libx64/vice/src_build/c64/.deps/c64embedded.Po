@@ -1,0 +1,7 @@
+c64embedded.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64embedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

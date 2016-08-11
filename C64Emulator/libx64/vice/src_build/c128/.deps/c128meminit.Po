@@ -1,0 +1,82 @@
+c128meminit.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128meminit.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128meminit.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memrom.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mmu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cia.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cartio.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/functionrom.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sound.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vdc/vdc-mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-mem.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128meminit.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memrom.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mmu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cia.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cartio.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/functionrom.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sound.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vdc/vdc-mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-mem.h:

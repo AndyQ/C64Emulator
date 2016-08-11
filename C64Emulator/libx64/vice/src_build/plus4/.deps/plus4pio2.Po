@@ -1,0 +1,12 @@
+plus4pio2.o: /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio2.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio2.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio2.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:

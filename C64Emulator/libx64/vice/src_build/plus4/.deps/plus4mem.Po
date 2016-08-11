@@ -1,0 +1,132 @@
+plus4mem.o: /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4mem.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/datasette.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/digiblaster.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sound.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/iecbus.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4acia.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4iec.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memcsory256k.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memhannes256k.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memlimit.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memrom.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio1.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio2.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4speech.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4tcbm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/ram.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resources.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid-resources.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sidcart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/ted.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/plus4/ted-mem.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/string.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/strings.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_string.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/datasette.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/digiblaster.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sound.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/iecbus.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4acia.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4iec.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memcsory256k.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memhannes256k.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memlimit.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4memrom.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio1.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4pio2.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4speech.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/plus4tcbm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/ram.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resources.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid-resources.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sid/sid.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sidcart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/ted.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/plus4/ted-mem.h:

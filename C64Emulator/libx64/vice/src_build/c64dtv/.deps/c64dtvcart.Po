@@ -1,0 +1,16 @@
+c64dtvcart.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64dtv/c64dtvcart.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h:

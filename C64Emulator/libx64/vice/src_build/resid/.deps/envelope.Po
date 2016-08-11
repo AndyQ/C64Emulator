@@ -1,0 +1,12 @@
+envelope.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid/envelope.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/envelope.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h \
+  siddefs.h /Users/sid/Sources/vice-emu/trunk/vice/src/resid/dac.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/envelope.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h:
+
+siddefs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/dac.h:

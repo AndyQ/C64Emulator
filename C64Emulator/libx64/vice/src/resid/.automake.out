@@ -1,0 +1,9 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "en",
+	LANG = "en"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+configure.in:12: installing `../../missing'
+Makefile.am: installing `./INSTALL'
+Makefile.am: installing `../../depcomp'

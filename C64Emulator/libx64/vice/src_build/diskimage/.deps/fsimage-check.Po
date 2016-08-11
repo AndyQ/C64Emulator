@@ -1,0 +1,19 @@
+fsimage-check.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskimage/fsimage-check.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskconstants.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskimage/fsimage-check.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/diskconstants.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/diskimage/fsimage-check.h:

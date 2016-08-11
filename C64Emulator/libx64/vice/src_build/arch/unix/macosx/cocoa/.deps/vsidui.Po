@@ -1,0 +1,20 @@
+vsidui.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/macosx/cocoa/vsidui.m \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h \
+  ../../../../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/ui.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/imagecontents.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/gui/uilib.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../../../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/ui.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/imagecontents.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/gui/uilib.h:

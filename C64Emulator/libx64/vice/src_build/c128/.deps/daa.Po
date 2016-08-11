@@ -1,0 +1,12 @@
+daa.o: /Users/sid/Sources/vice-emu/trunk/vice/src/c128/daa.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/daa.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/daa.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

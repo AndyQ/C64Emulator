@@ -1,0 +1,7 @@
+version.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/version.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/residfp-config.h \
+  siddefs-fp.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/residfp-config.h:
+
+siddefs-fp.h:

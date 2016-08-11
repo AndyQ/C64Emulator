@@ -1,0 +1,7 @@
+petembedded.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/petembedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

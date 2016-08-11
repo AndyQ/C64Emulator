@@ -1,0 +1,93 @@
+maincpu.o: /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h config.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/6510core.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/clkguard.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/debug.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/interrupt.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/log.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mos6510.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/h6809regs.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/snapshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/traps.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/6510core.c
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+config.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/6510core.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/alarm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/clkguard.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/debug.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/interrupt.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/log.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mos6510.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/h6809regs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/snapshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/traps.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/6510core.c:

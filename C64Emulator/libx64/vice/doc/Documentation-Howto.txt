@@ -1,0 +1,205 @@
+
+This document contains information on how to create/edit the documentation
+that comes with VICE. Incase you were looking for the documentation itself,
+look at the generated files in the html subdirectory.
+
+------------------------------------------------------------------------------
+
+WARNING: this document is under construction :)
+
+Overview:
+=========
+
+* vice/doc/vice.texi is the main documentation source.
+
+* vice/doc/*.txt should only contain developer- or port-specific info
+
+* vice/doc/plain/*.txt should contain only technical information (related to
+  actual commodore computers, not vice)
+
+------------------------------------------------------------------------------
+
+updating the documentation:
+===========================
+
+to make half automatic checking easier, mark things that should be fixed right
+in vice.texi in the following form:
+
+@c FIXME: <details>
+
+chapters/sections:
+------------------
+
+when creating a new chapter or (sub)section, you may not want to immediatly
+create a proper node (and possibly menus) too. in that case add a comment
+like this directly above the new section:
+
+@c @node FIXME
+@subsection New Section
+
+command-line options:
+---------------------
+
+@table @code
+
+@cindex -something
+@item -something <value>
+Set something to <value>.
+
+@end table
+
+resources:
+----------
+
+@table @code
+
+@vindex SomeResource
+@item SomeResource
+Boolean to enable some option.
+
+@end table
+
+------------------------------------------------------------------------------
+
+how to use the checkdoc tool:
+=============================
+
+This is a little tool which tries to automatically check the documentation for
+some common errors and missing things, for example:
+ - missing and/or outdated commandline options
+ - missing and/or outdated resources
+ - incorrect usage of the index
+
+- a valid vicerc containing settings for all emus must be located in ~/.vice/
+- the tool must be run from within vice/doc and the emulator binaries must be
+  present in vice/src.
+
+run the tool by either typing
+
+make -f checkdoc.mak <option>
+
+or
+
+./checkdoc.mak <option>
+
+with option being one of either
+
+full    do all checks
+opt     check command-line options
+res     check resources
+fixme   show FIXMEs
+nodes   show nodes marked FIXME
+clean   remove temp files
+update  generate the documentation
+
+------------------------------------------------------------------------------
+
+TODO:
+=====
+
+like mentioned above, the todo list is contained in vice.texi in the form of
+comments. to show it using the checkdoc tool use "./checkdoc.mak fixme nodes"
+
+at the time of last updating this file (23/07/2011), the list looked like this:
+
+list of FIXMEs (24)
+663:@c FIXME: add link to doc/html/plain/PETdoc.txt
+684:@c FIXME: add link to doc/html/plain/PETdoc.txt
+712:@c FIXME: add link to section
+782:@c FIXME: add a detailed list of all keys
+2472:@c FIXME: remove -symdekeymap option!
+3908:@c FIXME: clean up "c64/128" vs "c64"
+4233:@c FIXME: incomplete descriptions for resources
+8398:@c FIXME: add some info on making screenshots, wav- and avi recordings
+8431:@c FIXME: merge doc/html/plain/Walkthrough-Howto.txt
+9250:@c FIXME: add more c1541 examples
+9625:@c FIXME: add D67 CBM2040 (DOS1) disk image file structure
+9626:@c FIXME: add CRT c64 cartridge images file structure
+10045:@c FIXME: the D64 section needs to be style-checked.
+10046:@c FIXME: some of the D64 section needs to have sub-sections.
+10938:@c FIXME: the X64 section needs to be style-checked.
+11054:@c FIXME: the D71 section needs to be style-checked.
+11055:@c FIXME: some of the D71 section needs to have sub-sections.
+11715:@c FIXME: the D81 section needs to be style-checked.
+11716:@c FIXME: some of the D81 section needs to have sub-sections.
+12610:@c FIXME: the D80 section needs to be style-checked.
+12611:@c FIXME: some of the D80 section needs to have sub-sections.
+13299:@c FIXME: the D82 section needs to be style-checked.
+13300:@c FIXME: some of the D82 section needs to have sub-sections.
+14390:@c FIXME: the P00 section needs to be style-checked.
+
+nodes that need fixing (60):
+2500:@c @node FIXME
+2503:@c @node FIXME
+2740:@c @node FIXME
+3724:@c @node FIXME
+3727:@c @node FIXME
+3749:@c @node FIXME
+3752:@c @node FIXME
+3963:@c @node FIXME
+3985:@c @node FIXME
+4008:@c @node FIXME
+4118:@c @node FIXME
+4148:@c @node FIXME
+4167:@c @node FIXME
+4205:@c @node FIXME
+4220:@c @node FIXME
+4227:@c @node FIXME
+4230:@c @node FIXME
+4349:@c @node FIXME
+4688:@c @node FIXME
+4691:@c @node FIXME
+5368:@c @node FIXME
+5371:@c @node FIXME
+5412:@c @node FIXME
+5415:@c @node FIXME
+5418:@c @node FIXME
+5496:@c @node FIXME
+5499:@c @node FIXME
+5571:@c @node FIXME
+5574:@c @node FIXME
+5822:@c @node FIXME
+5825:@c @node FIXME
+5888:@c @node FIXME
+5891:@c @node FIXME
+5915:@c @node FIXME
+6200:@c @node FIXME
+6203:@c @node FIXME
+6215:@c @node FIXME
+6218:@c @node FIXME
+6221:@c @node FIXME
+6294:@c @node FIXME
+6297:@c @node FIXME
+6328:@c @node FIXME
+6331:@c @node FIXME
+6358:@c @node FIXME
+6361:@c @node FIXME
+6527:@c @node FIXME
+6530:@c @node FIXME
+6558:@c @node FIXME
+6958:@c @node FIXME
+6961:@c @node FIXME
+6964:@c @node FIXME
+8395:@c @node FIXME
+8400:@c @node FIXME
+8428:@c @node FIXME
+8433:@c @node FIXME
+9247:@c @node FIXME
+9257:@c @node FIXME
+9421:@c @node FIXME
+9449:@c @node FIXME
+9582:@c @node FIXME
+
+to get a much more detailed list use "./checkdoc.mak full"
+
+------------------------------------------------------------------------------
+
+Last fully checked:
+
+"c64 using cartridges" - 22/01/2011
+"c64 io extensions" - 22/01/2011
+petcat - 22/01/2011
+cartconv - 22/01/2011
+monitor - 22/01/2011
+
+all command line options complete - 31/01/2011

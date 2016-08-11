@@ -1,0 +1,25 @@
+cbm2printer.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cbm2/cbm2printer.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cbm2/cbm2.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cia.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printer.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cbm2/cbm2.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cia.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printer.h:

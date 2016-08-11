@@ -1,0 +1,21 @@
+petprinter.o: /Users/sid/Sources/vice-emu/trunk/vice/src/pet/petprinter.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/printer.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/via.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/pet/pet.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/printer.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/via.h:

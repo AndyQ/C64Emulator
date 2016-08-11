@@ -1,0 +1,7 @@
+c128embedded.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128embedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:

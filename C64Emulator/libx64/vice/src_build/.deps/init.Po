@@ -1,0 +1,168 @@
+init.o: /Users/sid/Sources/vice-emu/trunk/vice/src/init.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h \
+  /usr/bin/../lib/clang/3.1/include/stdarg.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/attach.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/autostart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cmdline.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/console.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/debug.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/rtc/ds1216e.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/time.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_structs.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_structs.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/drive/drivecpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/fliplist.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/fsdevice.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/gfxoutput.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/initcmdline.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/macosx/joy.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/kbdbuf.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/log.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine-bus.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/machine.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/monitor/monitor_network.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/network.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/palette.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/ram.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resources.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/romset.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/screenshot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/signals.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/sysfile.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/uiapi.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vdrive/vdrive.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/archdep.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/archapi.h:
+
+/usr/bin/../lib/clang/3.1/include/stdarg.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/cdefs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_symbol_aliasing.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_posix_availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/Availability.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/AvailabilityInternal.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/machine/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/i386/_types.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_stdio.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/secure/_common.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/attach.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/autostart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/cmdline.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/console.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/debug.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/diskimage.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/drive/drive.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/rtc/ds1216e.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/time.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/_structs.h:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/include/sys/_structs.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/drive/drivecpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/fliplist.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/fsdevice.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/gfxoutput.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/initcmdline.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/macosx/joy.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/joystick.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/kbdbuf.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/keyboard.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/log.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine-bus.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/machine.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/asm.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/monitor/monitor_network.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/network.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/palette.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/ram.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resources.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/romset.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/screenshot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/signals.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/sysfile.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/uiapi.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vdrive/vdrive.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice-event.h:

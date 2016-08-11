@@ -1,0 +1,178 @@
+
+  VICE  2.3							Feb 2011
+
+
+		 _______________
+		|      ||      ||
+		|      ||      ||____________________________
+		|      ||      ||    ||         ||          ||
+		|      ||      ||    ||    |    ||    ______||
+		|      ||      ||    ||    |----||          ||
+		|      ||      ||    ||    |    ||    ------||
+		|              ||____||_________||__________||
+		 \            // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		  \          //
+		   \________//   Versatile Commodore 8-bit Emulator
+
+
+
+ ----------------------------------------------------------------------------
+
+
+ This is version 2.3 of VICE, the multi-platform C64, C128, VIC20,
+ PET, PLUS4 and CBM-II emulator.  This version can be compiled for
+ MSDOS, Win32, RiscOS, OS/2, BeOS, QNX 4.x, QNX 6.x, AmigaOS, GP2X,
+ Dingoo, Syllable, SkyOS and for most Unix systems provided with
+ the X Window System version 11, R5 or later.
+
+ The following programs are included:
+
+   - x64, a C64 emulator;
+
+   - x64sc, a C64 emulator focused on accuracy;
+
+   - x64dtv, a C64 Direct-to-TV (DTV) emulator;
+
+   - x128, a C128 emulator;
+
+   - xvic, a VIC20 emulator;
+
+   - xpet, a PET emulator;
+
+   - xplus4, a PLUS4 emulator;
+
+   - xcbm2, a CBM-II emulator;
+
+   - c1541, a stand-alone disk image maintenance utility;
+
+   - petcat, a CBM BASIC de-tokenizer;
+
+   - cartconv, a C64/C128 cartridge conversion program.
+
+ Moreover, the following documents are provided in both source and
+ binary distributions:
+
+   - README, this file;
+
+   - COPYING, the GNU General Public License under which VICE is
+     distributed -- *please read it before using the program*;
+
+   - INSTALL, installation instructions;
+
+   - doc/html/plain/NEWS, list of user-visible changes between this
+     and older versions of VICE;
+
+   - doc/html/plain/BUGS, a list of the most important known bugs of
+     this release (please read it before reporting bugs);
+
+   - doc/html/plain/TODO, a list of what we would like to do next
+     (this is no promise!);
+
+   - FEEDBACK, something you should read before sending mail to
+     any of the authors;
+
+ The following documents are provided in the source distribution:
+
+   - doc/vice.texi, the complete documentation;
+
+   - doc/html/plain/64doc.txt, documentation about the C64 internals;
+
+   - doc/html/plain/PETdoc.txt, documentation about the PET internals;
+
+   - doc/html/plain/cbm_basic_tokens.txt, a list of the CBM BASIC
+     tokens, as supported by the petcat utility;
+
+   - doc/html/plain/serial.txt, description of the IEC serial bus used
+     on the C64, VIC20 and C128;
+
+   - doc/html/plain/drive_info.txt, information about the CBM disk
+     drives;
+
+   - doc/Readme.dos, MS-DOS specific documentation;
+
+   - doc/Readme.beos, BeOS specific documentation;
+
+   - doc/Win32-Howto.txt, how to compile the Win32 port.
+
+   - doc/NLS-Howto.txt, some documentation about Unix NLS support;
+
+   - doc/MSDOS-Howto.txt, how to compile the MSDOS port.
+
+   - doc/MSDOS-Ethernet-Howto.txt, how to compile the MSDOS port with
+     ethernet support.
+
+   - doc/iec-bus.txt, overview of the VICE IEC bus emulation;
+
+ For the latest news, have a look at the VICE home page:
+
+     http://vice-emu.sourceforge.net/
+
+ New versions are made available quite often, so please stay tuned.
+
+
+ Have fun!
+
+
+ Copyright notice
+ ----------------
+
+ VICE, the Versatile Commodore Emulator
+
+    Copyright C 1998-2011 Dag Lem
+    Copyright C 1999-2011 Andreas Matthies
+    Copyright C 1999-2011 Martin Pottendorfer
+    Copyright C 2000-2011 Spiro Trikaliotis
+    Copyright C 2005-2011 Marco van den Heuvel
+    Copyright C 2006-2011 Christian Vogelgsang
+    Copyright C 2007-2011 Fabrizio Gennari
+    Copyright C 2007-2011 Daniel Kahlin
+    Copyright C 2008-2011 Antti S. Lankila
+    Copyright C 2009-2011 Groepaz
+    Copyright C 2009-2011 Ingo Korb
+    Copyright C 2009-2011 Errol Smith
+    Copyright C 2010-2011 Olaf Seibert
+    Copyright C 2011      Marcus Sutton
+    Copyright C 2011      Ulrich Schulz
+    Copyright C 2011      Stefan Haubenthal
+    Copyright C 2011      Thomas Giesel
+    Copyright C 2011      Kajtar Zsolt
+
+    Copyright C 2007-2011 Hannu Nuotio
+    Copyright C 1998-2010 Andreas Boose
+    Copyright C 1998-2010 Tibor Biczo
+    Copyright C 2007-2010 M. Kiesel
+    Copyright C 1999-2007 Andreas Dehmel
+    Copyright C 2003-2005 David Hansel
+    Copyright C 2000-2004 Markus Brenner
+
+    Copyright C 1999-2004 Thomas Bretz
+    Copyright C 1997-2001 Daniel Sladic
+    Copyright C 1996-2001 André Fachat
+    Copyright C 1996-1999 Ettore Perazzoli
+    Copyright C 1993-1994, 1997-1999 Teemu Rantanen
+    Copyright C 1993-1996 Jouko Valta
+    Copyright C 1993-1994 Jarkko Sonninen
+
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as
+  published by the Free Software Foundation; either version 2 of the
+  License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+  02111-1307  USA
+
+ The ROM files in the `C128', `C64', `CBM-II', `DRIVES', `PET', `PLUS4'
+ `PRINTER' and `VIC20' directories are Copyright C by Commodore
+ Business Machines.
+
+ The ROM files in the `C64DTV` directory are Copyright C by Commodore
+ Business Machines, as well as Mammoth Toys, a division of nsi ltd.,
+ Digital Concepts DC studios inc., Ironstone Partners ltd., and
+ Toy:Lobster company ltd.

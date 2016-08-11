@@ -1,0 +1,6 @@
+embedded.o: /Users/sid/Sources/vice-emu/trunk/vice/src/embedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+config.h:

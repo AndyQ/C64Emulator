@@ -1,0 +1,34 @@
+vicii-badline.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-badline.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/dma.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-changes.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-badline.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-fetch.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/dma.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster-changes.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-badline.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-fetch.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h:

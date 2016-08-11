@@ -1,0 +1,25 @@
+video-render-2x2.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video/video-render-2x2.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video/render2x2.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video/renderscale2x.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/video/video-render.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/video/render2x2.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/video.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/video/renderscale2x.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/video/video-render.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h:

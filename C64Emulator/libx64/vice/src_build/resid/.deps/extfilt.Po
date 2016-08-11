@@ -1,0 +1,10 @@
+extfilt.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid/extfilt.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/extfilt.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h \
+  siddefs.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/extfilt.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h:
+
+siddefs.h:

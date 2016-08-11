@@ -1,0 +1,9 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "en",
+	LANG = "en"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+doc/Makefile.am:59: installing `doc/texinfo.tex'
+configure.in: installing `./ylwrap'
+Makefile.am: installing `./INSTALL'

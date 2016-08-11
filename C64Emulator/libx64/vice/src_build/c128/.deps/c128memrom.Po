@@ -1,0 +1,22 @@
+c128memrom.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memrom.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memrom.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c128/z80mem.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/c128memrom.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c128/z80mem.h:

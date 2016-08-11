@@ -1,0 +1,22 @@
+vicii-phi1.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-phi1.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-phi1.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/vicii-phi1.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vicii/viciitypes.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h:

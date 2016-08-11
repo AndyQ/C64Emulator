@@ -1,0 +1,33 @@
+vic-cycle.o: /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic-cycle.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/victypes.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20memrom.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/victypes.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vic20/vic20memrom.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viewport.h:

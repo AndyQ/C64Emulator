@@ -1,0 +1,10 @@
+pot.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/pot.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/pot.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/residfp-config.h \
+  siddefs-fp.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/pot.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/residfp-config.h:
+
+siddefs-fp.h:

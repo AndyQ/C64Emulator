@@ -1,0 +1,39 @@
+vicii-fetch.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/vicii-fetch.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64cartmem.h \
+  ../../src/debug.h /Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/mem.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/vicii-chip-model.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/vicii-fetch.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/viciitypes.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/c64cart.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/arch/unix/types.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/expert.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/c64/cart/c64cartmem.h:
+
+../../src/debug.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/maincpu.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/mem.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/vicii-chip-model.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/vicii-fetch.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/viciisc/viciitypes.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/raster/raster.h:

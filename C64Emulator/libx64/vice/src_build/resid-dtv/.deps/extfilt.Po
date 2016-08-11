@@ -1,0 +1,11 @@
+extfilt.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/extfilt.cc \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/extfilt.h \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/residdtv-config.h \
+  siddtvdefs.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/extfilt.h:
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/residdtv-config.h:
+
+siddtvdefs.h:

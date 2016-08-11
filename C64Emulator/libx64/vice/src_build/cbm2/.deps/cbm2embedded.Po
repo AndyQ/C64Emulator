@@ -1,0 +1,7 @@
+cbm2embedded.o: \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/cbm2/cbm2embedded.c \
+  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h ../../src/config.h
+
+/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
+
+../../src/config.h:
