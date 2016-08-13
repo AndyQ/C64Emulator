@@ -295,17 +295,22 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         // Just pick the first one for now, later on, we might do some better guess by looking
         // at the end of the filenames for _0 or _A or something.
-        _dataFilePath = "\(files[0]):\(self.program.lowercased())"
+        
+        let rootPath = Bundle.main.resourcePath!.appending("/x64")
+
+        _dataFilePath = files[0]
+        if self.program != "" {
+            _dataFilePath = _dataFilePath + ":\(self.program.lowercased())"
+            _arguments = [rootPath, "-autostart", _dataFilePath]
+        } else {
+            _arguments = [rootPath, "-8", _dataFilePath]
+        }
 
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let documentsPathCString = documentsPath.cString(using: String.Encoding.utf8)
         setenv("HOME", documentsPathCString, 1);
         
-        let rootPath = Bundle.main.resourcePath!.appending("/x64")
-        
-        _arguments = [rootPath, "-autostart", _dataFilePath]
-        //_arguments = [NSArray arrayWithObjects:rootPath, nil];
-        
+                
         let viceMachine = VICEMachine.sharedInstance()!
         viceMachine.setMediaFiles(files)
         viceMachine.setAutoStartPath(_dataFilePath)

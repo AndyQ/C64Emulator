@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A636EBC5844E751693361BD /* Pods_C64Emulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FE2EBD513C21E803CC0B02 /* Pods_C64Emulator.framework */; };
 		A14115AA1D5B18F3007A1A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115A91D5B18F3007A1A55 /* AppDelegate.swift */; };
 		A14115AC1D5B18F3007A1A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115AB1D5B18F3007A1A55 /* ViewController.swift */; };
 		A14115AF1D5B18F3007A1A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115AD1D5B18F3007A1A55 /* Main.storyboard */; };
 		A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14115B01D5B18F3007A1A55 /* Assets.xcassets */; };
 		A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115B21D5B18F3007A1A55 /* LaunchScreen.storyboard */; };
-		A14115D31D5B1AA7007A1A55 /* games in Resources */ = {isa = PBXBuildFile; fileRef = A14115D21D5B1AA7007A1A55 /* games */; };
 		A14115D41D5B2109007A1A55 /* liblibx64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115CB1D5B196B007A1A55 /* liblibx64.a */; };
 		A14115D71D5B2138007A1A55 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115D61D5B2138007A1A55 /* AudioToolbox.framework */; };
 		A14115D91D5B2176007A1A55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115D81D5B2176007A1A55 /* Foundation.framework */; };
@@ -33,6 +33,9 @@
 		A14115FE1D5B9BFB007A1A55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */; };
 		A14116001D5B9C10007A1A55 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */; };
 		A14116011D5B9EFF007A1A55 /* games.db in Resources */ = {isa = PBXBuildFile; fileRef = A14115FC1D5B9988007A1A55 /* games.db */; };
+		A1AD69491D5CE54B0042197C /* WebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AD69481D5CE54B0042197C /* WebServer.swift */; };
+		A1D2C9591D5E343000D36462 /* DiskItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D2C9581D5E343000D36462 /* DiskItemCell.swift */; };
+		A1D2C95B1D5E5A8D00D36462 /* DiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D2C95A1D5E5A8D00D36462 /* DiskCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36FE2EBD513C21E803CC0B02 /* Pods_C64Emulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_C64Emulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EFEF8A9CFB95DB90A8D7C4C /* Pods-C64Emulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C64Emulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator.debug.xcconfig"; sourceTree = "<group>"; };
 		A14115A61D5B18F3007A1A55 /* C64Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = C64Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14115A91D5B18F3007A1A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14115AB1D5B18F3007A1A55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +89,10 @@
 		A14115FC1D5B9988007A1A55 /* games.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = games.db; sourceTree = "<group>"; };
 		A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		A1AD69481D5CE54B0042197C /* WebServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServer.swift; sourceTree = "<group>"; };
+		A1D2C9581D5E343000D36462 /* DiskItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskItemCell.swift; sourceTree = "<group>"; };
+		A1D2C95A1D5E5A8D00D36462 /* DiskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCell.swift; sourceTree = "<group>"; };
+		D1F36C11F930EDE8A304F554 /* Pods-C64Emulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C64Emulator.release.xcconfig"; path = "Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +107,22 @@
 				A14115D91D5B2176007A1A55 /* Foundation.framework in Frameworks */,
 				A14115D71D5B2138007A1A55 /* AudioToolbox.framework in Frameworks */,
 				A14115D41D5B2109007A1A55 /* liblibx64.a in Frameworks */,
+				5A636EBC5844E751693361BD /* Pods_C64Emulator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EEF711B63A20B0B16B0FAB6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EFEF8A9CFB95DB90A8D7C4C /* Pods-C64Emulator.debug.xcconfig */,
+				D1F36C11F930EDE8A304F554 /* Pods-C64Emulator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A141159D1D5B18F3007A1A55 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +131,7 @@
 				A14115C11D5B1966007A1A55 /* libx64.xcodeproj */,
 				A14115A71D5B18F3007A1A55 /* Products */,
 				A14115D51D5B2138007A1A55 /* Frameworks */,
+				7EEF711B63A20B0B16B0FAB6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,8 +146,10 @@
 		A14115A81D5B18F3007A1A55 /* C64Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				A1D2C9571D5E341300D36462 /* Cells */,
 				A14115A91D5B18F3007A1A55 /* AppDelegate.swift */,
 				A14115AB1D5B18F3007A1A55 /* ViewController.swift */,
+				A1AD69481D5CE54B0042197C /* WebServer.swift */,
 				A14115EA1D5B294B007A1A55 /* DiskViewController.swift */,
 				A14115EC1D5B2A66007A1A55 /* DiskContentsViewController.swift */,
 				A14115F41D5B4270007A1A55 /* EmulatorViewController.swift */,
@@ -165,6 +187,7 @@
 				A14115DA1D5B217C007A1A55 /* UIKit.framework */,
 				A14115D81D5B2176007A1A55 /* Foundation.framework */,
 				A14115D61D5B2138007A1A55 /* AudioToolbox.framework */,
+				36FE2EBD513C21E803CC0B02 /* Pods_C64Emulator.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,6 +205,15 @@
 			path = C64Emulator/Resources;
 			sourceTree = "<group>";
 		};
+		A1D2C9571D5E341300D36462 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A1D2C9581D5E343000D36462 /* DiskItemCell.swift */,
+				A1D2C95A1D5E5A8D00D36462 /* DiskCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A14115B81D5B18F3007A1A55 /* Build configuration list for PBXNativeTarget "C64Emulator" */;
 			buildPhases = (
+				C2DCA9CF106145161310F2D0 /* [CP] Check Pods Manifest.lock */,
 				A14115A21D5B18F3007A1A55 /* Sources */,
 				A14115A31D5B18F3007A1A55 /* Frameworks */,
 				A14115A41D5B18F3007A1A55 /* Resources */,
+				1E3C98B95F4D4CDE5402DD21 /* [CP] Embed Pods Frameworks */,
+				3977E74ABFED444A761B21B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,7 +298,6 @@
 				A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */,
 				A14116011D5B9EFF007A1A55 /* games.db in Resources */,
 				A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */,
-				A14115D31D5B1AA7007A1A55 /* games in Resources */,
 				A14115E71D5B2491007A1A55 /* crt_shader.fsh in Resources */,
 				A14115E81D5B2491007A1A55 /* crt_shader.vsh in Resources */,
 				A14115E91D5B2491007A1A55 /* ROM in Resources */,
@@ -273,12 +307,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E3C98B95F4D4CDE5402DD21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3977E74ABFED444A761B21B8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2DCA9CF106145161310F2D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A14115A21D5B18F3007A1A55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D2C95B1D5E5A8D00D36462 /* DiskCell.swift in Sources */,
 				A14115F71D5B7D36007A1A55 /* JoystickView.swift in Sources */,
+				A1D2C9591D5E343000D36462 /* DiskItemCell.swift in Sources */,
 				A14116001D5B9C10007A1A55 /* DatabaseManager.swift in Sources */,
 				A14115F31D5B36E2007A1A55 /* D64Image.m in Sources */,
 				A14115AC1D5B18F3007A1A55 /* ViewController.swift in Sources */,
@@ -289,6 +373,7 @@
 				A14115F51D5B4270007A1A55 /* EmulatorViewController.swift in Sources */,
 				A14115AA1D5B18F3007A1A55 /* AppDelegate.swift in Sources */,
 				A14115FB1D5B7D89007A1A55 /* EmulatorBackgroundView.swift in Sources */,
+				A1AD69491D5CE54B0042197C /* WebServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +502,7 @@
 		};
 		A14115B91D5B18F3007A1A55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFEF8A9CFB95DB90A8D7C4C /* Pods-C64Emulator.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -438,6 +524,7 @@
 		};
 		A14115BA1D5B18F3007A1A55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1F36C11F930EDE8A304F554 /* Pods-C64Emulator.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -474,6 +561,7 @@
 				A14115BA1D5B18F3007A1A55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

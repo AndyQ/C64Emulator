@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FMDB
 
 class Disk {
     var name = ""
@@ -25,77 +26,173 @@ class DatabaseManager: NSObject {
 
     static let sharedInstance : DatabaseManager = DatabaseManager()
     
-    var disks = [String:Disk]()
-    var games = [Game]()
+    private override init() {
+        
+        super.init()
+        
+        if let db = openDatabase() {
+            try? db.executeUpdate("create table userDisks (diskName text, title text) ", values:nil)
+            try? db.executeUpdate("create table userPrograms (programName text, diskName text) ", values:nil)
+
+            db.close()
+        }
+    }
     
-    func getListOfGames()  {
+    func openDatabase() -> FMDatabase? {
         
-        guard let file = Bundle.main.path(forResource: "games", ofType: "db") else { return }
-        
-        // open database
-        
-        var db: OpaquePointer? = nil
-        if sqlite3_open(file, &db) != SQLITE_OK {
-            print("error opening database")
-        }
-        
-        var statement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, "select name, section, disk, side from games where section = 'old' order by disk, side", -1, &statement, nil) != SQLITE_OK {
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            print("error preparing select: \(errmsg)")
-        }
-        
-        while sqlite3_step(statement) == SQLITE_ROW {
-            
-            if let name = sqlite3_column_text(statement, 0),
-                let section = sqlite3_column_text(statement, 1),
-                let disk = sqlite3_column_text(statement, 2),
-                let side = sqlite3_column_text(statement, 3) {
-                
-                let nameStr = String(cString: UnsafePointer<Int8>(name))
-                let sectionStr = String(cString: UnsafePointer<Int8>(section))
-                let diskStr = String(cString: UnsafePointer<Int8>(disk))
-                let sideStr = String(cString: UnsafePointer<Int8>(side))
+        guard let bundleDBFile = Bundle.main.path(forResource: "games", ofType: "db") else { return nil }
 
-                let diskName = "\(diskStr)\(sideStr)"
-
-                let game = Game()
-                game.name = nameStr
-                game.diskName = diskName
-
-                
-                // find disk
-                if let disk = disks[diskName] {
-                    disk.files.append( game )
-                } else {
-                    let disk = Disk()
-                    disk.name = diskName
-                    disk.section = sectionStr
-                    disk.filename = ""
-                    disk.files.append(game)
-                    
-                    disks[diskName] = disk
-                }
-                
-                games.append(game)
-                
-            } else {
-                print("name not found")
+        let dbFile = (getDocumentsDirectory() as NSString).appendingPathComponent("games.db")
+        if !FileManager.default.fileExists(atPath: dbFile) {
+            do {
+                try FileManager.default.copyItem(atPath: bundleDBFile, toPath: dbFile)
+            } catch let error {
+                print( "Failed to copy database to documents folder - \(error.localizedDescription)" )
             }
+            
         }
         
+        print( "DB File - \(dbFile)" )
+        guard let db = FMDatabase(path: dbFile) else {
+            print("unable to create database")
+            return nil
+        }
+        
+        guard db.open() else {
+            print("Unable to open database")
+            return nil
+        }
+
+        return db
+    }
+
+    func getListOfGames() -> [Game] {
+        
+        guard let db = openDatabase() else { return [] }
+        
+        var games = [Game]()
+        // open database
+        do {
+            let rs = try db.executeQuery("select programName, diskName from userPrograms order by programName", values: nil)
+            while rs.next() {
+                if let programName = rs.string(forColumn: "programName"),
+                    let diskName = rs.string(forColumn: "diskName") {
+                    
+                    let game = Game()
+                    game.name = programName
+                    game.diskName = diskName
+                    
+                    games.append(game)
+                }
+            }
+        } catch let error as NSError {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        db.close()
+    
         games.sort { (game1, game2) -> Bool in
             return game1.name < game2.name
         }
+        
+        return games
+    }
+    
+    func addDisk( diskName : String, title: String ) {
+        guard let db = openDatabase() else { return }
+        
+        do {
+            try db.executeUpdate("insert into userDisks (diskName, title) values (?,?)", values: [diskName, title])
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        
+        db.close()
+    }
+    
+    func removeDisk( diskName : String ) {
+        guard let db = openDatabase() else { return }
+        
+        do {
+            try db.executeUpdate("delete from userDisks where diskName = ?", values: [diskName])
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        
+        db.close()
     }
     
     func getListOfDisks() -> [String] {
-        return disks.keys.sorted()
+        var disks = [String]()
+        
+        guard let db = openDatabase() else { return [] }
+
+        do {
+            let rs = try db.executeQuery("select diskName from userDisks order by diskName", values: nil)
+            while rs.next() {
+                if let diskName = rs.string(forColumn: "diskName") {
+                    disks.append( diskName )
+                }
+            }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+
+        db.close()
+
+        return disks.sorted()
+    }
+  
+    func getPrograms( diskName : String ) -> [String] {
+        var programs = [String]()
+        
+        guard let db = openDatabase() else { return [] }
+        
+        do {
+            let rs = try db.executeQuery("select programName from userPrograms where diskName = ?", values: [diskName])
+            while rs.next() {
+                if let programName = rs.string(forColumn: "programName") {
+                    programs.append( programName )
+                }
+            }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        db.close()
+        
+        return programs.sorted()
+
     }
     
+    func updatePrograms( diskName : String, programs : [String] ) {
+        guard let db = openDatabase() else { return }
+        
+        do {
+            try db.executeUpdate("delete from userPrograms where diskName = ?", values: [diskName])
+
+            let sql = "Insert into userPrograms ( diskName, programName ) VALUES ( ?, ? )"
+            db.beginTransaction()
+            for program in programs {
+                try db.executeUpdate(sql, values: [diskName, program] )
+            }
+            db.commit()
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        db.close()
+
+    }
+/*
     func getGamesForDisk( key : String ) -> [Game] {
         guard let disk = disks[key] else { return [] }
         
         return disk.files
     }
+*/
 }
