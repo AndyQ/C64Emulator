@@ -95,9 +95,14 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Select Program" id="T0A-oW-zF1">
+                        <barButtonItem key="leftBarButtonItem" title="Start" id="EaF-wJ-CeV">
+                            <connections>
+                                <action selector="startPressed:" destination="gFo-6m-AGd" id="Zpn-xo-RIh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Upload" id="Wy9-pd-xkv">
                             <connections>
-                                <action selector="startPressed:" destination="gFo-6m-AGd" id="DBN-xn-gGN"/>
+                                <action selector="uploadPressed:" destination="gFo-6m-AGd" id="77w-Yt-Cch"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -224,7 +229,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FLl-wI-s45" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lgH-D0-RSW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lgH-D0-RSW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -803,7 +808,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g2H-sY-SF1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kub-NL-tYu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kub-NL-tYu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -821,7 +826,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zM2-lP-oaX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUY-LK-0Cw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUY-LK-0Cw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

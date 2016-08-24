@@ -302,7 +302,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         viceMachine.setMediaFiles(files)
         viceMachine.setAutoStartPath(_dataFilePath)
         
-        if self.program == "" {
+        if self.program == "" && self._dataFilePath != "" {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ) { [weak self] in
                 guard let `self` = self else { return }
                 theVICEMachine.machineController().attachDiskImage(8, path: self._dataFilePath)

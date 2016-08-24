@@ -14,6 +14,8 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView : UITableView!
     @IBOutlet var viewTypeSeg : UISegmentedControl!
 
+    var webUploader : WebServer!
+
     var gamesFolder : String!
     var disks = [String]()
     var games = [String:[Game]]()
@@ -39,8 +41,14 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    var webUploader : WebServer!
+    
     @IBAction func startPressed(_ sender: AnyObject) {
+         selectedDiskName = ""
+         selectedProgram = ""
+         self.performSegue(withIdentifier: "showEmulator", sender: self)
+    }
+    
+    @IBAction func uploadPressed(_ sender: AnyObject) {
 /*
         selectedDiskName = ""
         selectedProgram = ""
@@ -103,7 +111,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.backgroundView = nil;
                 return sections.count
             } else {
-                let message = "There are no games currently cataloged"
+                let message = "There are no programs currently cataloged"
                 let messageLabel = UILabel(frame: CGRect(x:0, y:0, width:self.tableView.bounds.size.width,
                                                          height:self.tableView.bounds.size.height))
                 messageLabel.text = message
@@ -123,7 +131,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.backgroundView = nil;
                 return 1
             } else {
-                let message = "There are no disks currently loaded"
+                let message = "There are no disks available"
                 let messageLabel = UILabel(frame: CGRect(x:0, y:0, width:self.tableView.bounds.size.width,
                                                          height:self.tableView.bounds.size.height))
                 messageLabel.text = message
