@@ -12,8 +12,10 @@ class DiskCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var startBtn: UIButton!
-    
-    var startDisk : ((diskName : String ) -> ())?
+
+    var diskName: String!
+
+    var startDisk : ((_ diskName : String ) -> ())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,6 @@ class DiskCell: UITableViewCell {
     }
 
     @IBAction func startPressed(_ sender: AnyObject) {
-        startDisk?( diskName: name.text!)
+        startDisk?( diskName)
     }
 }

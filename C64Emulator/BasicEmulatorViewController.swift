@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BasicEmulatorViewController.swift
 //  C64Emulator
 //
 //  Created by Andy Qua on 10/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, VICEApplicationProtocol {
+class BasicEmulatorViewController: UIViewController, VICEApplicationProtocol {
 
     @IBOutlet var viceEmuView: VICEGLView!
     
@@ -115,7 +115,7 @@ class ViewController: UIViewController, VICEApplicationProtocol {
     
     
     // ----------------------------------------------------------------------------
-    func arguments() -> [AnyObject]! {
+    func arguments() -> [Any]! {
         return viceArguments
     }
 
@@ -124,7 +124,7 @@ class ViewController: UIViewController, VICEApplicationProtocol {
     }
     
 
-    func setMachine(_ aMachineObject: AnyObject!) {
+    func setMachine(_ aMachineObject: Any!) {
     }
     
 
@@ -165,7 +165,7 @@ class ViewController: UIViewController, VICEApplicationProtocol {
     func endLineInput() {
     }
     
-    func postRemoteNotification(_ array: [AnyObject]!) {
+    func postRemoteNotification(_ array: [Any]!) {
         let notificationName = array[0] as! String
         let userInfo = array[1] as! [NSObject:AnyObject]
         
@@ -196,7 +196,7 @@ class ViewController: UIViewController, VICEApplicationProtocol {
     }
     
     
-    func getOpenFileName(_ title: String!, types: [AnyObject]!) -> String! {
+    func getOpenFileName(_ title: String!, types: [Any]!) -> String! {
         return nil;
     }
     

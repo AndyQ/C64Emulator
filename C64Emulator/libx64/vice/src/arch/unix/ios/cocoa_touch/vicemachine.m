@@ -29,6 +29,7 @@
 #include "machine.h"
 #include "keyboard.h"
 #include "alarm.h"
+#include "initcmdline.h"
 
 #import "vicemachine.h"
 #import "vicemachinecontroller.h"
@@ -334,7 +335,7 @@ VICEMachine* theVICEMachine = nil;
     
         // tell ui that it the machine stopped
         [app machineDidStop];
-        
+                
         [NSThread exit];
     }    
 }

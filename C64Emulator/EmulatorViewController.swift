@@ -8,22 +8,6 @@
 
 import UIKit
 
-/*
- #import "EmulationViewController.h"
- #import "SSZipArchive.h"
- #import "SSLoadingView.h"
- #import "CSDatabaseCache.h"
- #import "ReleaseViewController.h"
- #import "UIImage+GIF.h"
- #import <MediaPlayer/MediaPlayer.h>
- #import "libx64/vice/src/arch/unix/ios/cocoa_touch/vicemachine.h"
- #import "libx64/vice/src/arch/unix/ios/cocoa_touch/viceglview.h"
- #import "libx64/vice/src/arch/unix/ios/cocoa_touch/vicenotifications.h"
- extern "C" {
- #import "libx64/vice/src/arch/unix/ios/joy.h"
- }
- */
-
 extension Array where Element : Equatable {
     
     // Remove first collection element that is equal to the given `object`:
@@ -84,23 +68,17 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBOutlet var _viceView : VICEGLView!
     @IBOutlet var _toolBar : UIToolbar!
     @IBOutlet var _bottomToolBar : UIToolbar!
-    @IBOutlet var _portraitBottomToolBarView : UIView!
     @IBOutlet var _titleLabel : UILabel!
     @IBOutlet var _warpButton : UIButton!
-    @IBOutlet var _warpButton2 : UIButton!
     @IBOutlet var _playPauseButton : UIButton!
-    @IBOutlet var _playPauseButton2 : UIButton!
     @IBOutlet var _joystickView : JoystickView!
     @IBOutlet var _fireButtonView : FireButtonView!
     @IBOutlet var _joystickModeButton : UIBarButtonItem!
-    @IBOutlet var _joystickModeButton2 : UIBarButtonItem!
-//    @IBOutlet var _volumeView : MPVolumeView!
     @IBOutlet var _driveLedView : UIImageView!
     @IBOutlet var _emulationBackgroundView : UIView!
     
     var _arguments = [String]()
     var _canTerminate = false
-    var _supportedFiles : [String]?
     var _dataFilePath = ""
     
     var _emulationRunning = false
@@ -115,8 +93,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     var _downloadUrlConnection : NSURLConnection!
     var _downloadFilename : NSString!
     
-//    var _loadingView : SSLoadingView
-    
     var _activeLedColor : UIColor!
     var _inactiveLedColor : UIColor!
 
@@ -126,7 +102,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     var program = ""
     var releaseId = ""
     var joystickMode : Int = JOYSTICK_DISABLED
-//    @property (nonatomic) ReleaseViewController* releaseViewController;
     var _keyboardVisible = false
     
     var accessoryView : UIView?
@@ -134,50 +109,93 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     override var inputAccessoryView: UIView? {
     
+        accessoryView = nil
         if ( accessoryView == nil ) {
-            accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 77))
-            accessoryView!.backgroundColor = UIColor.red
+            accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 77))
+            accessoryView!.backgroundColor = UIColor.lightGray
             
             accessoryView?.layoutIfNeeded()
             
+            let sv = UIScrollView(frame: accessoryView!.bounds)
+            sv.contentSize = CGSize( width:self.view.bounds.width * 3, height:77 )
+            sv.isPagingEnabled = true
+            sv.contentOffset = CGPoint( x:self.view.bounds.width, y:0)
+            accessoryView?.addSubview(sv)
+            
             // Add function buttons
-            var x = 10
+            var x : CGFloat = 10
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: x, y: 5, width: 80, height: 30), title: "List Dir"));
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: x + 85, y: 5, width: 80, height: 30), title: "Load *"));
+            
+            
+            
+            x = self.view.bounds.width + 10
             for i in 0 ..< 8 {
-                let button = UIButton(frame: CGRect(x: x, y: 5, width: 40, height: 30))
-                button.setTitle("F\(i+1)", for: .normal)
-                button.layer.borderColor = UIColor.white.cgColor
-                button.layer.borderWidth = 1
-                button.layer.cornerRadius = 5
-                button.addTarget(self, action: #selector(EmulatorViewController.accessoryButtonPressed(_:)), for: .touchUpInside)
-                accessoryView?.addSubview(button);
+                sv.addSubview(createAccessoryButton(pos: CGRect(x: x, y: 5, width: 40, height: 30), title: "F\(i+1)"));
                 
                 x += 45
             }
             
-            var buttonText = ["RunStop", "Restore", "Comm", "Clr"]
-            x = 10
+            let buttonText = ["RunStop", "Restore", "Comm", "Clr"]
+            x = self.view.bounds.width + 10
             for i in buttonText {
-                let button = UIButton(frame: CGRect(x: x, y: 40, width: 80, height: 30))
-                button.setTitle(i, for: .normal)
-                button.layer.borderColor = UIColor.white.cgColor
-                button.layer.borderWidth = 1
-                button.layer.cornerRadius = 5
-                button.addTarget(self, action: #selector(EmulatorViewController.accessoryButtonPressed(_:)), for: .touchUpInside)
-                accessoryView?.addSubview(button);
+                sv.addSubview(createAccessoryButton(pos: CGRect(x: x, y: 40, width: 80, height: 30), title: i));
                 
                 x += 85
             }
+            
+            x = self.view.bounds.width * 2
+            let center = x + (self.view.bounds.width/2)
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: center - 30, y: 5, width: 60, height: 30), title: "Up"))
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: center - 95, y: 40, width: 60, height: 30), title: "Left"))
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: center - 30, y: 40, width: 60, height: 30), title: "Down"))
+            sv.addSubview(createAccessoryButton(pos: CGRect(x: center + 35, y: 40, width: 60, height: 30), title: "Right"))
 
+            sv.flashScrollIndicators()
         }
+        
         return accessoryView
+    }
+    
+    func createAccessoryButton( pos : CGRect, title : String ) -> UIButton {
+        let button = UIButton(frame: pos )
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.black, for: .highlighted)
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(EmulatorViewController.accessoryButtonPressed(_:)), for: .touchUpInside)
+
+        return button
     }
     
     func accessoryButtonPressed( _ sender: UIButton ) {
         if let button = sender.titleLabel?.text {
             print( "Button pressed : \(button)")
             
-            self.viceView().insertText("##\(button)")
+            var textToSend = ""
+            if button == "List Dir" {
+                textToSend = "load \"$\",8 \n"
+            } else if button == "Load *" {
+                textToSend = "load \"*\",8,1\n"
+            }
+            
+            if textToSend != "" {
+                var i = 0.0
+                for s in textToSend.characters {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + i, execute: {
+                        self.viceView().insertText(String(s))
+                    })
+                    i += 0.05
+                }
+            } else {
+                self.viceView().insertText("##\(button)")
+            }
         }
+    }
+
+    override var prefersStatusBarHidden : Bool {
+        return true
     }
 
     // ----------------------------------------------------------------------------
@@ -189,24 +207,13 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _controlFadeTimer = nil
         _controlsVisible = true
         
-        _supportedFiles = nil
-        
         _emulationRunning = false
         _keyboardVisible = false
         _keyboardOffset = 0.0
         _viceViewScaled = false
         
         controlsFadeIn()
-        
-/*
-        if (_loadingView == nil)
-        {
-            CGSize size = self.view.frame.size;
-            _loadingView = [[SSLoadingView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
-            [self.view addSubview:_loadingView];
-        }
-*/
-        
+                
         registerForNotifications()
         
         _titleLabel.text = self.title
@@ -221,9 +228,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         setNeedsStatusBarAppearanceUpdate()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(EmulatorViewController.warpStatusNotification(_:)), name: "WarpStatus" as NSNotification.Name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EmulatorViewController.warpStatusNotification(_:)), name: NSNotification.Name.init("WarpStatus"), object: nil )
         
-        startDataDownload()
+        self.startVICEThread(files:[dataFileURLString])
     }
     
     
@@ -232,18 +239,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         self.navigationController?.isNavigationBarHidden = true
 
-        if INTERFACE_IS_PHONE()
-        {
-            if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
-                _bottomToolBar.isHidden = true
-                _portraitBottomToolBarView.isHidden = false
-            } else if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
-                _bottomToolBar.isHidden = false
-                _portraitBottomToolBarView.isHidden = true
-            }
-        } else {
-            _portraitBottomToolBarView.isHidden = true
-        }
+        _bottomToolBar.isHidden = false
     }
     
     
@@ -272,15 +268,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         return true
     }
     
-    // ----------------------------------------------------------------------------
-    func startEmulator()
-    // ----------------------------------------------------------------------------
-    {
-        UIApplication.shared.setStatusBarStyle(.default, animated: true)
-    
-        self.startVICEThread(files:_supportedFiles)
-    }
-    
     
     // ----------------------------------------------------------------------------
     func startVICEThread( files:[String]?)
@@ -301,9 +288,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _dataFilePath = files[0]
         if self.program != "" {
             _dataFilePath = _dataFilePath + ":\(self.program.lowercased())"
-            _arguments = [rootPath, "-autostart", _dataFilePath]
+            _arguments = [rootPath, "-8", _dataFilePath, "-autostart", _dataFilePath]
         } else {
-            _arguments = [rootPath, "-8", _dataFilePath]
+            _arguments = [rootPath]
         }
 
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -315,6 +302,13 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         viceMachine.setMediaFiles(files)
         viceMachine.setAutoStartPath(_dataFilePath)
         
+        if self.program == "" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ) { [weak self] in
+                guard let `self` = self else { return }
+                theVICEMachine.machineController().attachDiskImage(8, path: self._dataFilePath)
+            }
+        }
+
         Thread.detachNewThreadSelector(#selector(VICEMachine.start(_:)), toTarget: viceMachine, with: self)
         
         _emulationRunning = true
@@ -322,179 +316,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         scheduleControlFadeOut( delay:0 )
     }
     
-    
-    // ----------------------------------------------------------------------------
-    func startDataDownload()
-    // ----------------------------------------------------------------------------
-    {
-        _supportedFiles = [dataFileURLString]
-        self.startEmulator()
-/*
-        NSURL* url = [NSURL fileURLWithPath:_dataFileURLString];
-        if (url.isFileURL)
-        {
-            _supportedFiles = [NSMutableArray arrayWithObject:url.path];
-            [_loadingView removeFromSuperview];
-            _loadingView = nil;
-            
-            [self startEmulator];
-            return;
-            
-        }
-        
-        
-        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-        _downloadData = [NSMutableData data];
-        _downloadUrlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-*/
-    }
-    
-/*
-    // ----------------------------------------------------------------------------
-    - (void) connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
-    // ----------------------------------------------------------------------------
-    {
-    if (connection == _downloadUrlConnection)
-    {
-    [_downloadData setLength:0];
-    _downloadFilename = [response suggestedFilename];
-    return;
-    }
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    - (void) connection:(NSURLConnection*)connection didReceiveData:(NSData*)data
-    // ----------------------------------------------------------------------------
-    {
-    if (connection == _downloadUrlConnection)
-    {
-    [_downloadData appendData:data];
-    return;
-    }
-    
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    - (void) connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
-    // ----------------------------------------------------------------------------
-    {
-    //NSLog(@"download connection failed\n");
-    
-    NSArray* cachedDownloadFiles = [[CSDatabaseCache sharedInstance] readDownloadFilesForReleaseId:_releaseId];
-    if (cachedDownloadFiles != nil)
-    {
-    NSString* releasePath = [[CSDatabaseCache sharedInstance] releasePathForReleaseId:_releaseId];
-    _supportedFiles = [[NSMutableArray alloc] initWithCapacity:cachedDownloadFiles.count];
-    
-    BOOL all_files_exist = YES;
-    
-    for (NSString* cachedDownloadFile in cachedDownloadFiles)
-    {
-    NSString* dataFilePath = [releasePath stringByAppendingPathComponent:cachedDownloadFile];
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:dataFilePath isDirectory:NULL];
-    if (!exists)
-    {
-    all_files_exist = NO;
-    break;
-    }
-    [_supportedFiles addObject:dataFilePath];
-    }
-    
-    [_loadingView removeFromSuperview];
-    _loadingView = nil;
-    
-    if (all_files_exist)
-    [self startEmulator];
-    else
-    {
-    //NSLog(@"Incomplete downloads!");
-    [self dismiss];
-    }
-    }
-    else
-    [[CSDatabaseCache sharedInstance] showNetworkError];
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    - (void) connectionDidFinishLoading:(NSURLConnection*)connection
-    // ----------------------------------------------------------------------------
-    {
-    if (connection == _downloadUrlConnection && [_downloadData length] > 0)
-    {
-    //NSLog(@"Request for download finished\n");
-    
-    NSString* releasePath = [[CSDatabaseCache sharedInstance] releasePathForReleaseId:_releaseId];
-    NSString* downloadFilePath = [releasePath stringByAppendingPathComponent:_downloadFilename];
-    
-    [_downloadData writeToFile:downloadFilePath atomically:YES];
-    
-    if ([[_downloadFilename pathExtension] caseInsensitiveCompare:@"zip"] == NSOrderedSame)
-    {
-    NSString* folderName = [_downloadFilename stringByDeletingPathExtension];
-    NSString* extractedFolderPath = [releasePath stringByAppendingPathComponent:folderName];
-    [[NSFileManager defaultManager] createDirectoryAtPath:extractedFolderPath withIntermediateDirectories:YES attributes:nil error:NULL];
-    
-    BOOL success = [SSZipArchive unzipFileAtPath:downloadFilePath toDestination:extractedFolderPath];
-    if (success)
-    {
-    _supportedFiles = [[NSMutableArray alloc] init];
-    [self findAllSupportedFilesinFolder:extractedFolderPath into:_supportedFiles];
-    [[NSFileManager defaultManager] removeItemAtPath:downloadFilePath error:NULL];
-    }
-    }
-    else
-    _supportedFiles = [NSMutableArray arrayWithObject:downloadFilePath];
-    
-    
-    [_loadingView removeFromSuperview];
-    _loadingView = nil;
-    
-    if (_supportedFiles.count > 0)
-    {
-    [[CSDatabaseCache sharedInstance] writeDownloadFiles:_supportedFiles forReleaseId:_releaseId];
-    [self startEmulator];
-    }
-    
-    
-    }
-    }
- 
-    
-    // ----------------------------------------------------------------------------
-    func findAllSupportedFilesinFolder:(NSString*)extractedFolderPath into:(NSMutableArray*)pathList
-    // ----------------------------------------------------------------------------
-    {
-    NSArray* supportedExtensions = [NSArray arrayWithObjects:@"d64", @"t64", @"p00", @"prg", @"d71", @"d81", nil];
-    
-    NSArray* extractedFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:extractedFolderPath error:NULL];
-    extractedFiles = [extractedFiles sortedArrayUsingSelector:@selector(compare:)];
-    
-    for (NSString* extractedFile in extractedFiles)
-    {
-    NSString* extractedFilePath = [extractedFolderPath stringByAppendingPathComponent:extractedFile];
-    
-    BOOL is_directory = NO;
-    [[NSFileManager defaultManager] fileExistsAtPath:extractedFilePath isDirectory:&is_directory];
-    if (is_directory)
-    [self findAllSupportedFilesinFolder:extractedFilePath into:pathList];
-    
-    NSString* extension = [extractedFile pathExtension];
-    
-    for (NSString* supportedExtension in supportedExtensions)
-    {
-    if ([supportedExtension caseInsensitiveCompare:extension] == NSOrderedSame)
-    {
-    //NSLog(@"Found supported file: %@", extractedFilePath);
-    [pathList addObject:extractedFilePath];
-    break;
-    }
-    }
-    }
-    }
-     */
     
     
     // ----------------------------------------------------------------------------
@@ -522,13 +343,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBAction func clickDoneButton(_ sender: AnyObject)
     // ----------------------------------------------------------------------------
     {
-/*
-        if (_settingsPopOver != nil && _settingsPopOver.popoverVisible)
-        {
-            [_settingsPopOver dismissPopoverAnimated:YES];
-            _settingsPopOver = nil;
-        }
-*/
         if _canTerminate || !_emulationRunning
         {
             dismiss()
@@ -545,34 +359,11 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBAction func clickSettingsButton( _ sender: AnyObject)
     // ----------------------------------------------------------------------------
     {
-/*
-        if (_settingsPopOver != nil && _settingsPopOver.popoverVisible)
-        {
-            [_settingsPopOver dismissPopoverAnimated:YES];
-            _settingsPopOver = nil;
-        }
-        else
         if (_emulationRunning) {
-            self.performSegue(withIdentifier: "SettingsPopOver", sender: sender)
+            self.performSegue(withIdentifier: "ShowSettings", sender: sender)
         }
- */
     }
     
-    
-    // ----------------------------------------------------------------------------
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "SettingsPopOver" {
-//            _settingsPopOver = ((UIStoryboardPopoverSegue*)segue).popoverController;
-//        }
-/*
-        if (!INTERFACE_IS_PHONE)
-        {
-            if ([segue.identifier isEqualToString:@"SettingsPopOver"]) {
-                _settingsPopOver = ((UIStoryboardPopoverSegue*)segue).popoverController;
-            }
-        }
- */
-    }
     
     
     // ----------------------------------------------------------------------------
@@ -606,7 +397,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         }
         
         _joystickModeButton.image = UIImage(named:sJoystickButtonImageNames[joystickMode])
-        _joystickModeButton2.image = UIImage(named:sJoystickButtonImageNames[joystickMode])
         
         if joystickMode != JOYSTICK_DISABLED
         {
@@ -640,7 +430,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         theVICEMachine.togglePause()
         let image = theVICEMachine.isPaused() ? UIImage(named:"hud_play") : UIImage(named:"hud_pause")
         _playPauseButton.setImage(image, for: .normal)
-        _playPauseButton2.setImage(image, for: .normal)
         scheduleControlFadeOut( delay:0 )
     }
     
@@ -649,8 +438,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBAction func clickRestartButton( _ sender: AnyObject)
     // ----------------------------------------------------------------------------
     {
-        theVICEMachine.restart(_dataFilePath)
-        scheduleControlFadeOut( delay:0 )
+        theVICEMachine.machineController().resetMachine(false)
+//        theVICEMachine.restart(_dataFilePath)
+//        scheduleControlFadeOut( delay:0 )
     }
     
     
@@ -662,7 +452,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _warpEnabled = theVICEMachine.toggleWarpMode()
         let image = _warpEnabled ? UIImage(named:"hud_warp_highlighted") : UIImage(named:"hud_warp")
         _warpButton.setImage(image, for: .normal)
-        _warpButton2.setImage(image, for: .normal)
         scheduleControlFadeOut( delay:0 )
     }
     
@@ -671,12 +460,12 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func warpStatusNotification( _ notification :NSNotification )
     // ----------------------------------------------------------------------------
     {
-        if let warp = notification.userInfo?["warp_enabled"]?.boolValue {
+        guard let info = notification.userInfo else { return }
+        if let warp = (info["warp_enabled"] as? NSNumber)?.boolValue {
             if (warp != _warpEnabled)
             {
                 let image = warp ? UIImage(named:"hud_warp_highlighted") : UIImage(named:"hud_warp")
                 _warpButton.setImage(image, for: .normal)
-                _warpButton2.setImage(image, for: .normal)
                 _warpEnabled = warp;
             }
         }
@@ -686,12 +475,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
-    
-
-    override var prefersStatusBarHidden: Bool {
-        return !_controlsVisible
-    }
-    
     
     // ----------------------------------------------------------------------------
     func controlsVisible() -> Bool
@@ -712,13 +495,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         var fireButtonFrame = _fireButtonView.frame
         
         var ypos : CGFloat = 0.0
-        var baseToolbarPosition : CGFloat = 0.0
-        
-        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
-            baseToolbarPosition = INTERFACE_IS_PHONE() ? _portraitBottomToolBarView.frame.origin.y : _bottomToolBar.frame.origin.y;
-        } else if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
-            baseToolbarPosition = _bottomToolBar.frame.origin.y;
-        }
+        let baseToolbarPosition : CGFloat = _bottomToolBar.frame.origin.y
         
         ypos = baseToolbarPosition - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
         
@@ -732,7 +509,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         _toolBar.alpha = sVisibleAlpha;
         _bottomToolBar.alpha = sVisibleAlpha;
-        _portraitBottomToolBarView.alpha = sVisibleAlpha;
         _titleLabel.alpha = sVisibleAlpha;
         _driveLedView.alpha = sVisibleAlpha;
         
@@ -753,14 +529,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func controlsFadeOut()
     // ----------------------------------------------------------------------------
     {
-        // Don't fade out if popover is visible
-/*
-        if (_settingsPopOver != nil && _settingsPopOver.popoverVisible)
-        {
-            [self scheduleControlFadeOut:0.0f];
-            return;
-        }
-*/
         var joystickFrame = _joystickView.frame;
         var fireButtonFrame = _fireButtonView.frame;
         
@@ -776,7 +544,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         _toolBar.alpha = 0
         _bottomToolBar.alpha = 0
-        _portraitBottomToolBarView.alpha = 0
         _titleLabel.alpha = 0
         _driveLedView.alpha = 0;
         
@@ -831,29 +598,20 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         // Code here will execute before the rotation begins.
         // Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
-        
+
+
         if (size.width > size.height)
         {
             self.setLandscapeViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-//            [self setLandscapeViceViewFrame:0.1f animCurve:UIViewAnimationCurveLinear canvasSize:_viceView.textureSize];
-            if INTERFACE_IS_PHONE()
-            {
-                _bottomToolBar.isHidden = false
-                _portraitBottomToolBarView.isHidden = true
-            }
+            _bottomToolBar.isHidden = false
         }
         else if (size.width < size.height)
         {
             
             self.setPortraitViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-//            [self setPortraitViceViewFrame:0.1f animCurve:UIViewAnimationCurveLinear canvasSize:_viceView.textureSize];
-            if INTERFACE_IS_PHONE()
-            {
-                _bottomToolBar.isHidden = true
-                _portraitBottomToolBarView.isHidden = false
-            }
+            _bottomToolBar.isHidden = false
         }
-        
+
         coordinator.animate(alongsideTransition: { (context) in
             // Place code here to perform animations during the rotation.
             // You can pass nil or leave this block empty if not necessary.
@@ -876,18 +634,19 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         }
         else
         {
-            allowShrinkGrow = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+            allowShrinkGrow = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation);
         }
         
         if (allowShrinkGrow && !_keyboardVisible)
         {
             _viceViewScaled = !_viceViewScaled;
             
-            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
+            
+            if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation))
             {
                 self.setPortraitViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
             }
-            else if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+            else if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation))
             {
                 self.setLandscapeViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
             }
@@ -906,7 +665,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func setPortraitViceViewFrame(duration: CGFloat, animCurve:UIViewAnimationCurve, canvasSize:CGSize )
     // ----------------------------------------------------------------------------
     {
-        //NSLog(@"setPortrait with orientation: %ld", (long)self.interfaceOrientation);
+        //NSLog(@"setPortrait with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
         
         let superViewWidth :CGFloat = self.view.bounds.size.width;
         let superViewHeight :CGFloat = self.view.bounds.size.height;
@@ -970,7 +729,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         var joystickFrame = _joystickView.frame;
         var fireButtonFrame = _fireButtonView.frame;
         
-        let baseToolbarPosition = INTERFACE_IS_PHONE() ? _portraitBottomToolBarView.frame.origin.y : _bottomToolBar.frame.origin.y;
+        let baseToolbarPosition = _bottomToolBar.frame.origin.y
         let ypos = (_controlsVisible ? baseToolbarPosition : self.view.bounds.size.height) - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
         joystickFrame.origin.y = ypos;
         fireButtonFrame.origin.y = ypos;
@@ -991,10 +750,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func setLandscapeViceViewFrame(duration: CGFloat, animCurve:UIViewAnimationCurve, canvasSize:CGSize )
     // ----------------------------------------------------------------------------
     {
-        //    NSLog(@"setLandscape with orientation: %ld", (long)self.interfaceOrientation);
+        //    NSLog(@"setLandscape with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
         
-        var superViewWidth :CGFloat = self.view.bounds.size.width;
-        var superViewHeight :CGFloat = self.view.bounds.size.height;
+        let superViewWidth :CGFloat = self.view.bounds.size.width;
+        let superViewHeight :CGFloat = self.view.bounds.size.height;
         
         var frame = _viceView.frame;
         let aspectRatio = canvasSize.width / canvasSize.height;
@@ -1010,7 +769,8 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
             }
             else
             {
-                frame.size.height = _viceViewScaled ? min(superViewWidth, superViewHeight) : canvasSize.height;
+//                frame.size.height = _viceViewScaled ? min(superViewWidth, superViewHeight) : canvasSize.height;
+                frame.size.height = min(superViewWidth, superViewHeight)
                 frame.size.width = frame.size.height * aspectRatio;
                 frame.origin.x = (superViewWidth - frame.size.width) / 2.0
                 frame.origin.y = (superViewHeight - frame.size.height) / 2.0
@@ -1076,28 +836,33 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     // ----------------------------------------------------------------------------
     {
         _keyboardVisible = true
-        let info = notification.userInfo
+        guard let info = notification.userInfo else { return }
+        print( "Info - \(info)" )
+
         var keyboard_size = CGSize()
         
-        if let val = info?[UIKeyboardFrameBeginUserInfoKey]?.cgRectValue {
+        let frameVal = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue
+        if let val = frameVal?.cgRectValue {
             keyboard_size = val.size // [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         }
         _keyboardOffset = keyboard_size.height;
 
         var duration : CGFloat = 0.0
-        if let val = info?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
+        let durationVal = info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        if let val = durationVal?.doubleValue {
             duration = CGFloat(val)
         }
         
         var curve = UIViewAnimationCurve.linear
-        if let val = info?[UIKeyboardAnimationDurationUserInfoKey]?.integerValue {
-            curve = UIViewAnimationCurve(rawValue: val)!
+        let curveVal = info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        if let val = curveVal?.intValue  {
+            curve = UIViewAnimationCurve(rawValue: val )!
         }
         
-        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
             self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
-        else if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        else if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
             self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
         
@@ -1112,21 +877,24 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _keyboardVisible = false
         _keyboardOffset = 0.0
         
-        let info = notification.userInfo
+        guard let info = notification.userInfo else { return }
         
         var duration : CGFloat = 0.0
-        if let val = info?[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
+        let durationVal = info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        if let val = durationVal?.doubleValue {
             duration = CGFloat(val)
         }
+        
         var curve = UIViewAnimationCurve.linear
-        if let val = info?[UIKeyboardAnimationDurationUserInfoKey]?.integerValue {
+        let curveVal = info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        if let val = curveVal?.intValue {
             curve = UIViewAnimationCurve(rawValue: val)!
         }
         
-        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
             self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
-        else if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        else if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
             self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
     }
@@ -1145,8 +913,8 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     // ----------------------------------------------------------------------------
     {
         // setup drive views
-        let info = notification.userInfo
-        if let val = info?["enabled_drives"]?.int32Value {
+        guard let info = notification.userInfo else { return }
+        if let val = (info["enabled_drives"] as? NSNumber)?.int32Value {
             _driveLedView.isHidden = !(val == 1);
         }
     }
@@ -1156,10 +924,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func displayLed( _ notification : NSNotification )
     // ----------------------------------------------------------------------------
     {
-        let info = notification.userInfo
-        if let drive = info?["drive"]?.int32Value {
+        guard let info = notification.userInfo else { return }
+        if let drive = (info["drive"] as? NSNumber)?.int32Value {
             if drive == 0 {
-                if let pwm = info?["pwm"]?.int32Value {
+                if let pwm = (info["pwm"] as? NSNumber)?.int32Value {
                     let strength : Float = Float(pwm)/Float(1000)
                     
                     let color = UIColor(red: CGFloat(0.4 + strength * 0.5), green: 0.0, blue: 0.0, alpha: 1.0)
@@ -1195,7 +963,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     //MARK VICE Application Protocol implementation
     // ----------------------------------------------------------------------------
-    func arguments() -> [AnyObject]! {
+    func arguments() -> [Any]! {
         return _arguments
     }
     
@@ -1204,7 +972,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     }
     
     
-    func setMachine(_ aMachineObject: AnyObject!) {
+    func setMachine(_ aMachineObject: Any!) {
     }
     
     
@@ -1226,9 +994,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func resizeCanvas(_ canvasPtr: Data!, with size: CGSize) {
          if INTERFACE_IS_PHONE()
          {
-            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+            if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
                 self.setPortraitViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
-            } else if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+            } else if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
                 self.setLandscapeViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
             }
         }
@@ -1243,7 +1011,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func endLineInput() {
     }
     
-    func postRemoteNotification(_ array: [AnyObject]!) {
+    func postRemoteNotification(_ array: [Any]!) {
         let notificationName = array[0] as! String
         let userInfo = array[1] as! [NSObject:AnyObject]
         
@@ -1274,7 +1042,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     }
     
     
-    func getOpenFileName(_ title: String!, types: [AnyObject]!) -> String! {
+    func getOpenFileName(_ title: String!, types: [Any]!) -> String! {
         return nil;
     }
     

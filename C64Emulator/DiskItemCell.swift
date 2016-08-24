@@ -13,7 +13,7 @@ class DiskItemCell: UITableViewCell {
     @IBOutlet var programName : UILabel!
     @IBOutlet var validProgram : UISwitch!
 
-    var setIsValidProgram : ((program : String, isValid : Bool) -> ())?
+    var setIsValidProgram : ((_ program : String, _ isValid : Bool) -> ())?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +28,6 @@ class DiskItemCell: UITableViewCell {
     @IBAction func validProgramChanged(_ sender: UISwitch) {
         guard let name = programName.text else { validProgram.isOn = false; return }
         
-        setIsValidProgram?(program: name, isValid: sender.isOn)
+        setIsValidProgram?(name, sender.isOn)
     }
 }

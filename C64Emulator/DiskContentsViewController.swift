@@ -42,7 +42,7 @@ class DiskContentsViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EmulatorViewController {
             vc.dataFileURLString = diskName
             vc.program = selectedProgram

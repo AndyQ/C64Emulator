@@ -63,7 +63,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EmulatorViewController {
             vc.dataFileURLString = selectedDiskName
             vc.program = selectedProgram
@@ -93,22 +93,32 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 games[c] = [game]
             }
         }
-        
-/*
-        if let gamesFolder = Bundle.main.path(forResource: "games", ofType: "") {
-            do {
-                disks = try FileManager.default.contentsOfDirectory(atPath: gamesFolder )
-            } catch let error {
-                print( "Error getting disks - \(error)")
-            }
-        }
-*/
     }
     
     //MARK: UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if viewTypeSeg.selectedSegmentIndex == 0 {
+            if games.count > 0 {
+                self.tableView.backgroundView = nil;
+                return sections.count
+            } else {
+                let message = "There are no games currently cataloged"
+                let messageLabel = UILabel(frame: CGRect(x:0, y:0, width:self.tableView.bounds.size.width,
+                                                         height:self.tableView.bounds.size.height))
+                messageLabel.text = message
+                messageLabel.textColor = UIColor.black
+                messageLabel.numberOfLines = 0;
+                messageLabel.textAlignment = .center;
+                messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+                messageLabel.sizeToFit()
+                
+                self.tableView.backgroundView = messageLabel;
+                self.tableView.separatorStyle = .none;
+                return 0
+                
+            }
+        } else {
             if disks.count > 0 {
                 self.tableView.backgroundView = nil;
                 return 1
@@ -127,47 +137,28 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.separatorStyle = .none;
                 return 0
             }
-        } else {
-            if games.count > 0 {
-                self.tableView.backgroundView = nil;
-                return sections.count
-            } else {
-                let message = "There are no games currently cataloged"
-                let messageLabel = UILabel(frame: CGRect(x:0, y:0, width:self.tableView.bounds.size.width,
-                                                         height:self.tableView.bounds.size.height))
-                messageLabel.text = message
-                messageLabel.textColor = UIColor.black
-                messageLabel.numberOfLines = 0;
-                messageLabel.textAlignment = .center;
-                messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-                messageLabel.sizeToFit()
-                
-                self.tableView.backgroundView = messageLabel;
-                self.tableView.separatorStyle = .none;
-                return 0
 
-            }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewTypeSeg.selectedSegmentIndex == 0 {
-            return disks.count
-        } else {
             let key = sections[section]
             if let arr = games[key] {
                 return arr.count
             }
             return 0
+        } else {
+            return disks.count
         }
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         
         if viewTypeSeg.selectedSegmentIndex == 0 {
-            return []
-        } else {
             return sections
+        } else {
+            return []
         }
     }
     
@@ -176,22 +167,25 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         if viewTypeSeg.selectedSegmentIndex == 0 {
             
-            cell.name.text = disks[indexPath.row]
-            cell.startBtn.isHidden = false
-            
-            cell.startDisk = { [weak self] (diskName) in
-                guard let `self` = self else { return }
-                
-                self.selectedDiskName = getUserGamesDirectory() + "/" + diskName
-                self.selectedProgram = ""
-                self.performSegue(withIdentifier: "showEmulator", sender: self)
-            }
+            let key = sections[indexPath.section]
+            let game = games[key]![indexPath.row]
+            cell.name.text = game.name
+            cell.diskName = game.diskName
             
         } else {
-            let key = sections[indexPath.section]
-            cell.name.text = games[key]![indexPath.row].name
-            cell.startBtn.isHidden = true
+            
+            cell.name.text = disks[indexPath.row]
+            cell.diskName = disks[indexPath.row]
         }
+        
+        cell.startDisk = { [weak self] (diskName) in
+            guard let `self` = self else { return }
+            
+            self.selectedDiskName = getUserGamesDirectory() + "/" + diskName
+            self.selectedProgram = ""
+            self.performSegue(withIdentifier: "showEmulator", sender: self)
+        }
+
         return cell
     }
     
@@ -204,19 +198,19 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if viewTypeSeg.selectedSegmentIndex == 0 {
-            // Show disk contents
-            print( "Showing disk contents...")
-            
-            selectedDiskName = getUserGamesDirectory() + "/" + disks[indexPath.row]
-            
-            self.performSegue(withIdentifier: "showDiskContents", sender: self)
-        } else {
             let key = sections[indexPath.section]
             let game = games[key]![indexPath.row]
 
             self.selectedDiskName = getUserGamesDirectory() + "/" + game.diskName
             self.selectedProgram = game.name
             self.performSegue(withIdentifier: "showEmulator", sender: self)
+        } else {
+            // Show disk contents
+            print( "Showing disk contents...")
+            
+            selectedDiskName = getUserGamesDirectory() + "/" + disks[indexPath.row]
+            
+            self.performSegue(withIdentifier: "showDiskContents", sender: self)
         }
         
     }

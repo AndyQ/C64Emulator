@@ -1277,7 +1277,15 @@ static int sASCIIKeyMap[3*128] =
         else if ( [text hasPrefix:@"##Comm"] )
             [theVICEMachine setKeyRow:0 column:7 shift:1];  // Commodore
         else if ( [text hasPrefix:@"##Clr"] )
-            [theVICEMachine setKeyRow:6 column:3 shift:1];  // ClrHome
+            [theVICEMachine setKeyRow:6 column:3 shift:1];  // Clr
+        else if ( [text hasPrefix:@"##Up"] )
+            [theVICEMachine setKeyRow:0 column:7 shift:1];  // Up
+        else if ( [text hasPrefix:@"##Down"] )
+            [theVICEMachine setKeyRow:0 column:7 shift:0];  // Down
+        else if ( [text hasPrefix:@"##Left"] )
+            [theVICEMachine setKeyRow:0 column:2 shift:1];  // Left
+        else if ( [text hasPrefix:@"##Right"] )
+            [theVICEMachine setKeyRow:0 column:2 shift:0];  // Right
         
         return;
     }
