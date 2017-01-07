@@ -4,6 +4,7 @@
 This is a Commodore C64 emulator based on the Vice 64 emulator (currently v2.3)
 The Emulator part is based on the app C64 Scene 1.2 (see Credits below).
 Its been fairly stripped back and is more based around my requirements interface wise.
+But it supports a single MFI Controller now (see below)
 
 ## Installing
 
@@ -41,6 +42,11 @@ Here you have:
  - Joystick - press to switch between off, joystick 1, and joystick 2  
  - Keyboard - press to switch into keyboard mode. **note** - the top keyboard bar can be swiped left and right tio show different command keys.  
  - Settings - show the settings menu (and attach different disks)  
+ 
+## MFI Controller Support
+Now has initial MFI controller support (single controller only at the moment).<br>
+Uses the Digital pad and Button A for fire button</br>
+Use the Right Shoulder Button to switch between Joystick Disabled, Port 1 and Port 2 (or tap on toolbar joystick icon)
 
 ## Troubleshooting
 Sometimes, on a restart, you will be shown a black screen. Why this happens - I'm still trying to figure out, however you can fix it by simply tapping on the screen to bring up the menu and tapping on the Fast Forward icon twice (once to switch it on and once to switch it off).  that seems to cause the emulator to then start nicely!  Hopefully this will be fixed soon. 
