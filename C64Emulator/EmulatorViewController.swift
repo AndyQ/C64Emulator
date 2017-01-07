@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GameController
+
 
 extension Array where Element : Equatable {
     
@@ -53,6 +55,12 @@ func sClearJoystickBit(bit : UInt8)
     sJoystickState &= ~bit;
 }
 
+func sIsSetJoystickBit(bit : UInt8) -> Bool
+    // ----------------------------------------------------------------------------
+{
+    return sJoystickState & bit == bit
+}
+
 
 // ----------------------------------------------------------------------------
 func sUpdateJoystickState( port : Int32)
@@ -77,6 +85,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBOutlet var _driveLedView : UIImageView!
     @IBOutlet var _emulationBackgroundView : UIView!
     
+    let sJoystickButtonImageNames = ["joystick","joystick_1","joystick_2"]
+    
+    var controller : GCController!
+
     var _arguments = [String]()
     var _canTerminate = false
     var _dataFilePath = ""
@@ -230,6 +242,23 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         NotificationCenter.default.addObserver(self, selector: #selector(EmulatorViewController.warpStatusNotification(_:)), name: NSNotification.Name.init("WarpStatus"), object: nil )
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.GCControllerDidConnect, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            if GCController.controllers().count == 1 {
+                self?.toggleHardwareController(useHardware: true)
+            }
+        })
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.GCControllerDidDisconnect, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            if GCController.controllers().count == 0 {
+                self?.toggleHardwareController(useHardware: false)
+            }
+        })
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("GameTogglePauseNotification"), object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
+            guard let `self` = self else { return }
+            self.clickPlayPauseButton(self)
+        })
+        
         self.startVICEThread(files:[dataFileURLString])
     }
     
@@ -240,6 +269,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         self.navigationController?.isNavigationBarHidden = true
 
         _bottomToolBar.isHidden = false
+        
+        if GCController.controllers().count == 1 {
+            self.toggleHardwareController(useHardware: true)
+        }
     }
     
     
@@ -378,9 +411,87 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     }
     
     
+    // MARK: GameController handling
+    func toggleHardwareController( useHardware: Bool ) {
+        print( "Found joystick - \(useHardware)")
+
+        if useHardware {
+            _joystickView.alpha = 0.0
+            _fireButtonView.alpha = 0.0
+
+            self.controller = GCController.controllers()[0]
+            self.controller.playerIndex = .index1
+            if self.controller.extendedGamepad != nil {
+ 
+                self.controller.extendedGamepad?.rightShoulder.valueChangedHandler = { [weak self] (button, value, pressed) in
+                    guard let `self` = self else { return }
+                    if pressed == false {
+                        // Toggle joystick
+                        if self.self.joystickMode == JOYSTICK_DISABLED {
+                            self.joystickMode = JOYSTICK_PORT1
+                        } else if self.joystickMode == JOYSTICK_PORT1 {
+                            self.joystickMode = JOYSTICK_PORT2
+                        } else if self.joystickMode == JOYSTICK_PORT2 {
+                            self.joystickMode = JOYSTICK_DISABLED
+                        }
+                        self._joystickModeButton.image = UIImage(named:self.sJoystickButtonImageNames[self.joystickMode])
+                    }
+                }
+                
+                self.controller.gamepad?.buttonA.valueChangedHandler = { [weak self] (button, value, pressed) in
+                    guard let `self` = self else { return }
+                    if pressed {
+                        sSetJoystickBit(bit:16)
+                    } else {
+                        sClearJoystickBit(bit:16)
+                        
+                    }
+                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
+                }
+                
+                self.controller.gamepad?.dpad.valueChangedHandler = { [weak self] (dpad, xAxis, yAxis) in
+                    guard let `self` = self else { return }
+                    
+                    // Handle Up
+                    if sIsSetJoystickBit(bit: 1) && yAxis <= 0 {
+                        sClearJoystickBit(bit: 1)
+                    } else if yAxis > 0.1 {
+                        sSetJoystickBit(bit: 1)
+                    }
+                    // Handle Down
+                    if sIsSetJoystickBit(bit: 2) && yAxis >= 0 {
+                        sClearJoystickBit(bit: 2)
+                    } else if yAxis < -0.1 {
+                        sSetJoystickBit(bit: 2)
+                    }
+                    // Handle Left
+                    if sIsSetJoystickBit(bit: 4) && xAxis >= 0 {
+                        sClearJoystickBit(bit: 4)
+                    } else if xAxis < -0.1 {
+                        sSetJoystickBit(bit: 4)
+                    }
+                    // Handle Right
+                    if sIsSetJoystickBit(bit: 8) && xAxis <= 0 {
+                        sClearJoystickBit(bit: 8)
+                    } else if xAxis > 0.1 {
+                        sSetJoystickBit(bit: 8)
+                    }
+                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
+                }
+                //Add controller pause handler here
+            }
+        } else {
+            //7
+            _joystickView.alpha = 1
+            _fireButtonView.alpha = 1
+            self.controller = nil;
+        }
+    }
+
     
-    let sJoystickButtonImageNames = ["joystick","joystick_1","joystick_2"]
+    // MARK: On screen joystick handling
     
+
     // ----------------------------------------------------------------------------
     @IBAction func clickJoystickButton( _ sender: AnyObject)
     // ----------------------------------------------------------------------------
@@ -398,27 +509,29 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         _joystickModeButton.image = UIImage(named:sJoystickButtonImageNames[joystickMode])
         
-        if joystickMode != JOYSTICK_DISABLED
-        {
-            UIView.beginAnimations("FadeJoystickIn", context: nil)
-            UIView.setAnimationDuration(0.1)
-            UIView.setAnimationCurve(.linear)
+        if self.controller == nil {
+            if joystickMode != JOYSTICK_DISABLED
+            {
+                UIView.beginAnimations("FadeJoystickIn", context: nil)
+                UIView.setAnimationDuration(0.1)
+                UIView.setAnimationCurve(.linear)
 
-            _joystickView.alpha = 1.0
-            _fireButtonView.alpha = 1.0
+                _joystickView.alpha = 1.0
+                _fireButtonView.alpha = 1.0
             
-            UIView.commitAnimations()
-        }
-        else
-        {
-            UIView.beginAnimations("FadeJoystickOut", context: nil)
-            UIView.setAnimationDuration(0.1)
-            UIView.setAnimationCurve(.linear)
-            
-            _joystickView.alpha = 0.0
-            _fireButtonView.alpha = 0.0
+                UIView.commitAnimations()
+            }
+            else
+            {
+                UIView.beginAnimations("FadeJoystickOut", context: nil)
+                UIView.setAnimationDuration(0.1)
+                UIView.setAnimationCurve(.linear)
+                
+                _joystickView.alpha = 0.0
+                _fireButtonView.alpha = 0.0
 
-            UIView.commitAnimations()
+                UIView.commitAnimations()
+            }
         }
     }
     
