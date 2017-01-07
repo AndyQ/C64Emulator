@@ -421,9 +421,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
 
             self.controller = GCController.controllers()[0]
             self.controller.playerIndex = .index1
-            if self.controller.extendedGamepad != nil {
+            if self.controller.gamepad != nil {
  
-                self.controller.extendedGamepad?.rightShoulder.valueChangedHandler = { [weak self] (button, value, pressed) in
+                self.controller.gamepad?.rightShoulder.valueChangedHandler = { [weak self] (button, value, pressed) in
                     guard let `self` = self else { return }
                     if pressed == false {
                         // Toggle joystick
