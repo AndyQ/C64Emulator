@@ -71,6 +71,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
         ac.addAction(UIAlertAction(title: "Stop", style: .default, handler: { [weak self] (action) in
             guard let `self` = self else { return }
             self.webUploader.stopServer()
+            self.updateListOfDisks()
             self.tableView.reloadData()
         }))
             
@@ -225,10 +226,33 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Show disk contents
             print( "Showing disk contents...")
             
-            selectedDiskName = getUserGamesDirectory() + "/" + disks[indexPath.row]
+            selectedDiskName = getUserGamesDirectory().appendingPathComponent(disks[indexPath.row])
             
             self.performSegue(withIdentifier: "showDiskContents", sender: self)
         }
-        
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return viewTypeSeg.selectedSegmentIndex == 0 ? false : true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if viewTypeSeg.selectedSegmentIndex == 1 {
+            let diskName = disks[indexPath.row]
+
+            if editingStyle == .delete {
+                do {
+                    try DiskManager.removeDisk(diskName:diskName)
+                    disks.remove(at: indexPath.row)
+                    
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+
+                } catch let error {
+                    print( "Failed to remove disk - \(error)")
+                }
+            }
+        }
+    }
+    
+    
 }

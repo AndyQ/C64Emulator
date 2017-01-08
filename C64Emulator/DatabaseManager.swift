@@ -128,6 +128,7 @@ class DatabaseManager: NSObject {
         
         do {
             try db.executeUpdate("delete from userDisks where diskName = ?", values: [diskName])
+            try db.executeUpdate("delete from userPrograms where diskName = ?", values: [diskName])
             
         } catch {
             print("failed: \(error.localizedDescription)")
