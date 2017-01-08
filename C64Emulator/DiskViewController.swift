@@ -31,15 +31,22 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
             gamesFolder = folder
         }
         
-        // Load disks
-        updateListOfDisks()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateListOfDisks()
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func showDisk( diskPath: String ) {
+        selectedDiskName = diskPath
+        self.performSegue(withIdentifier: "showDiskContents", sender: self)
+    }
     
     
     @IBAction func startPressed(_ sender: AnyObject) {
@@ -78,6 +85,8 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else if let vc = segue.destination as? DiskContentsViewController {
             vc.diskPath = selectedDiskName
         }
+        
+        selectedDiskName = ""
     }
     
     @IBAction func viewTypeChanged(_ sender: AnyObject) {
@@ -182,7 +191,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         } else {
             
-            cell.name.text = disks[indexPath.row]
+            cell.name.text = disks[indexPath.row].deletingPathExtension()
             cell.diskName = disks[indexPath.row]
         }
         

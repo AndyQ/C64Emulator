@@ -30,27 +30,6 @@ static char *ftype[] = {
 
 @implementation D64Image
 
-/*
-- (void) addLine:(char *)line
-{
-    // fix encoding
-    int i,l=strlen(line);
-    for(i=0;i<l;i++) {
-        unsigned char c = (unsigned char)line[i];
-        // fix non-breaking space
-        if(c==0xa0)
-            line[i] = 0x20;
-        // fix soft hyphen
-        else if(c==0xad)
-            line[i]=0xed;
-    }
-    
-    // convert Latin1 to NSString
-    NSString *lineString = [NSString stringWithCString:line encoding:NSISOLatin1StringEncoding];
-    [self.lines addObject:lineString];
-}
-*/
-
 - (void) readDiskDirectory:(NSString *)fileName
 {
     char line[80];

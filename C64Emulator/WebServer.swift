@@ -71,13 +71,9 @@ class WebServer : NSObject, GCDWebUploaderDelegate {
         let d64 = D64Image()
         d64.readDiskDirectory(path)
         
-        var title = "Unknown"
-        if let dname = d64.diskName {
-            title = dname
-        }
 //        print( "DiskName: \(d64.diskName!)" )
         
-        DatabaseManager.sharedInstance.addDisk(diskName: (path! as NSString).lastPathComponent, title: title )
+        DatabaseManager.sharedInstance.addDisk(diskName: (path! as NSString).lastPathComponent )
 //        print( "   Items: \((d64.items).map { ($0 as! D64Item).name! })" )
     }
     func webUploader(_ uploader: GCDWebUploader!, didMoveItemFromPath fromPath: String!, toPath: String!) {

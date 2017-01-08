@@ -8,9 +8,11 @@
 
 import UIKit
 
-class DiskContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DiskContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    @IBOutlet var txtDiskName : UITextField!
     @IBOutlet var tableView : UITableView!
+    @IBOutlet weak var btnUpdateDiskName: UIButton!
     
     var diskPath : String = ""
     var diskName : String = ""
@@ -28,6 +30,9 @@ class DiskContentsViewController: UIViewController, UITableViewDelegate, UITable
         
         // Get existing marked programs
         validPrograms = DatabaseManager.sharedInstance.getPrograms( diskName : diskName )
+        
+        self.txtDiskName.text = diskName.deletingPathExtension()
+        
         
 //        print( "Contents of disk - \(diskContents)" )
     }
@@ -108,9 +113,37 @@ class DiskContentsViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    @IBAction func btnUpdateDiskNamePressed(_ sender: Any) {
+        txtDiskName.resignFirstResponder()
+    }
+    
     //MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    // MARK: UITextField delegate methods
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        btnUpdateDiskName.isHidden = false
+        txtDiskName.selectAll(nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let name = textField.text {
+            var newName = name
+            if !newName.hasSuffix(".d64") {
+                newName += ".d64"
+            }
+            do {
+                try DiskManager.renameDisk( from: diskName, to: newName )
+                self.diskName = newName
+                NotificationCenter.default.post(name: Notif_GamesUpdated, object: nil)
+            } catch let error as NSError {
+                print( "Error renaming disk - \(error)")
+            }
+        }
+        
+        btnUpdateDiskName.isHidden = true
     }
 }

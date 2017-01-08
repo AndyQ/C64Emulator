@@ -30,10 +30,19 @@ class DatabaseManager: NSObject {
         
         super.init()
         
-        if let db = openDatabase() {
-            try? db.executeUpdate("create table userDisks (diskName text, title text) ", values:nil)
-            try? db.executeUpdate("create table userPrograms (programName text, diskName text) ", values:nil)
+        createDatabase()
+    }
+    
+    class func clearDatabase() {
+        let dbFile = (getDocumentsDirectory() as NSString).appendingPathComponent("games.db")
+        try? FileManager.default.removeItem(atPath: dbFile)
+    }
 
+    func createDatabase() {
+        if let db = openDatabase() {
+            try? db.executeUpdate("create table userDisks (diskName text, comments text) ", values:nil)
+            try? db.executeUpdate("create table userPrograms (programName text, diskName text) ", values:nil)
+            
             db.close()
         }
     }
@@ -65,6 +74,8 @@ class DatabaseManager: NSObject {
 
         return db
     }
+
+    
 
     func getListOfGames() -> [Game] {
         
@@ -98,11 +109,11 @@ class DatabaseManager: NSObject {
         return games
     }
     
-    func addDisk( diskName : String, title: String ) {
+    func addDisk( diskName: String ) {
         guard let db = openDatabase() else { return }
         
         do {
-            try db.executeUpdate("insert into userDisks (diskName, title) values (?,?)", values: [diskName, title])
+            try db.executeUpdate("insert into userDisks (diskName) values (?)", values: [diskName])
             
         } catch {
             print("failed: \(error.localizedDescription)")
@@ -125,6 +136,22 @@ class DatabaseManager: NSObject {
         
         db.close()
     }
+    
+    func renameDisk( from: String, to: String ) {
+        guard let db = openDatabase() else { return }
+        
+        do {
+            try db.executeUpdate("update userDisks set diskName = ? where diskName = ?", values: [to,from])
+            try db.executeUpdate("update userPrograms set diskName = ? where diskName = ?", values: [to,from])
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        
+        db.close()
+    }
+
     
     func getListOfDisks() -> [String] {
         var disks = [String]()

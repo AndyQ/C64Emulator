@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5A636EBC5844E751693361BD /* Pods_C64Emulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FE2EBD513C21E803CC0B02 /* Pods_C64Emulator.framework */; };
+		A10D77E31E224289000C452F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D77E21E224289000C452F /* StringExtensions.swift */; };
+		A10D77E51E225493000C452F /* DiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D77E41E225493000C452F /* DiskManager.swift */; };
 		A121EFB81D5F4F71006DA18F /* EmulatorSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121EFB71D5F4F71006DA18F /* EmulatorSettingsViewController.swift */; };
 		A121EFBA1D5F4FA0006DA18F /* C64ModelSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121EFB91D5F4FA0006DA18F /* C64ModelSettingsViewController.swift */; };
 		A121EFBC1D5F4FB9006DA18F /* DiskImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121EFBB1D5F4FB9006DA18F /* DiskImageViewController.swift */; };
 		A14115AA1D5B18F3007A1A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115A91D5B18F3007A1A55 /* AppDelegate.swift */; };
-		A14115AC1D5B18F3007A1A55 /* BasicEmulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115AB1D5B18F3007A1A55 /* BasicEmulatorViewController.swift */; };
 		A14115AF1D5B18F3007A1A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115AD1D5B18F3007A1A55 /* Main.storyboard */; };
 		A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14115B01D5B18F3007A1A55 /* Assets.xcassets */; };
 		A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14115B21D5B18F3007A1A55 /* LaunchScreen.storyboard */; };
@@ -61,12 +62,13 @@
 /* Begin PBXFileReference section */
 		36FE2EBD513C21E803CC0B02 /* Pods_C64Emulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_C64Emulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFEF8A9CFB95DB90A8D7C4C /* Pods-C64Emulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C64Emulator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator.debug.xcconfig"; sourceTree = "<group>"; };
+		A10D77E21E224289000C452F /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		A10D77E41E225493000C452F /* DiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskManager.swift; sourceTree = "<group>"; };
 		A121EFB71D5F4F71006DA18F /* EmulatorSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulatorSettingsViewController.swift; sourceTree = "<group>"; };
 		A121EFB91D5F4FA0006DA18F /* C64ModelSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C64ModelSettingsViewController.swift; sourceTree = "<group>"; };
 		A121EFBB1D5F4FB9006DA18F /* DiskImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskImageViewController.swift; sourceTree = "<group>"; };
 		A14115A61D5B18F3007A1A55 /* C64Emulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = C64Emulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14115A91D5B18F3007A1A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A14115AB1D5B18F3007A1A55 /* BasicEmulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEmulatorViewController.swift; sourceTree = "<group>"; };
 		A14115AE1D5B18F3007A1A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A14115B01D5B18F3007A1A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14115B31D5B18F3007A1A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 			children = (
 				A1D2C9571D5E341300D36462 /* Cells */,
 				A14115A91D5B18F3007A1A55 /* AppDelegate.swift */,
-				A14115AB1D5B18F3007A1A55 /* BasicEmulatorViewController.swift */,
 				A1AD69481D5CE54B0042197C /* WebServer.swift */,
 				A14115EA1D5B294B007A1A55 /* DiskViewController.swift */,
 				A14115EC1D5B2A66007A1A55 /* DiskContentsViewController.swift */,
@@ -165,13 +166,15 @@
 				A121EFBB1D5F4FB9006DA18F /* DiskImageViewController.swift */,
 				A14115F61D5B7D36007A1A55 /* JoystickView.swift */,
 				A14115F81D5B7D61007A1A55 /* FireButtonView.swift */,
-				A14115AD1D5B18F3007A1A55 /* Main.storyboard */,
 				A14115F11D5B36E2007A1A55 /* D64Image.h */,
 				A14115F21D5B36E2007A1A55 /* D64Image.m */,
 				A14115EE1D5B3513007A1A55 /* diskimage.c */,
 				A14115EF1D5B3513007A1A55 /* diskimage.h */,
+				A10D77E41E225493000C452F /* DiskManager.swift */,
 				A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */,
+				A10D77E21E224289000C452F /* StringExtensions.swift */,
 				A14115B01D5B18F3007A1A55 /* Assets.xcassets */,
+				A14115AD1D5B18F3007A1A55 /* Main.storyboard */,
 				A14115B21D5B18F3007A1A55 /* LaunchScreen.storyboard */,
 				A14115B51D5B18F3007A1A55 /* Info.plist */,
 				A14115CE1D5B19D7007A1A55 /* C64Emulator-Bridging-Header.h */,
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10D77E51E225493000C452F /* DiskManager.swift in Sources */,
 				A1D2C95B1D5E5A8D00D36462 /* DiskCell.swift in Sources */,
 				A14115F71D5B7D36007A1A55 /* JoystickView.swift in Sources */,
 				A1D2C9591D5E343000D36462 /* DiskItemCell.swift in Sources */,
@@ -376,11 +380,11 @@
 				A121EFBC1D5F4FB9006DA18F /* DiskImageViewController.swift in Sources */,
 				A121EFB81D5F4F71006DA18F /* EmulatorSettingsViewController.swift in Sources */,
 				A14115F31D5B36E2007A1A55 /* D64Image.m in Sources */,
-				A14115AC1D5B18F3007A1A55 /* BasicEmulatorViewController.swift in Sources */,
 				A14115EB1D5B294B007A1A55 /* DiskViewController.swift in Sources */,
 				A14115F01D5B3513007A1A55 /* diskimage.c in Sources */,
 				A14115ED1D5B2A66007A1A55 /* DiskContentsViewController.swift in Sources */,
 				A14115F91D5B7D61007A1A55 /* FireButtonView.swift in Sources */,
+				A10D77E31E224289000C452F /* StringExtensions.swift in Sources */,
 				A14115F51D5B4270007A1A55 /* EmulatorViewController.swift in Sources */,
 				A14115AA1D5B18F3007A1A55 /* AppDelegate.swift in Sources */,
 				A121EFBA1D5F4FA0006DA18F /* C64ModelSettingsViewController.swift in Sources */,
@@ -523,6 +527,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
@@ -545,6 +550,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
