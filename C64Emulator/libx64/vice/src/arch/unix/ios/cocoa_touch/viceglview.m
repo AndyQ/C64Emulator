@@ -443,8 +443,12 @@ static GLchar *sAttribName[NUM_ATTRIBUTES] =
 {
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     
-	if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground)
-		[self displayPixelBuffer:pixelBuffer];
+
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground)
+            [self displayPixelBuffer:pixelBuffer];
+    });
+
     
     return;
 
@@ -644,8 +648,8 @@ static const GLfloat textureVertices[] =
 	glVertexAttribPointer(ATTRIB_TEXTUREPOSITON, 2, GL_FLOAT, 0, 0, textureVertices);
 	glEnableVertexAttribArray(ATTRIB_TEXTUREPOSITON);
     
-    GLint location = glGetUniformLocation(viceShaderProgram, "screenSize");
-    glUniform2f(location, renderBufferWidth, renderBufferHeight);
+//    GLint location = glGetUniformLocation(viceShaderProgram, "screenSize");
+//    glUniform2f(location, renderBufferWidth, renderBufferHeight);
 //    CGSize viewSize = self.frame.size;
 //    glUniform2f(location, viewSize.width, viewSize.height);
     

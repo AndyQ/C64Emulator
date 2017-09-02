@@ -181,7 +181,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         return button
     }
     
-    func accessoryButtonPressed( _ sender: UIButton ) {
+    @objc func accessoryButtonPressed( _ sender: UIButton ) {
         if let button = sender.titleLabel?.text {
             print( "Button pressed : \(button)")
             
@@ -570,16 +570,18 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func warpStatusNotification( _ notification :NSNotification )
+    @objc func warpStatusNotification( _ notification :NSNotification )
     // ----------------------------------------------------------------------------
     {
         guard let info = notification.userInfo else { return }
         if let warp = (info["warp_enabled"] as? NSNumber)?.boolValue {
             if (warp != _warpEnabled)
             {
-                let image = warp ? UIImage(named:"hud_warp_highlighted") : UIImage(named:"hud_warp")
-                _warpButton.setImage(image, for: .normal)
-                _warpEnabled = warp;
+                DispatchQueue.main.async { [unowned self] in
+                    let image = warp ? UIImage(named:"hud_warp_highlighted") : UIImage(named:"hud_warp")
+                    self._warpButton.setImage(image, for: .normal)
+                    self._warpEnabled = warp;
+                }
             }
         }
     }
@@ -601,7 +603,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func controlsFadeIn()
+    @objc func controlsFadeIn()
     // ----------------------------------------------------------------------------
     {
         var joystickFrame = _joystickView.frame
@@ -639,7 +641,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func controlsFadeOut()
+    @objc func controlsFadeOut()
     // ----------------------------------------------------------------------------
     {
         var joystickFrame = _joystickView.frame;
@@ -945,7 +947,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func keyboardWillBeShown( _ notification: NSNotification )
+    @objc func keyboardWillBeShown( _ notification: NSNotification )
     // ----------------------------------------------------------------------------
     {
         _keyboardVisible = true
@@ -984,7 +986,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func keyboardWillBeHidden( _ notification : NSNotification )
+    @objc func keyboardWillBeHidden( _ notification : NSNotification )
     // ----------------------------------------------------------------------------
     {
         _keyboardVisible = false
@@ -1022,7 +1024,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func enableDriveStatus( _ notification : NSNotification )
+    @objc func enableDriveStatus( _ notification : NSNotification )
     // ----------------------------------------------------------------------------
     {
         // setup drive views
@@ -1034,7 +1036,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func displayLed( _ notification : NSNotification )
+    @objc func displayLed( _ notification : NSNotification )
     // ----------------------------------------------------------------------------
     {
         guard let info = notification.userInfo else { return }
