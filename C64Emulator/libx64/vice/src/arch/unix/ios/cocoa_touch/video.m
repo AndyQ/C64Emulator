@@ -290,8 +290,10 @@ void video_canvas_resize(video_canvas_t * canvas, char resize_canvas)
     NSData *data = [NSData dataWithBytes:&canvasPtr length:sizeof(video_canvas_t *)];
 
     // call UI thread to resize canvas
-    VICEGLView *view = [theVICEMachine view];
-    [view resizeCanvas:CGSizeMake(width, height)];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        VICEGLView *view = [theVICEMachine view];
+        [view resizeCanvas:CGSizeMake(width, height)];
+    });
 }
 
 extern int vsync_frame_counter;
