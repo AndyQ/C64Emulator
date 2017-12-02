@@ -52,8 +52,8 @@ Use the Right Shoulder Button to switch between Joystick Disabled, Port 1 and Po
 Sometimes, on a restart, you will be shown a black screen. Why this happens - I'm still trying to figure out, however you can fix it by simply tapping on the screen to bring up the menu and tapping on the Fast Forward icon twice (once to switch it on and once to switch it off).  that seems to cause the emulator to then start nicely!  Hopefully this will be fixed soon. 
 
 ## Why?
-I had a C64b waaaaay back in time (and a Pet before that) and its played a huge part in my life.   
-I've been in to C64 emulator probably for over 15 years now but have never deleved into how it works.  
+I had a C64 waaaaay back in time (and a Pet before that) and its played a huge part in my life.   
+I've been in to C64 emulators probably for over 15 years now but have never deleved into how it works.  
 This is my way of doing that!  
 
 ## Licence
