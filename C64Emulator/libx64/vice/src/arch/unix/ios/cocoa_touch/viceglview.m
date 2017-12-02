@@ -372,10 +372,12 @@ static GLchar *sAttribName[NUM_ATTRIBUTES] =
 
 // the emulation wants to draw a new frame (called from machine thread!)
 
+int viewFrameNr = 0;
 // ----------------------------------------------------------------------------
 - (BYTE *)beginMachineDraw:(int)frameNo
 // ----------------------------------------------------------------------------
 {
+    viewFrameNr = frameNo;
     unsigned long timeStamp = (unsigned long)(CVGetCurrentHostTime() / hostToUsFactor);
     
 	CVPixelBufferLockBaseAddress(pixelBuffer, 0);
@@ -443,7 +445,11 @@ static GLchar *sAttribName[NUM_ATTRIBUTES] =
 {
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     
-
+    // Ignore first frame - appears to be some sort of timing issue where
+    // on iOS 11 if you send a frame down too early, nothing gets drawn!
+    if ( viewFrameNr < 1 )
+        return;
+    
     dispatch_sync(dispatch_get_main_queue(), ^{
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground)
             [self displayPixelBuffer:pixelBuffer];
@@ -659,7 +665,7 @@ static const GLfloat textureVertices[] =
     glBindRenderbuffer(GL_RENDERBUFFER, colorBufferHandle);
     [eaglContext presentRenderbuffer:GL_RENDERBUFFER];
     
-    glBindTexture(CVOpenGLESTextureGetTarget(cvTexture), 0);
+        glBindTexture(CVOpenGLESTextureGetTarget(cvTexture), 0);
     
     // Flush the CVOpenGLESTexture cache and release the texture
     CVOpenGLESTextureCacheFlush(cvTextureCache, 0);
