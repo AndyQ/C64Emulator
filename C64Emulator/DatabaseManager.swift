@@ -37,7 +37,17 @@ class DatabaseManager: NSObject {
         let dbFile = (getDocumentsDirectory() as NSString).appendingPathComponent("games.db")
         try? FileManager.default.removeItem(atPath: dbFile)
     }
-
+    
+    func resetDatabase() {
+        if let db = openDatabase() {
+            try? db.executeUpdate("drop table userDisks", values:nil)
+            try? db.executeUpdate("drop table userPrograms", values:nil)
+            
+            db.close()
+        }
+        createDatabase()
+    }
+    
     func createDatabase() {
         if let db = openDatabase() {
             try? db.executeUpdate("create table userDisks (diskName text, comments text) ", values:nil)
@@ -62,10 +72,7 @@ class DatabaseManager: NSObject {
         }
         
         print( "DB File - \(dbFile)" )
-        guard let db = FMDatabase(path: dbFile) else {
-            print("unable to create database")
-            return nil
-        }
+        let db = FMDatabase(path: dbFile)
         
         guard db.open() else {
             print("Unable to open database")

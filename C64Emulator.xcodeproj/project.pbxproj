@@ -37,6 +37,7 @@
 		A14115FE1D5B9BFB007A1A55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14115FD1D5B9BFB007A1A55 /* libsqlite3.tbd */; };
 		A14116001D5B9C10007A1A55 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14115FF1D5B9C10007A1A55 /* DatabaseManager.swift */; };
 		A14116011D5B9EFF007A1A55 /* games.db in Resources */ = {isa = PBXBuildFile; fileRef = A14115FC1D5B9988007A1A55 /* games.db */; };
+		A143568621E21FD100A678F8 /* games in Resources */ = {isa = PBXBuildFile; fileRef = A14115D21D5B1AA7007A1A55 /* games */; };
 		A1AD69491D5CE54B0042197C /* WebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AD69481D5CE54B0042197C /* WebServer.swift */; };
 		A1D2C9591D5E343000D36462 /* DiskItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D2C9581D5E343000D36462 /* DiskItemCell.swift */; };
 		A1D2C95B1D5E5A8D00D36462 /* DiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D2C95A1D5E5A8D00D36462 /* DiskCell.swift */; };
@@ -238,7 +239,6 @@
 				A14115A31D5B18F3007A1A55 /* Frameworks */,
 				A14115A41D5B18F3007A1A55 /* Resources */,
 				1E3C98B95F4D4CDE5402DD21 /* [CP] Embed Pods Frameworks */,
-				3977E74ABFED444A761B21B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,20 +257,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andy Qua";
 				TargetAttributes = {
 					A14115A51D5B18F3007A1A55 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A4ZM73UFF5;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = A14115A11D5B18F3007A1A55 /* Build configuration list for PBXProject "C64Emulator" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -309,6 +309,7 @@
 			files = (
 				A14115B41D5B18F3007A1A55 /* LaunchScreen.storyboard in Resources */,
 				A14116011D5B9EFF007A1A55 /* games.db in Resources */,
+				A143568621E21FD100A678F8 /* games in Resources */,
 				A14115B11D5B18F3007A1A55 /* Assets.xcassets in Resources */,
 				A14115E71D5B2491007A1A55 /* crt_shader.fsh in Resources */,
 				A14115E81D5B2491007A1A55 /* crt_shader.vsh in Resources */,
@@ -326,28 +327,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3977E74ABFED444A761B21B8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-C64Emulator/Pods-C64Emulator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C2DCA9CF106145161310F2D0 /* [CP] Check Pods Manifest.lock */ = {
@@ -356,13 +347,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-C64Emulator-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,6 +430,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -443,6 +438,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -493,6 +489,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -500,6 +497,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -543,12 +541,21 @@
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.C64Emulator;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"FMDB\"",
+					"-framework",
+					"\"GCDWebServer\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.c64;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "C64Emulator/libx64/vice/src C64Emulator/libx64/vice/src/c64 C64Emulator/libx64/vice/src/sid C64Emulator/libx64/vice/src/vicii C64Emulator/libx64/vice/src/arch/unix/ios/cocoa_touch C64Emulator/libx64/vice/src/arch/unix/ios C64Emulator/libx64/vice/src/arch/unix C64Emulator/libx64/vice/src/c64/cart C64Emulator/libx64/vice/src/drive C64Emulator/libx64/vice/src/c64exp C64Emulator/libx64/vice/src/video C64Emulator/libx64/vice/src/userport C64Emulator/libx64/vice/src/tape C64Emulator/libx64/vice/src/raster C64Emulator/libx64/vice/src/viciisc";
 			};
 			name = Debug;
@@ -565,11 +572,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.C64Emulator;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"FMDB\"",
+					"-framework",
+					"\"GCDWebServer\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.c64;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "C64Emulator/libx64/vice/src C64Emulator/libx64/vice/src/c64 C64Emulator/libx64/vice/src/sid C64Emulator/libx64/vice/src/vicii C64Emulator/libx64/vice/src/arch/unix/ios/cocoa_touch C64Emulator/libx64/vice/src/arch/unix/ios C64Emulator/libx64/vice/src/arch/unix C64Emulator/libx64/vice/src/c64/cart C64Emulator/libx64/vice/src/drive C64Emulator/libx64/vice/src/c64exp C64Emulator/libx64/vice/src/video C64Emulator/libx64/vice/src/userport C64Emulator/libx64/vice/src/tape C64Emulator/libx64/vice/src/raster C64Emulator/libx64/vice/src/viciisc";
 			};
 			name = Release;

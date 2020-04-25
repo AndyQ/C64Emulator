@@ -21,11 +21,12 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
     var games = [String:[Game]]()
     var selectedDiskName : String = ""
     var selectedProgram : String = ""
-    let sections = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
+    let sections = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".map { String($0) }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        DatabaseManager.sharedInstance.resetDatabase()
         gamesFolder = ""
         if let folder = Bundle.main.path(forResource: "games", ofType: "") {
             gamesFolder = folder
@@ -99,18 +100,47 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
         games.removeAll()
         
         disks = DatabaseManager.sharedInstance.getListOfDisks()
+        if disks.count == 0 {
+            disks = moveInternalGamesIfAny()
+        }
         let list = DatabaseManager.sharedInstance.getListOfGames()
         
         // Split games into sections (A-Z)
         for game in list {
             
-            let c = String(game.name.characters.first!)
+            let c = String(game.name.first!)
             if games[c] != nil {
                 games[c]!.append(game)
             } else {
                 games[c] = [game]
             }
         }
+    }
+    
+    func moveInternalGamesIfAny( ) -> [String] {
+
+        var disks = [String]()
+        
+        let fm = FileManager.default
+        do {
+
+            let items = try fm.contentsOfDirectory(atPath: gamesFolder)
+            for item in items {
+                let srcPath = gamesFolder.appendingPathComponent(item)
+                let destPath = getUserGamesDirectory().appendingPathComponent(item)
+                if !fm.fileExists(atPath: destPath) {
+                    try fm.copyItem(atPath: srcPath, toPath: destPath)
+                }
+                disks.append( item )
+                
+                DatabaseManager.sharedInstance.addDisk(diskName: item)
+            }
+        } catch {
+            print( "Error rescanning interal disks - \(error)" )
+        }
+        NotificationCenter.default.post(name: Notif_GamesUpdated, object: nil)
+        
+        return disks.sorted()
     }
     
     //MARK: UITableViewDataSource
@@ -227,7 +257,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
             print( "Showing disk contents...")
             
             selectedDiskName = getUserGamesDirectory().appendingPathComponent(disks[indexPath.row])
-            
+
             self.performSegue(withIdentifier: "showDiskContents", sender: self)
         }
     }
@@ -236,7 +266,7 @@ class DiskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return viewTypeSeg.selectedSegmentIndex == 0 ? false : true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if viewTypeSeg.selectedSegmentIndex == 1 {
             let diskName = disks[indexPath.row]
 

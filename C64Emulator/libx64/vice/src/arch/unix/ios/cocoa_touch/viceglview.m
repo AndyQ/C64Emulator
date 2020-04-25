@@ -377,17 +377,20 @@ int viewFrameNr = 0;
 - (BYTE *)beginMachineDraw:(int)frameNo
 // ----------------------------------------------------------------------------
 {
-    viewFrameNr = frameNo;
-    unsigned long timeStamp = (unsigned long)(CVGetCurrentHostTime() / hostToUsFactor);
-    
-	CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    __block BYTE *baseAddress;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+
+        viewFrameNr = frameNo;
+        unsigned long timeStamp = (unsigned long)(CVGetCurrentHostTime() / hostToUsFactor);
+        
+        CVPixelBufferLockBaseAddress(pixelBuffer, 0);
 	
 //	size_t bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
 //	size_t bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
-    
-	return CVPixelBufferGetBaseAddress(pixelBuffer);
-    
-/*    
+        baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer);
+    });
+    return baseAddress;
+/*
     // no drawing possible right now
     if(numTextures == 0) {
         NSLog(@"FATAL: no textures to draw...");
@@ -443,21 +446,18 @@ int viewFrameNr = 0;
 - (void)endMachineDraw
 // ----------------------------------------------------------------------------
 {
-    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
-    
-    // Ignore first frame - appears to be some sort of timing issue where
-    // on iOS 11 if you send a frame down too early, nothing gets drawn!
-    if ( viewFrameNr < 1 )
-        return;
-    
     dispatch_sync(dispatch_get_main_queue(), ^{
-        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground)
-            [self displayPixelBuffer:pixelBuffer];
-    });
-
+        CVPixelBufferUnlockBaseAddress(self->pixelBuffer, 0);
+        
+        // Ignore first frame - appears to be some sort of timing issue where
+        // on iOS 11 if you send a frame down too early, nothing gets drawn!
+        if ( viewFrameNr < 1 )
+            return;
     
-    return;
-
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground)
+        [self displayPixelBuffer:self->pixelBuffer];
+    });
+    
 /*    
     // update drawn texture
     [self updateTexture:drawPos];

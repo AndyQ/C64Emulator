@@ -1264,11 +1264,13 @@ int autostart_autodetect(const char *file_name, const char *program_name,
         }
     }
 
+
     if (autostart_snapshot(file_name, program_name) == 0) {
         log_message(autostart_log, "`%s' recognized as snapshot image.",
                     file_name);
         return 0;
     }
+
     if (autostart_prg(file_name, runmode) == 0) {
         log_message(autostart_log, "`%s' recognized as program/p00 file.",
                     file_name);

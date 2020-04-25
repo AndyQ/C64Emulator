@@ -170,49 +170,49 @@ class EmulatorSettingsViewController: UITableViewController {
 
     @IBAction func changeSaturation(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorSaturation", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorSaturation", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeContrast(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorContrast", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorContrast", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeBrightness(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorBrightness", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorBrightness", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeGamma(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorGamma", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIColorGamma", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeBlur(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALBlur", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALBlur", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeScanlineShade(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALScanLineShade", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALScanLineShade", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeOddLinePhase(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALOddLinePhase", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALOddLinePhase", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
     @IBAction func changeOddLineOffset(_ sender : UISlider) {
         let value = sender.value
-        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALOddLineOffset", andValue: value as NSNumber!)
+        let keyValue = VICEMachineResourceKeyValue(resource: "VICIIPALOddLineOffset", andValue: value as NSNumber)
         theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: false)
     }
     
@@ -223,7 +223,7 @@ class EmulatorSettingsViewController: UITableViewController {
                                     "VICIIPALBlur", "VICIIPALScanLineShade" , "VICIIPALOddLinePhase", "VICIIPALOddLineOffset"]
         
         for i in 0 ..< keys.count {
-            let keyValue = VICEMachineResourceKeyValue(resource: keys[i], andValue: values[i] as NSNumber!)
+            let keyValue = VICEMachineResourceKeyValue(resource: keys[i], andValue: values[i] as NSNumber)
             theVICEMachine.perform(#selector(VICEMachine.setResourceOnceAfterDelay(_:)), on: theVICEMachine.machineThread(), with: keyValue, waitUntilDone: true)
         }
 

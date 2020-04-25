@@ -90,14 +90,14 @@ class DiskContentsViewController: UIViewController, UITableViewDelegate, UITable
             cell.programName.text = programName
         
             cell.validProgram.isOn = false
-            if let _ = validPrograms.index(of: programName) {
+            if let _ = validPrograms.firstIndex(of: programName) {
                 cell.validProgram.isOn = true
             }
             
             cell.setIsValidProgram = { [weak self] (program, isValid) in
                 guard let `self` = self else { return }
                 
-                if let index = self.validPrograms.index(of: program) {
+                if let index = self.validPrograms.firstIndex(of: program) {
                     // If we found the program, then if it isn't marked as valid remove it
                     if !isValid {
                         self.validPrograms.remove(at: index)

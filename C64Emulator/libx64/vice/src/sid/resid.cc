@@ -294,7 +294,9 @@ static void resid_state_write(sound_t *psid, sid_snapshot_state_t *sid_state)
     state.write_pipeline = (cycle_count)sid_state->write_pipeline;
     state.write_address = (reg8)sid_state->write_address;
 
-    psid->sid->write_state((const reSID::SID::State)state);
+    if ( psid != NULL ) {
+        psid->sid->write_state((const reSID::SID::State)state);
+    }
 }
 
 sid_engine_t resid_hooks =

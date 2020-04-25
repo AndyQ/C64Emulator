@@ -571,7 +571,8 @@ void free_chain(DiskImage *di, TrackSector ts) {
 
 DiskImage *di_load_image(const char *name) {
   FILE *file;
-  int filesize, l, read;
+    long filesize, l;
+    int read;
   DiskImage *di;
 
   /* open image */
@@ -628,7 +629,7 @@ DiskImage *di_load_image(const char *name) {
     return(NULL);
   }
 
-  di->size = filesize;
+  di->size = (int)filesize;
 
   /* allocate buffer for image */
   if ((di->image = malloc(filesize)) == NULL) {
@@ -725,7 +726,7 @@ DiskImage *di_create_image(char *name, int size) {
 
 void di_sync(DiskImage *di) {
   FILE *file;
-  int l, left;
+  long l, left;
   unsigned char *image;
 
   if ((file = fopen(di->filename, "wb"))) {
@@ -805,7 +806,7 @@ RawDirEntry *find_file_entry(DiskImage *di, unsigned char *rawpattern, FileType 
 }
 
 
-RawDirEntry *alloc_file_entry(DiskImage *di, unsigned char *rawname, FileType type) {
+RawDirEntry *alloc_file_entry(DiskImage *di, char *rawname, FileType type) {
   unsigned char *buffer;
   TrackSector ts, lastts;
   RawDirEntry *rde;
@@ -818,7 +819,7 @@ RawDirEntry *alloc_file_entry(DiskImage *di, unsigned char *rawname, FileType ty
     for (offset = 0; offset < 256; offset += 32) {
       rde = (RawDirEntry *)(buffer + offset);
       if (rde->type & 0x3f) { // cv: mask out file type to ignore closed/locked DEL files
-	if (strncmp(rawname, rde->rawname, 16) == 0) {
+	if (strncmp(rawname, (char *)rde->rawname, 16) == 0) {
 	  set_status(di, 63, 0, 0);
 	  //puts("file exists");
 	  return(NULL);
@@ -877,7 +878,7 @@ ImageFile *di_open(DiskImage *di, unsigned char *rawname, FileType type, char *m
       //puts("malloc failed");
       return(NULL);
     }
-    if (strcmp("$", rawname) == 0) {
+    if (strcmp("$", (char *)rawname) == 0) {
       imgfile->mode = 'r';
       imgfile->ts = di->dir;
       p = get_ts_addr(di, di->dir);
@@ -916,7 +917,7 @@ ImageFile *di_open(DiskImage *di, unsigned char *rawname, FileType type, char *m
 
   } else if (strcmp("wb", mode) == 0) {
 
-    if ((rde = alloc_file_entry(di, rawname, type)) == NULL) {
+    if ((rde = alloc_file_entry(di, (char *)rawname, type)) == NULL) {
       //puts("alloc_file_entry failed");
       return(NULL);
     }

@@ -14,7 +14,7 @@ extension Array where Element : Equatable {
     
     // Remove first collection element that is equal to the given `object`:
     mutating func removeObject(object: Element) {
-        if let index = self.index(of: object) {
+        if let index = self.firstIndex(of: object) {
             self.remove(at: index)
         }
     }
@@ -194,7 +194,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
             
             if textToSend != "" {
                 var i = 0.0
-                for s in textToSend.characters {
+                for s in textToSend {
                     DispatchQueue.main.asyncAfter(deadline: .now() + i, execute: {
                         self.viceView().insertText(String(s))
                     })
@@ -317,11 +317,15 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         // at the end of the filenames for _0 or _A or something.
         
         let rootPath = Bundle.main.resourcePath!.appending("/x64")
+        if files[0].lowercased().hasSuffix("prg") {
+            program = (files[0] as NSString).lastPathComponent
+        }
 
         _dataFilePath = files[0]
         if self.program != "" {
-            _dataFilePath = _dataFilePath + ":\(self.program.lowercased())"
-            _arguments = [rootPath, "-8", _dataFilePath, "-autostart", _dataFilePath]
+            //_dataFilePath = _dataFilePath + ":\(self.program.lowercased())"
+//            _arguments = [rootPath, "-8", _dataFilePath, "-autostart", _dataFilePath]
+            _arguments = [rootPath, "-autostart", _dataFilePath]
         } else {
             _arguments = [rootPath]
         }
@@ -334,6 +338,14 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         let viceMachine = VICEMachine.sharedInstance()!
         viceMachine.setMediaFiles(files)
         viceMachine.setAutoStartPath(_dataFilePath)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.25, execute: {
+            viceMachine.toggleWarpMode()
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+            viceMachine.toggleWarpMode()
+        })
+
         
         if self.program == "" && self._dataFilePath != "" {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ) { [weak self] in
@@ -749,7 +761,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         }
         else
         {
-            allowShrinkGrow = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation);
+            allowShrinkGrow = UIApplication.shared.statusBarOrientation.isLandscape;
         }
         
         if (allowShrinkGrow && !_keyboardVisible)
@@ -757,11 +769,11 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
             _viceViewScaled = !_viceViewScaled;
             
             
-            if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation))
+            if (UIApplication.shared.statusBarOrientation.isPortrait)
             {
                 self.setPortraitViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
             }
-            else if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation))
+            else if (UIApplication.shared.statusBarOrientation.isLandscape)
             {
                 self.setLandscapeViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
             }
@@ -777,7 +789,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func setPortraitViceViewFrame(duration: CGFloat, animCurve:UIViewAnimationCurve, canvasSize:CGSize )
+    func setPortraitViceViewFrame(duration: CGFloat, animCurve:UIView.AnimationCurve, canvasSize:CGSize )
     // ----------------------------------------------------------------------------
     {
         //NSLog(@"setPortrait with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
@@ -862,7 +874,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     
     // ----------------------------------------------------------------------------
-    func setLandscapeViceViewFrame(duration: CGFloat, animCurve:UIViewAnimationCurve, canvasSize:CGSize )
+    func setLandscapeViceViewFrame(duration: CGFloat, animCurve:UIView.AnimationCurve, canvasSize:CGSize )
     // ----------------------------------------------------------------------------
     {
         //    NSLog(@"setLandscape with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
@@ -939,8 +951,8 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func registerForNotifications()
     // ----------------------------------------------------------------------------
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enableDriveStatus(_:)), name: NSNotification.Name(rawValue: VICEEnableDriveStatusNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(displayLed(_:)), name: NSNotification.Name(rawValue: VICEDisplayDriveLedNotification), object: nil)
     }
@@ -956,28 +968,28 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
 
         var keyboard_size = CGSize()
         
-        let frameVal = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue
+        let frameVal = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
         if let val = frameVal?.cgRectValue {
             keyboard_size = val.size // [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         }
         _keyboardOffset = keyboard_size.height;
 
         var duration : CGFloat = 0.0
-        let durationVal = info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        let durationVal = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
         if let val = durationVal?.doubleValue {
             duration = CGFloat(val)
         }
         
-        var curve = UIViewAnimationCurve.linear
-        let curveVal = info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        var curve = UIView.AnimationCurve.linear
+        let curveVal = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
         if let val = curveVal?.intValue  {
-            curve = UIViewAnimationCurve(rawValue: val )!
+            curve = UIView.AnimationCurve(rawValue: val )!
         }
         
-        if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
+        if (UIApplication.shared.statusBarOrientation.isLandscape) {
             self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
-        else if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
+        else if (UIApplication.shared.statusBarOrientation.isPortrait) {
             self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
         
@@ -995,21 +1007,21 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         guard let info = notification.userInfo else { return }
         
         var duration : CGFloat = 0.0
-        let durationVal = info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        let durationVal = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
         if let val = durationVal?.doubleValue {
             duration = CGFloat(val)
         }
         
-        var curve = UIViewAnimationCurve.linear
-        let curveVal = info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        var curve = UIView.AnimationCurve.linear
+        let curveVal = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
         if let val = curveVal?.intValue {
-            curve = UIViewAnimationCurve(rawValue: val)!
+            curve = UIView.AnimationCurve(rawValue: val)!
         }
         
-        if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
+        if (UIApplication.shared.statusBarOrientation.isLandscape) {
             self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
-        else if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
+        else if (UIApplication.shared.statusBarOrientation.isPortrait) {
             self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
         }
     }
@@ -1109,9 +1121,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func resizeCanvas(_ canvasPtr: Data!, with size: CGSize) {
          if INTERFACE_IS_PHONE()
          {
-            if (UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)) {
+            if (UIApplication.shared.statusBarOrientation.isPortrait) {
                 self.setPortraitViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
-            } else if (UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)) {
+            } else if (UIApplication.shared.statusBarOrientation.isLandscape) {
                 self.setLandscapeViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
             }
         }

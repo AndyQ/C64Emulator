@@ -56,15 +56,15 @@ class WebServer : NSObject, GCDWebUploaderDelegate {
     }
 
     func getServerAddress() -> String {
-        return webServer.serverURL.absoluteString
+        return webServer.serverURL!.absoluteString
     }
     
     func bonjourServerURL() -> URL {
-        return self.webServer.bonjourServerURL
+        return self.webServer.bonjourServerURL!
     }
 
     //MARK - Web Server Delegate
-    func webUploader(_ uploader: GCDWebUploader!, didUploadFileAtPath path: String!) {
+    func webUploader(_ uploader: GCDWebUploader, didUploadFileAtPath path: String) {
         print( "[UPLOAD] \(path)")
         
         // Scan disk
@@ -73,20 +73,20 @@ class WebServer : NSObject, GCDWebUploaderDelegate {
         
 //        print( "DiskName: \(d64.diskName!)" )
         
-        DatabaseManager.sharedInstance.addDisk(diskName: (path! as NSString).lastPathComponent )
+        DatabaseManager.sharedInstance.addDisk(diskName: (path as NSString).lastPathComponent )
 //        print( "   Items: \((d64.items).map { ($0 as! D64Item).name! })" )
     }
-    func webUploader(_ uploader: GCDWebUploader!, didMoveItemFromPath fromPath: String!, toPath: String!) {
+    func webUploader(_ uploader: GCDWebUploader, didMoveItemFromPath fromPath: String, toPath: String) {
         print( "[MOVE] \(fromPath) -> \(toPath)")
     }
-    func webUploader(_ uploader: GCDWebUploader!, didDeleteItemAtPath path: String!) {
+    func webUploader(_ uploader: GCDWebUploader, didDeleteItemAtPath path: String) {
         print( "[DELETE] \(path)")
-        DatabaseManager.sharedInstance.removeDisk(diskName: (path! as NSString).lastPathComponent )
+        DatabaseManager.sharedInstance.removeDisk(diskName: (path as NSString).lastPathComponent )
     }
-    func webUploader(_ uploader: GCDWebUploader!, didDownloadFileAtPath path: String!) {
+    func webUploader(_ uploader: GCDWebUploader, didDownloadFileAtPath path: String) {
         print( "[DOWNLOAD] \(path)")
     }
-    func webUploader(_ uploader: GCDWebUploader!, didCreateDirectoryAtPath path: String!) {
+    func webUploader(_ uploader: GCDWebUploader, didCreateDirectoryAtPath path: String) {
         print( "[CREATE] \(path)")
     }
 

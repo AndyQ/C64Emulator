@@ -957,7 +957,7 @@ void sound_close(void)
        UI dialogs certainly does. */
     vsync_suspend_speed_eval();
     
-    offset = 0;
+ //   offset = 0;
 }
 
 /* run sid */
