@@ -273,6 +273,29 @@
                       userInfo:dict];
 }
 
+
+// ----- Fake VSID -----
+
+- (void)postSidTitleNotification:(char*)title
+{
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithCString:title encoding:NSISOLatin1StringEncoding], @"title", nil, nil];
+    [self postNotificationName:VICESidTitleNotification userInfo:dict];
+}
+
+
+- (void)postSidAuthorNotification:(char*)author
+{
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithCString:author encoding:NSISOLatin1StringEncoding], @"author", nil, nil];
+    [self postNotificationName:VICESidAuthorNotification userInfo:dict];
+}
+
+- (void)postSidReleasedNotification:(char*)released
+{
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithCString:released encoding:NSISOLatin1StringEncoding], @"released", nil, nil];
+    [self postNotificationName:VICESidReleasedNotification userInfo:dict];
+}
+
+
 // ----- Resources -----
 
 - (void)postChangedResourcesNotification

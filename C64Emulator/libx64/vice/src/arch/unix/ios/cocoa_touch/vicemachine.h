@@ -32,7 +32,7 @@
 
 struct video_canvas_s;
 
-@class VICEGLView;
+@class VICEMetalView;
 @class VICEMachineResourceKeyValue;
 
 
@@ -59,7 +59,7 @@ struct video_canvas_s;
     int canvasNum;
     struct video_canvas_s *canvasArray[MAX_CANVAS];
 
-    VICEGLView* view;
+    VICEMetalView* view;
 
     BOOL isWaitingForLineInput;
     NSString *submittedLineInput;
@@ -136,7 +136,7 @@ struct video_canvas_s;
 // get num canvases
 -(int)getNumCanvases;
 
--(VICEGLView*) view;
+-(VICEMetalView*) view;
 
 - (void) setResource:(VICEMachineResourceKeyValue*)keyValue;
 - (void) setResourceOnceAfterDelay:(VICEMachineResourceKeyValue*)keyValue;

@@ -69,3 +69,7 @@
 #define VICEMonitorStateResume          3
 #define VICEMonitorUpdateNotification             @"VICEMonitorUpdateNotification"
 
+#define VICESidTitleNotification                  @"VICESidTitleNotification"
+#define VICESidAuthorNotification                 @"VICESidAuthorNotification"
+#define VICESidReleasedNotification               @"VICESidReleasedNotification"
+

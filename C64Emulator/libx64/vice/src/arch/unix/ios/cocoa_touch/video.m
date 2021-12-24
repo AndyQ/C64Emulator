@@ -36,7 +36,7 @@
 
 //#import "vicemachinenotifier.h"
 #import "vicemachine.h"
-#import "viceglview.h"
+#import "vicemetalview.h"
 
 
 // Mac Video Log
@@ -290,10 +290,8 @@ void video_canvas_resize(video_canvas_t * canvas, char resize_canvas)
     NSData *data = [NSData dataWithBytes:&canvasPtr length:sizeof(video_canvas_t *)];
 
     // call UI thread to resize canvas
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        VICEGLView *view = [theVICEMachine view];
-        [view resizeCanvas:CGSizeMake(width, height)];
-    });
+    VICEMetalView *view = [theVICEMachine view];
+    [view resizeCanvas:CGSizeMake(width, height)];
 }
 
 extern int vsync_frame_counter;
@@ -317,7 +315,7 @@ void video_canvas_refresh(video_canvas_t *canvas,
     h = MIN(h, canvas->height - yi);
 
     // get drawing buffer
-    VICEGLView *view = [theVICEMachine view];
+    VICEMetalView *view = [theVICEMachine view];
 
     canvas->pitch = [view getCanvasPitch];
     canvas->depth = [view getCanvasDepth];

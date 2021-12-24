@@ -29,7 +29,7 @@
 #include "machine.h"
 #include "keyboard.h"
 #include "alarm.h"
-#include "initcmdline.h"
+#include "c64keyboard.h"
 
 #import "vicemachine.h"
 #import "vicemachinecontroller.h"
@@ -321,7 +321,8 @@ VICEMachine* theVICEMachine = nil;
         sKeyDelay--;
         if (sKeyDelay == 0)
         {
-            keyboard_key_released_rowcolumn(sCurrentKeyRow, sCurrentKeyColumn, sCurrentKeyShift);
+            if (sCurrentKeyRow >= 0)
+                keyboard_key_released_rowcolumn(sCurrentKeyRow, sCurrentKeyColumn, sCurrentKeyShift);
             
             sCurrentKeyRow = -1;
         }
@@ -335,7 +336,7 @@ VICEMachine* theVICEMachine = nil;
     
         // tell ui that it the machine stopped
         [app machineDidStop];
-                
+        
         [NSThread exit];
     }    
 }
@@ -352,12 +353,15 @@ static int sKeyDelay = DEFAULT_KEY_DELAY;
 {
     if (sCurrentKeyRow != -1)
         keyboard_key_released_rowcolumn(sCurrentKeyRow, sCurrentKeyColumn, sCurrentKeyShift);
-
+    
     sCurrentKeyRow = row;
     sCurrentKeyColumn = col;
     sCurrentKeyShift = shift;
     sKeyDelay = DEFAULT_KEY_DELAY;
-    keyboard_key_pressed_rowcolumn(sCurrentKeyRow, sCurrentKeyColumn, sCurrentKeyShift);
+    if (sCurrentKeyRow == -3)
+        c64keyboard_restore_key(1);
+    else
+        keyboard_key_pressed_rowcolumn(sCurrentKeyRow, sCurrentKeyColumn, sCurrentKeyShift);
 }
 
 
@@ -440,7 +444,7 @@ static int sKeyDelay = DEFAULT_KEY_DELAY;
 }
 
 
--(VICEGLView*) view
+-(VICEMetalView*) view
 {
     return view;
 }

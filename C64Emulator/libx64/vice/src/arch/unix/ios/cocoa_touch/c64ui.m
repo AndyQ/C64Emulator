@@ -35,6 +35,7 @@ int c64ui_init(void)
     
     [controller setIntResource:@"VICIIFilter" value:[NSNumber numberWithInt:1]];
     //[controller setIntResource:@"VICIIDoubleSize" value:[NSNumber numberWithInt:1]];
+    //[controller setIntResource:@"VICIIVideoCache" value:[NSNumber numberWithInt:1]];
 
     [controller setIntResource:@"WarpMode" value:[NSNumber numberWithInt:0]];
     [controller setIntResource:@"DriveTrueEmulation" value:[NSNumber numberWithInt:1]];

@@ -30,13 +30,13 @@ thread is passed through this protocol.
 
  The VICEApplicationProtocol is implemented by the VICEApplicaiton class. */
 
-@class VICEGLView;
+@class VICEMetalView;
 
 
 @protocol VICEApplicationProtocol
 
 - (NSArray*) arguments;
-- (VICEGLView*) viceView;
+- (VICEMetalView*) viceView;
 
 
 // ----- setup -----

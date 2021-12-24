@@ -112,6 +112,10 @@
 // post a volume change
 - (void)postVolumeChangeNotification:(int)volume;
 
+- (void)postSidTitleNotification:(char*)title;
+- (void)postSidAuthorNotification:(char*)author;
+- (void)postSidReleasedNotification:(char*)released;
+
 // post a remote notification
 - (void)postNotificationName:(NSString *)notificationName 
                     userInfo:(NSDictionary *)userInfo;

@@ -28,6 +28,10 @@
 #include "vice.h"
 #include "ui.h"
 
+#include "vicemachine.h"
+#include "vicemachinenotifier.h"
+
+
 int vsid_ui_init(void)
 {
     return 0;
@@ -35,14 +39,17 @@ int vsid_ui_init(void)
 
 void vsid_ui_display_name(const char *name)
 {
+    [[theVICEMachine machineNotifier] postSidTitleNotification:name];
 }	
 
 void vsid_ui_display_author(const char *author)
 {
+    [[theVICEMachine machineNotifier] postSidAuthorNotification:author];
 }
 
 void vsid_ui_display_copyright(const char *copyright)
 {
+    [[theVICEMachine machineNotifier] postSidReleasedNotification:copyright];
 }
 
 void vsid_ui_display_sync(int sync)

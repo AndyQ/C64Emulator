@@ -31,7 +31,7 @@
 #include "video.h"
 
 #ifdef __OBJC__
-#import "VICEGLView.h"
+#import "vicemetalview.h"
 #else
 typedef void VICEViewController;
 typedef void VICEGLView;
