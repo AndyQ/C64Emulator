@@ -77,8 +77,7 @@ static autostart_prg_t * load_prg(const char *file_name, fileio_info_t *finfo, l
     end = prg->start_addr + prg->size - 1;
     if (end > 0xffff) {
         log_error(log, "Invalid size of '%s': %d", file_name, prg->size);
-        end = 0;
-        //return NULL;
+        return NULL;
     }
 
     /* load to memory */

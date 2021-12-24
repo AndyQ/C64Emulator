@@ -111,6 +111,7 @@ static struct sigaction ignore;
 
 int fork_coproc(int *fd_wr, int *fd_rd, char *cmd)
 {
+#ifndef TVOS_COMPILE
     int fd1[2], fd2[2];
     pid_t pid;
 
@@ -161,6 +162,7 @@ int fork_coproc(int *fd_wr, int *fd_rd, char *cmd)
         *fd_rd = fd1[0];
         *fd_wr = fd2[1];
     }
+#endif
     return 0;
 }
 #endif

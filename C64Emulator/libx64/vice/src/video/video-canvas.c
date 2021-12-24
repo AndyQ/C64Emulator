@@ -36,6 +36,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "lib.h"
 #include "log.h"
@@ -103,7 +104,6 @@ void video_canvas_render(video_canvas_t *canvas, BYTE *trg, int width,
                       trg, width, height, xs, ys, xt, yt,
                       canvas->draw_buffer->draw_buffer_width, pitcht, depth,
                       viewport);
-
 }
 
 void video_canvas_refresh_all(video_canvas_t *canvas)

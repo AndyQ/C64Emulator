@@ -796,10 +796,9 @@ int sound_open(void)
     for (i = 1; 1 << i < fragsize; i++);
     fragsize = 1 << i;
     fragnr = (int)((speed * bufsize + fragsize - 1) / fragsize);
-    if (fragnr < 3) {
+    if (fragnr < 3)
         fragnr = 3;
-    }
-
+    
     for (i = 0; (pdev = sound_devices[i]); i++) {
         if (!playname || (pdev->name && !strcasecmp(playname, pdev->name))) {
             break;
@@ -957,7 +956,7 @@ void sound_close(void)
        UI dialogs certainly does. */
     vsync_suspend_speed_eval();
     
- //   offset = 0;
+    offset = 0;
 }
 
 /* run sid */

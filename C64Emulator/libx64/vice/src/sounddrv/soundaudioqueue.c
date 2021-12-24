@@ -95,6 +95,14 @@ static int                         sStopping = 0;
 static int                         sAudioSessionInitialized = 0;
 static int                         sAudioSessionInterrupted = 0;
 
+static short*                      sCurrentBuffer = NULL;
+
+
+short* gGetCurrentAudioBuffer()
+{
+    return sCurrentBuffer;
+}
+
 
 static void sAudioQueueOutputCallback(void* inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer)
 {
@@ -138,6 +146,8 @@ static void sAudioQueueOutputCallback(void* inUserData, AudioQueueRef inAQ, Audi
         buffer = silence;
     }
 
+    sCurrentBuffer = buffer;
+    
     memcpy(aqBuffer, buffer, sAQBufferByteSize);
     
 	// tell core audio how many bytes we have just filled
@@ -150,11 +160,11 @@ static void sAudioQueueOutputCallback(void* inUserData, AudioQueueRef inAQ, Audi
     
 	// enqueue the new buffer
 	OSStatus err = AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, 0); // CBR has no packet descriptions
-	if (err) fprintf(stderr, "AudioQueueEnqueueBuffer err %ld\n", (int)err);
+	if (err) fprintf(stderr, "AudioQueueEnqueueBuffer err %d\n", (int)err);
 }
 
 
-
+#ifndef TVOS_COMPILE
 static void sAudioSessionInterruptionCallback(void* inClientData, UInt32 inInterruptionState)
 {
     if (inInterruptionState == kAudioSessionBeginInterruption)
@@ -173,7 +183,7 @@ static void sAudioSessionInterruptionCallback(void* inClientData, UInt32 inInter
         UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
         OSStatus err = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof (sessionCategory), &sessionCategory);
         if (err)
-            fprintf(stderr, "WARNING: AudioSessionSetProperty (AudioCategory) err %ld\n", (int)err);
+            fprintf(stderr, "WARNING: AudioSessionSetProperty (AudioCategory) err %d\n", (int)err);
         
         err = AudioSessionSetActive(true);
         if (err)
@@ -194,11 +204,13 @@ static void sAudioSessionPropertyChangeCallback(void* inClientData, AudioSession
 {
 	fprintf(stderr, "FIXME: handle audio session property change\n");
 }
+#endif
 
 static void sAudioQueuePropertyChangeCallback(void* inUserData, AudioQueueRef inAQ, AudioQueuePropertyID inID)
 {
 	fprintf(stderr, "FIXME: handle audio queue property change\n");
 }
+
 
 
 static int audioqueue_resume(void);
@@ -223,6 +235,7 @@ static int audioqueue_init(const char *param, int *speed, int *fragsize, int *fr
     // register with AudioSession API (iPhone OS 2.1 or later)
     OSStatus err = 0;
     
+#ifndef TVOS_COMPILE
     if (!sAudioSessionInitialized)
     {
         err = AudioSessionInitialize(NULL, NULL, sAudioSessionInterruptionCallback, NULL);
@@ -231,7 +244,7 @@ static int audioqueue_init(const char *param, int *speed, int *fragsize, int *fr
 
 	if (err) // will fail on the simulator
 	{
-		fprintf(stderr, "WARNING: AudioSessionInitialize err %ld\n", (int)err);
+		fprintf(stderr, "WARNING: AudioSessionInitialize err %d\n", (int)err);
 	}
 	else
 	{
@@ -239,9 +252,10 @@ static int audioqueue_init(const char *param, int *speed, int *fragsize, int *fr
 		UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
 		err = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof (sessionCategory), &sessionCategory);
 		if (err)
-			fprintf(stderr, "WARNING: AudioSessionSetProperty (AudioCategory) err %ld\n", (int)err);
+			fprintf(stderr, "WARNING: AudioSessionSetProperty (AudioCategory) err %d\n", (int)err);
 	}
-
+#endif
+    
     sStreamFormat.mFormatID = kAudioFormatLinearPCM;
     sStreamFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
 
@@ -269,15 +283,15 @@ static int audioqueue_init(const char *param, int *speed, int *fragsize, int *fr
                               0,
                               &sQueue);
     
-    if (err) fprintf(stderr, "AudioQueueNewOutput err %ld\n", (int)err);
+    if (err) fprintf(stderr, "AudioQueueNewOutput err %d\n", (int)err);
     
     // allocate audio queue buffers
     sAQBufferByteSize = bytes_in_fragment;
-    fprintf(stderr, "audio queue buffer size = %d bytes\n", sAQBufferByteSize);
+    //fprintf(stderr, "audio queue buffer size = %d bytes\n", sAQBufferByteSize);
     
     for (int i=0; i< kNumberBuffers; i++) {
         err = AudioQueueAllocateBuffer(sQueue, sAQBufferByteSize, &sAQBuffers[i]);
-        if (err) fprintf(stderr, "AudioQueueAllocateBuffer [%d] err %ld\n",i, (int)err);
+        if (err) fprintf(stderr, "AudioQueueAllocateBuffer [%d] err %d\n",i, (int)err);
         
         // fill buffer
         sAudioQueueOutputCallback(NULL, sQueue, sAQBuffers[i]);
@@ -285,15 +299,15 @@ static int audioqueue_init(const char *param, int *speed, int *fragsize, int *fr
     
     // global volume setup
     err = AudioQueueSetParameter(sQueue, kAudioQueueParam_Volume, 1.0f);
-    if (err) fprintf(stderr, "AudioQueueSetParameter err %ld\n", (int)err);
+    if (err) fprintf(stderr, "AudioQueueSetParameter err %d\n", (int)err);
     
     // register property change callback
     err = AudioQueueAddPropertyListener(sQueue, kAudioQueueProperty_IsRunning, sAudioQueuePropertyChangeCallback, NULL);
-    if (err) fprintf(stderr, "AudioQueueAddPropertyListener err %ld\n", (int)err);
+    if (err) fprintf(stderr, "AudioQueueAddPropertyListener err %d\n", (int)err);
     
     // launch audio queues
     err = AudioQueueStart(sQueue, NULL);
-    if (err) fprintf(stderr, "AudioQueueStart err %ld\n", (int)err);
+    if (err) fprintf(stderr, "AudioQueueStart err %d\n", (int)err);
     
     return 0;
 }
@@ -335,22 +349,26 @@ static int audioqueue_bufferspace(void)
 static void audioqueue_close(void)
 {
 	OSStatus err = AudioQueueFlush(sQueue);
-	if (err) fprintf(stderr, "AudioQueueFlush err %ld\n", (int)err);
+	if (err) fprintf(stderr, "AudioQueueFlush err %d\n", (int)err);
 
     sStopping = 1;
     
 	err = AudioQueueStop(sQueue, true); // false = stop async
-	if (err) fprintf(stderr, "AudioQueueStop err %ld\n", (int)err);
+	if (err) fprintf(stderr, "AudioQueueStop err %d\n", (int)err);
 
     sStopping = 0;
 
     AudioQueueDispose(sQueue, true);
-	if (err) fprintf(stderr, "AudioQueueDispose err %ld\n", (int)err);
+	if (err) fprintf(stderr, "AudioQueueDispose err %d\n", (int)err);
 
+#ifndef TVOS_COMPILE
 	err = AudioSessionSetActive(false);
 	if (err)
 		fprintf(stderr, "WARNING: AudioSessionSetActive err %d\n", (int)err);
-
+#endif
+    
+    sCurrentBuffer = NULL;
+    
     lib_free(soundbuffer);
     lib_free(silence);
 }

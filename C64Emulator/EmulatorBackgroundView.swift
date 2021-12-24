@@ -27,9 +27,9 @@ class EmulationBackgroundView : UIView
         {
             if touch.tapCount == 2
             {
-                _emulationViewController.cancelControlFade()
-                _emulationViewController.shrinkOrGrowViceView()
-                _emulationViewController.scheduleControlFadeOut(delay:0.0)
+//                _emulationViewController.cancelControlFade()
+//                _emulationViewController.shrinkOrGrowViceView()
+//                _emulationViewController.scheduleControlFadeOut(delay:0.0)
                 return;
             }
         }
@@ -44,11 +44,11 @@ class EmulationBackgroundView : UIView
         {
             if touch.tapCount == 1
             {
-                if !_emulationViewController.controlsVisible() {
-                    _emulationViewController.scheduleControlFadeIn(delay:0.5)
-                } else {
-                    _emulationViewController.scheduleControlFadeOut(delay:0.5)
-                }
+//                if !_emulationViewController.controlsVisible() {
+//                    _emulationViewController.scheduleControlFadeIn(delay:0.5)
+//                } else {
+//                    _emulationViewController.scheduleControlFadeOut(delay:0.5)
+//                }
             }
         }
     }

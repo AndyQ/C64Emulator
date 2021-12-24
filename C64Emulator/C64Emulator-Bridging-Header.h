@@ -3,7 +3,7 @@
 //
 
 #import "libx64/vice/src/arch/unix/ios/cocoa_touch/vicemachine.h"
-#import "libx64/vice/src/arch/unix/ios/cocoa_touch/viceglview.h"
+#import "libx64/vice/src/arch/unix/ios/cocoa_touch/vicemetalview.h"
 #import "libx64/vice/src/arch/unix/ios/cocoa_touch/vicenotifications.h"
 #import "libx64/vice/src/arch/unix/ios/joy.h"
 

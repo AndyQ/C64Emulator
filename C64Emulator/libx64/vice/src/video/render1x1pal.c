@@ -26,6 +26,8 @@
 
 #include "vice.h"
 
+#include <stdio.h>
+
 #include "render1x1pal.h"
 #include "types.h"
 #include "video-color.h"
@@ -249,7 +251,6 @@ render_generic_1x1_pal(video_render_color_tables_t *color_tab, const BYTE *src, 
             line[0] = unew;
             line[1] = vnew;
             line += 2;
-
             store_func(tmptrg, l1, u1, v1, l2, u2, v2);
             tmptrg += pixelstride;
         }
@@ -336,3 +337,4 @@ render_32_1x1_pal(video_render_color_tables_t *color_tab,
                            pitchs, pitcht,
                            8, store_pixel_4, 0, config);
 }
+

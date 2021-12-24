@@ -52,6 +52,7 @@ static char *startup_disk_images[4];
 static char *startup_tape_image;
 static unsigned int autostart_mode;
 
+extern int c64scene_fake_vsid;
 
 static void cmdline_free_autostart_string(void)
 {
@@ -275,7 +276,7 @@ int initcmdline_check_psid(void)
 {
     /* Check for PSID here since we don't want to allow autodetection
        in autostart.c. */
-    if (machine_class == VICE_MACHINE_VSID) {
+    if (machine_class == VICE_MACHINE_VSID || c64scene_fake_vsid) {
         if (autostart_string != NULL
             && machine_autodetect_psid(autostart_string) == -1) {
             log_error(LOG_DEFAULT, "`%s' is not a valid PSID file.",
@@ -322,7 +323,7 @@ int initcmdline_check_args(int argc, char **argv)
 
 void initcmdline_check_attach(void)
 {
-    if (machine_class != VICE_MACHINE_VSID) {
+    if (machine_class != VICE_MACHINE_VSID && c64scene_fake_vsid == 0) {
         /* Handle general-purpose command-line options.  */
 
         /* `-autostart' */

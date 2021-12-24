@@ -21,6 +21,17 @@ extension Array where Element : Equatable {
 }
 
 
+class AccessoryView : UIView {
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if #available(iOS 11.0, *) {
+            if let window = self.window {
+                self.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: window.safeAreaLayoutGuide.bottomAnchor, multiplier: 1).isActive = true
+            }
+        }
+    }
+
+}
 
 let JOYSTICK_DISABLED = 0
 let JOYSTICK_PORT1 = 1
@@ -70,10 +81,10 @@ func sUpdateJoystickState( port : Int32)
 }
 
 
-class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolbarDelegate {
+class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolbarDelegate, UIKeyInput {
     
     
-    @IBOutlet var _viceView : VICEGLView!
+    @IBOutlet var _viceView : VICEMetalView!
     @IBOutlet var _toolBar : UIToolbar!
     @IBOutlet var _bottomToolBar : UIToolbar!
     @IBOutlet var _titleLabel : UILabel!
@@ -88,6 +99,13 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     let sJoystickButtonImageNames = ["joystick","joystick_1","joystick_2"]
     
     var controller : GCController!
+    private var _virtualController: Any?
+    @available(iOS 15.0, *)
+    public var virtualController: GCVirtualController? {
+        get { return self._virtualController as? GCVirtualController }
+        set { self._virtualController = newValue }
+    }
+
 
     var _arguments = [String]()
     var _canTerminate = false
@@ -118,12 +136,11 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     
     var accessoryView : UIView?
 
-    
     override var inputAccessoryView: UIView? {
     
         accessoryView = nil
         if ( accessoryView == nil ) {
-            accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 77))
+            accessoryView = AccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 77))
             accessoryView!.backgroundColor = UIColor.lightGray
             
             accessoryView?.layoutIfNeeded()
@@ -224,7 +241,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _keyboardOffset = 0.0
         _viceViewScaled = false
         
-        controlsFadeIn()
+//        controlsFadeIn()
                 
         registerForNotifications()
         
@@ -237,23 +254,13 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _driveLedView.isHidden = true
         
         _toolBar.delegate = self
-        
+                
         setNeedsStatusBarAppearanceUpdate()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(EmulatorViewController.warpStatusNotification(_:)), name: NSNotification.Name.init("WarpStatus"), object: nil )
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.GCControllerDidConnect, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            if GCController.controllers().count == 1 {
-                self?.toggleHardwareController(useHardware: true)
-            }
-        })
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.GCControllerDidDisconnect, object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
-            if GCController.controllers().count == 0 {
-                self?.toggleHardwareController(useHardware: false)
-            }
-        })
+        lookForGameControllers()
 
+//
         NotificationCenter.default.addObserver(forName: NSNotification.Name("GameTogglePauseNotification"), object: nil, queue: OperationQueue.main, using: { [weak self] (notification) in
             guard let `self` = self else { return }
             self.clickPlayPauseButton(self)
@@ -268,10 +275,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         
         self.navigationController?.isNavigationBarHidden = true
 
-        _bottomToolBar.isHidden = false
+        //_bottomToolBar.isHidden = false
         
         if GCController.controllers().count == 1 {
-            self.toggleHardwareController(useHardware: true)
+//            self.toggleHardwareController(useHardware: true)
         }
     }
     
@@ -280,12 +287,14 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
-        self.navigationController?.isNavigationBarHidden = false
+        if (_emulationRunning) {
+            theVICEMachine.stopMachine()
+        }
 
-        cancelControlFade()
+        self.navigationController?.isNavigationBarHidden = false
     }
     
-    
+
     // ----------------------------------------------------------------------------
     func position(for bar: UIBarPositioning) -> UIBarPosition {
 
@@ -322,10 +331,9 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         }
 
         _dataFilePath = files[0]
-        if self.program != "" {
+        if self.program == "" {
             //_dataFilePath = _dataFilePath + ":\(self.program.lowercased())"
-//            _arguments = [rootPath, "-8", _dataFilePath, "-autostart", _dataFilePath]
-            _arguments = [rootPath, "-autostart", _dataFilePath]
+            _arguments = [rootPath, "-8", _dataFilePath, "-autostart", _dataFilePath]
         } else {
             _arguments = [rootPath]
         }
@@ -352,13 +360,17 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
                 guard let `self` = self else { return }
                 theVICEMachine.machineController().attachDiskImage(8, path: self._dataFilePath)
             }
+        } else {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ) { [weak self] in
+//                guard let `self` = self else { return }
+//                theVICEMachine.machineController().smartAttachImage(self._dataFilePath, withProgNum: 0, andRun: true)
+//            }
+
         }
 
         Thread.detachNewThreadSelector(#selector(VICEMachine.start(_:)), toTarget: viceMachine, with: self)
         
         _emulationRunning = true
-        
-        scheduleControlFadeOut( delay:0 )
     }
     
     
@@ -375,9 +387,10 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     func dismiss()
     // ----------------------------------------------------------------------------
     {
-        if (!self.isBeingDismissed) {
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            if (!self.isBeingDismissed) {
+                self.navigationController?.popViewController(animated: true)
+                //self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -415,90 +428,34 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     @IBAction func clickKeyboardButton( _ sender: AnyObject)
     // ----------------------------------------------------------------------------
     {
-        if _viceView.isFirstResponder {
-            _viceView.resignFirstResponder()
+        if self.isFirstResponder {
+            self.resignFirstResponder()
         } else {
-            _viceView.becomeFirstResponder()
+            self.becomeFirstResponder()
         }
     }
-    
-    
-    // MARK: GameController handling
-    func toggleHardwareController( useHardware: Bool ) {
-        print( "Found joystick - \(useHardware)")
-
-        if useHardware {
-            _joystickView.alpha = 0.0
-            _fireButtonView.alpha = 0.0
-
-            self.controller = GCController.controllers()[0]
-            self.controller.playerIndex = .index1
-            if self.controller.gamepad != nil {
  
-                self.controller.gamepad?.rightShoulder.valueChangedHandler = { [weak self] (button, value, pressed) in
-                    guard let `self` = self else { return }
-                    if pressed == false {
-                        // Toggle joystick
-                        if self.self.joystickMode == JOYSTICK_DISABLED {
-                            self.joystickMode = JOYSTICK_PORT1
-                        } else if self.joystickMode == JOYSTICK_PORT1 {
-                            self.joystickMode = JOYSTICK_PORT2
-                        } else if self.joystickMode == JOYSTICK_PORT2 {
-                            self.joystickMode = JOYSTICK_DISABLED
-                        }
-                        self._joystickModeButton.image = UIImage(named:self.sJoystickButtonImageNames[self.joystickMode])
-                    }
-                }
-                
-                self.controller.gamepad?.buttonA.valueChangedHandler = { [weak self] (button, value, pressed) in
-                    guard let `self` = self else { return }
-                    if pressed {
-                        sSetJoystickBit(bit:16)
-                    } else {
-                        sClearJoystickBit(bit:16)
-                        
-                    }
-                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
-                }
-                
-                self.controller.gamepad?.dpad.valueChangedHandler = { [weak self] (dpad, xAxis, yAxis) in
-                    guard let `self` = self else { return }
-                    
-                    // Handle Up
-                    if sIsSetJoystickBit(bit: 1) && yAxis <= 0 {
-                        sClearJoystickBit(bit: 1)
-                    } else if yAxis > 0.1 {
-                        sSetJoystickBit(bit: 1)
-                    }
-                    // Handle Down
-                    if sIsSetJoystickBit(bit: 2) && yAxis >= 0 {
-                        sClearJoystickBit(bit: 2)
-                    } else if yAxis < -0.1 {
-                        sSetJoystickBit(bit: 2)
-                    }
-                    // Handle Left
-                    if sIsSetJoystickBit(bit: 4) && xAxis >= 0 {
-                        sClearJoystickBit(bit: 4)
-                    } else if xAxis < -0.1 {
-                        sSetJoystickBit(bit: 4)
-                    }
-                    // Handle Right
-                    if sIsSetJoystickBit(bit: 8) && xAxis <= 0 {
-                        sClearJoystickBit(bit: 8)
-                    } else if xAxis > 0.1 {
-                        sSetJoystickBit(bit: 8)
-                    }
-                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
-                }
-                //Add controller pause handler here
-            }
-        } else {
-            //7
-            _joystickView.alpha = 1
-            _fireButtonView.alpha = 1
-            self.controller = nil;
+    var firstView = true
+    override var canBecomeFirstResponder: Bool {
+        if firstView {
+            firstView = false
+            return false
         }
+        return true
     }
+
+    func insertText(_ text: String) {
+        _viceView.insertText(text)
+    }
+
+    var hasText: Bool { return true }
+    
+    func deleteBackward() {
+        _viceView.deleteBackward()
+
+    }
+
+    
 
     
     // MARK: On screen joystick handling
@@ -555,7 +512,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         theVICEMachine.togglePause()
         let image = theVICEMachine.isPaused() ? UIImage(named:"hud_play") : UIImage(named:"hud_pause")
         _playPauseButton.setImage(image, for: .normal)
-        scheduleControlFadeOut( delay:0 )
     }
     
     
@@ -577,7 +533,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         _warpEnabled = theVICEMachine.toggleWarpMode()
         let image = _warpEnabled ? UIImage(named:"hud_warp_highlighted") : UIImage(named:"hud_warp")
         _warpButton.setImage(image, for: .normal)
-        scheduleControlFadeOut( delay:0 )
     }
     
     
@@ -611,422 +566,15 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
     }
     
     
-    let sVisibleAlpha : CGFloat = 1.0
-    
-    
-    // ----------------------------------------------------------------------------
-    @objc func controlsFadeIn()
-    // ----------------------------------------------------------------------------
-    {
-        var joystickFrame = _joystickView.frame
-        var fireButtonFrame = _fireButtonView.frame
-        
-        var ypos : CGFloat = 0.0
-        let baseToolbarPosition : CGFloat = _bottomToolBar.frame.origin.y
-        
-        ypos = baseToolbarPosition - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
-        
-        joystickFrame.origin.y = ypos;
-        fireButtonFrame.origin.y = ypos;
-        
-        
-        UIView.beginAnimations("FadeIn", context: nil)
-        UIView.setAnimationDuration(0.2)
-        UIView.setAnimationCurve(.linear)
-        
-        _toolBar.alpha = sVisibleAlpha;
-        _bottomToolBar.alpha = sVisibleAlpha;
-        _titleLabel.alpha = sVisibleAlpha;
-        _driveLedView.alpha = sVisibleAlpha;
-        
-        _joystickView.frame = joystickFrame;
-        _fireButtonView.frame = fireButtonFrame;
-        
-        UIView.commitAnimations()
-        
-        _controlsVisible = true
-        
-        scheduleControlFadeOut(delay:0)
-        
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    @objc func controlsFadeOut()
-    // ----------------------------------------------------------------------------
-    {
-        var joystickFrame = _joystickView.frame;
-        var fireButtonFrame = _fireButtonView.frame;
-        
-        let ypos = self.view.bounds.size.height - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
-        
-        joystickFrame.origin.y = ypos;
-        fireButtonFrame.origin.y = ypos;
-        
-        
-        UIView.beginAnimations("FadeOut", context: nil)
-        UIView.setAnimationDuration(0.2)
-        UIView.setAnimationCurve(.linear)
-        
-        _toolBar.alpha = 0
-        _bottomToolBar.alpha = 0
-        _titleLabel.alpha = 0
-        _driveLedView.alpha = 0;
-        
-        _joystickView.frame = joystickFrame;
-        _fireButtonView.frame = fireButtonFrame;
-        
-        UIView.commitAnimations()
-        
-        _controlsVisible = false
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    func scheduleControlFadeIn(delay:Float)
-    // ----------------------------------------------------------------------------
-    {
-        // Schedule fade out after 5 seconds
-        if (_controlFadeTimer != nil) {
-            _controlFadeTimer.invalidate()
-        }
-        
-        _controlFadeTimer = Timer.scheduledTimer(timeInterval: (TimeInterval(delay == 0.0 ? sControlsFadeDelay : delay)), target: self, selector: #selector(controlsFadeIn), userInfo: nil, repeats: false)
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    func scheduleControlFadeOut(delay:Float)
-    // ----------------------------------------------------------------------------
-    {
-        // Schedule fade out after 5 seconds
-        if (_controlFadeTimer != nil) {
-            _controlFadeTimer.invalidate()
-        }
-        
-        _controlFadeTimer = Timer.scheduledTimer(timeInterval: (TimeInterval(delay == 0.0 ? sControlsFadeDelay : delay)), target: self, selector: #selector(controlsFadeOut), userInfo: nil, repeats: false)
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    func cancelControlFade()
-    // ----------------------------------------------------------------------------
-    {
-        if (_controlFadeTimer != nil) {
-            _controlFadeTimer.invalidate()
-        }
-    }
-    
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        // Code here will execute before the rotation begins.
-        // Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
-
-
-        if (size.width > size.height)
-        {
-            self.setLandscapeViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-            _bottomToolBar.isHidden = false
-        }
-        else if (size.width < size.height)
-        {
-            
-            self.setPortraitViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-            _bottomToolBar.isHidden = false
-        }
-
-        coordinator.animate(alongsideTransition: { (context) in
-            // Place code here to perform animations during the rotation.
-            // You can pass nil or leave this block empty if not necessary.
-            }, completion: { (context ) in
-                // Code here will execute after the rotation has finished.
-                // Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
-        })
-    }
-    
-    
-    
-    // ----------------------------------------------------------------------------
-    func shrinkOrGrowViceView()
-    // ----------------------------------------------------------------------------
-    {
-        var allowShrinkGrow = false
-        if INTERFACE_IS_PHONE()
-        {
-            allowShrinkGrow = true
-        }
-        else
-        {
-            allowShrinkGrow = UIApplication.shared.statusBarOrientation.isLandscape;
-        }
-        
-        if (allowShrinkGrow && !_keyboardVisible)
-        {
-            _viceViewScaled = !_viceViewScaled;
-            
-            
-            if (UIApplication.shared.statusBarOrientation.isPortrait)
-            {
-                self.setPortraitViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-            }
-            else if (UIApplication.shared.statusBarOrientation.isLandscape)
-            {
-                self.setLandscapeViceViewFrame( duration:0.1, animCurve:.linear, canvasSize:_viceView.textureSize() )
-            }
-        }
-    }
-    
-    
-    // UIDeviceOrientationUnknown                0
-    // UIDeviceOrientationPortrait               1
-    // UIDeviceOrientationPortraitUpsideDown     2
-    // UIDeviceOrientationLandscapeLeft          3
-    // UIDeviceOrientationLandscapeRight         4
-    
-    
-    // ----------------------------------------------------------------------------
-    func setPortraitViceViewFrame(duration: CGFloat, animCurve:UIView.AnimationCurve, canvasSize:CGSize )
-    // ----------------------------------------------------------------------------
-    {
-        //NSLog(@"setPortrait with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
-        
-        let superViewWidth :CGFloat = self.view.bounds.size.width;
-        let superViewHeight :CGFloat = self.view.bounds.size.height;
-        
-        var frame = _viceView.frame;
-        
-        if INTERFACE_IS_PHONE()
-        {
-            let aspectRatio = canvasSize.width / canvasSize.height;
-            let width = min(superViewWidth, superViewHeight);
-            
-            if width < canvasSize.width {
-                frame.size.width = width;         // on iPhone 4/5 screen is too small to show full res in portrait, so no scaling
-            } else {
-                frame.size.width = _viceViewScaled ? max(width, canvasSize.width) : min(width, canvasSize.width); // on iPhone 6 the screen shows 384 by default and can be scaled to full width
-            }
-            
-            frame.size.height = frame.size.width / aspectRatio;
-            
-            let ypos = (superViewHeight - frame.size.height) / 2.0
-            let bottom = ypos + frame.size.height
-            let keyboardTop :CGFloat = superViewHeight - _keyboardOffset
-            
-            frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-            
-            if (keyboardTop < bottom) {
-                frame.origin.y = ypos - (bottom - keyboardTop)
-            } else {
-                frame.origin.y = ypos
-            }
-        }
-        else
-        {
-            if (_keyboardOffset > 0.0)
-            {
-                let ypos = (superViewHeight - frame.size.height) / 2.0
-                let bottom = ypos + frame.size.height
-                let keyboardTop = superViewHeight - _keyboardOffset
-                
-                frame.size.width = canvasSize.width * 2.0
-                frame.size.height = canvasSize.height * 2.0
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                
-                if (keyboardTop < bottom) {
-                    frame.origin.y = ypos - (bottom - keyboardTop);
-                } else {
-                    frame.origin.y = ypos;
-                }
-            }
-            else
-            {
-                frame.size.width = canvasSize.width * 2.0
-                frame.size.height = canvasSize.height * 2.0
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                frame.origin.y = (superViewHeight - frame.size.height) / 2.0
-            }
-        }
-        
-        //NSLog(@"portrait superview: %f/%f, vice frame: %@", superViewWidth, superViewHeight, NSStringFromCGRect(frame));
-        
-        var joystickFrame = _joystickView.frame;
-        var fireButtonFrame = _fireButtonView.frame;
-        
-        let baseToolbarPosition = _bottomToolBar.frame.origin.y
-        let ypos = (_controlsVisible ? baseToolbarPosition : self.view.bounds.size.height) - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
-        joystickFrame.origin.y = ypos;
-        fireButtonFrame.origin.y = ypos;
-        
-        UIView.beginAnimations("Resize", context: nil)
-        UIView.setAnimationDuration(TimeInterval(duration))
-        UIView.setAnimationCurve(animCurve)
-        
-        _viceView.frame = frame;
-        _joystickView.frame = joystickFrame;
-        _fireButtonView.frame = fireButtonFrame;
-        
-        UIView.commitAnimations()
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    func setLandscapeViceViewFrame(duration: CGFloat, animCurve:UIView.AnimationCurve, canvasSize:CGSize )
-    // ----------------------------------------------------------------------------
-    {
-        //    NSLog(@"setLandscape with orientation: %ld", (long)UIApplication.shared.statusBarOrientation);
-        
-        let superViewWidth :CGFloat = self.view.bounds.size.width;
-        let superViewHeight :CGFloat = self.view.bounds.size.height;
-        
-        var frame = _viceView.frame;
-        let aspectRatio = canvasSize.width / canvasSize.height;
-        
-        if INTERFACE_IS_PHONE()
-        {
-            if _keyboardOffset > 0.0
-            {
-                frame.size.height = superViewHeight - _keyboardOffset;
-                frame.size.width = frame.size.height * aspectRatio;
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                frame.origin.y = 0.0
-            }
-            else
-            {
-//                frame.size.height = _viceViewScaled ? min(superViewWidth, superViewHeight) : canvasSize.height;
-                frame.size.height = min(superViewWidth, superViewHeight)
-                frame.size.width = frame.size.height * aspectRatio;
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                frame.origin.y = (superViewHeight - frame.size.height) / 2.0
-            }
-        }
-        else
-        {
-            if _keyboardOffset > 0.0
-            {
-                frame.size.height = 768.0 - _keyboardOffset
-                frame.size.width = frame.size.height * aspectRatio
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                frame.origin.y = 0.0
-            }
-            else
-            {
-                let scaleFactor : CGFloat = _viceViewScaled ? 1024.0/768.0 : 1.0
-                
-                let doubledCanvasSize = CGSize(width:canvasSize.width * 2.0, height:canvasSize.height * 2.0);
-                frame.size.width = doubledCanvasSize.width * scaleFactor
-                frame.size.height = doubledCanvasSize.height * scaleFactor
-                frame.origin.x = (superViewWidth - frame.size.width) / 2.0
-                frame.origin.y = (superViewHeight - frame.size.height) / 2.0
-            }
-        }
-        
-//        NSLog(@"landscape superview: %@, vice frame: %@", NSStringFromCGRect([self.view bounds]), NSStringFromCGRect(frame));
-        
-        var joystickFrame = _joystickView.frame;
-        var fireButtonFrame = _fireButtonView.frame;
-        
-        let ypos = (_controlsVisible ? _bottomToolBar.frame.origin.y : self.view.bounds.size.height) - (INTERFACE_IS_PHONE() ? 168.0 : 180.0);
-        joystickFrame.origin.y = ypos
-        fireButtonFrame.origin.y = ypos
-        
-        UIView.beginAnimations("Resize", context: nil)
-        UIView.setAnimationDuration(0.1)
-        UIView.setAnimationCurve(animCurve)
-        
-        _viceView.frame = frame;
-        _joystickView.frame = joystickFrame;
-        _fireButtonView.frame = fireButtonFrame;
-        
-        UIView.commitAnimations()
-        
-        //NSLog(@"frame: %@, center: %@", NSStringFromCGRect(frame), NSStringFromCGPoint(_viceView.center));
-    }
-    
-    
     // ----------------------------------------------------------------------------
     func registerForNotifications()
     // ----------------------------------------------------------------------------
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(enableDriveStatus(_:)), name: NSNotification.Name(rawValue: VICEEnableDriveStatusNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(displayLed(_:)), name: NSNotification.Name(rawValue: VICEDisplayDriveLedNotification), object: nil)
     }
     
-    
-    // ----------------------------------------------------------------------------
-    @objc func keyboardWillBeShown( _ notification: NSNotification )
-    // ----------------------------------------------------------------------------
-    {
-        _keyboardVisible = true
-        guard let info = notification.userInfo else { return }
-        print( "Info - \(info)" )
 
-        var keyboard_size = CGSize()
-        
-        let frameVal = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
-        if let val = frameVal?.cgRectValue {
-            keyboard_size = val.size // [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-        }
-        _keyboardOffset = keyboard_size.height;
-
-        var duration : CGFloat = 0.0
-        let durationVal = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
-        if let val = durationVal?.doubleValue {
-            duration = CGFloat(val)
-        }
-        
-        var curve = UIView.AnimationCurve.linear
-        let curveVal = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
-        if let val = curveVal?.intValue  {
-            curve = UIView.AnimationCurve(rawValue: val )!
-        }
-        
-        if (UIApplication.shared.statusBarOrientation.isLandscape) {
-            self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
-        }
-        else if (UIApplication.shared.statusBarOrientation.isPortrait) {
-            self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
-        }
-        
-        self.controlsFadeOut()
-    }
-    
-    
-    // ----------------------------------------------------------------------------
-    @objc func keyboardWillBeHidden( _ notification : NSNotification )
-    // ----------------------------------------------------------------------------
-    {
-        _keyboardVisible = false
-        _keyboardOffset = 0.0
-        
-        guard let info = notification.userInfo else { return }
-        
-        var duration : CGFloat = 0.0
-        let durationVal = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
-        if let val = durationVal?.doubleValue {
-            duration = CGFloat(val)
-        }
-        
-        var curve = UIView.AnimationCurve.linear
-        let curveVal = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
-        if let val = curveVal?.intValue {
-            curve = UIView.AnimationCurve(rawValue: val)!
-        }
-        
-        if (UIApplication.shared.statusBarOrientation.isLandscape) {
-            self.setLandscapeViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
-        }
-        else if (UIApplication.shared.statusBarOrientation.isPortrait) {
-            self.setPortraitViceViewFrame(duration: duration, animCurve: curve, canvasSize: _viceView.textureSize())
-        }
-    }
-    
-    
     // ----------------------------------------------------------------------------
     func titleLabel() -> UILabel
     // ----------------------------------------------------------------------------
@@ -1094,7 +642,7 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
         return _arguments
     }
     
-    func viceView() -> VICEGLView! {
+    func viceView() -> VICEMetalView! {
         return _viceView
     }
     
@@ -1119,14 +667,6 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
 
     
     func resizeCanvas(_ canvasPtr: Data!, with size: CGSize) {
-         if INTERFACE_IS_PHONE()
-         {
-            if (UIApplication.shared.statusBarOrientation.isPortrait) {
-                self.setPortraitViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
-            } else if (UIApplication.shared.statusBarOrientation.isLandscape) {
-                self.setLandscapeViceViewFrame(duration: 0.1, animCurve: .linear, canvasSize: size)
-            }
-        }
     }
     
     func reconfigureCanvas(_ canvasPtr: Data!) {
@@ -1176,3 +716,209 @@ class EmulatorViewController: UIViewController, VICEApplicationProtocol, UIToolb
 }
 
 
+// MARK: Game Controller support
+extension EmulatorViewController {
+    func lookForGameControllers() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(connectControllers), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disconnectControllers), name: NSNotification.Name.GCControllerDidDisconnect, object: nil)
+        
+/*
+        let virtualConfiguration = GCVirtualController.Configuration()
+        virtualConfiguration.elements = [GCInputDirectionalDpad]
+        virtualController = GCVirtualController(configuration: virtualConfiguration)
+        
+        // Connect to the virtual controller if no physical controllers are available.
+        if GCController.controllers().isEmpty {
+            print( "Virtual controller connected")
+            virtualController?.connect()
+        }
+*/
+        guard let controller = GCController.controllers().first else {
+            return
+        }
+        
+//        controller.showVirtualController()
+
+//        registerGameController(controller)
+    }
+    
+    @objc func connectControllers() {
+        //Unpause the Game if it is currently paused
+        if theVICEMachine.isPaused() {
+            theVICEMachine.togglePause()
+        }
+        
+        //Used to register the Nimbus Controllers to a specific Player Number
+        var indexNumber = 0
+        // Run through each controller currently connected to the system
+        for controller in GCController.controllers() {
+            //Check to see whether it is an extended Game Controller (Such as a Nimbus)
+            if controller.extendedGamepad != nil {
+                controller.playerIndex = GCControllerPlayerIndex.init(rawValue: indexNumber)!
+                indexNumber += 1
+                setupControllerControls(controller: controller)
+            }
+        }
+    }
+    
+    @objc func disconnectControllers() {
+        // Pause the Game if a controller is disconnected ~ This is mandated by Apple
+        if !theVICEMachine.isPaused() {
+            theVICEMachine.togglePause()
+        }
+    }
+    
+    func setupControllerControls(controller: GCController) {
+        //Function that check the controller when anything is moved or pressed on it
+        controller.extendedGamepad?.valueChangedHandler = {
+            (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+            // Add movement in here for sprites of the controllers
+            self.controllerInputDetected(gamepad: gamepad, element: element, index: controller.playerIndex.rawValue)
+        }
+    }
+    
+    func controllerInputDetected(gamepad: GCExtendedGamepad, element: GCControllerElement, index: Int) {
+        if (gamepad.leftThumbstick == element)
+        {
+            if (gamepad.leftThumbstick.xAxis.value != 0)
+            {
+                print("Controller: \(index), LeftThumbstickXAxis: \(gamepad.leftThumbstick.xAxis)")
+            }
+            else if (gamepad.leftThumbstick.xAxis.value == 0)
+            {
+                // YOU CAN PUT CODE HERE TO STOP YOUR PLAYER FROM MOVING
+            }
+        }
+        // Right Thumbstick
+        if (gamepad.rightThumbstick == element)
+        {
+            if (gamepad.rightThumbstick.xAxis.value != 0)
+            {
+                print("Controller: \(index), rightThumbstickXAxis: \(gamepad.rightThumbstick.xAxis)")
+            }
+        }
+        // D-Pad
+        else if (gamepad.dpad == element)
+        {
+            if (gamepad.dpad.xAxis.value != 0)
+            {
+                print("Controller: \(index), D-PadXAxis: \(gamepad.rightThumbstick.xAxis)")
+            }
+            else if (gamepad.dpad.xAxis.value == 0)
+            {
+                // YOU CAN PUT CODE HERE TO STOP YOUR PLAYER FROM MOVING
+            }
+        }
+        // A-Button
+        else if (gamepad.buttonA == element)
+        {
+            if (gamepad.buttonA.value != 0)
+            {
+                print("Controller: \(index), A-Button Pressed!")
+            }
+        }
+        // B-Button
+        else if (gamepad.buttonB == element)
+        {
+            if (gamepad.buttonB.value != 0)
+            {
+                print("Controller: \(index), B-Button Pressed!")
+            }
+        }
+        else if (gamepad.buttonY == element)
+        {
+            if (gamepad.buttonY.value != 0)
+            {
+                print("Controller: \(index), Y-Button Pressed!")
+            }
+        }
+        else if (gamepad.buttonX == element)
+        {
+            if (gamepad.buttonX.value != 0)
+            {
+                print("Controller: \(index), X-Button Pressed!")
+            }
+        }
+    }
+    
+    
+    // MARK: GameController handling
+    func toggleHardwareController( useHardware: Bool ) {
+        print( "Found joystick - \(useHardware)")
+        
+        var useHardware = false
+        if useHardware {
+            _joystickView.alpha = 0.0
+            _fireButtonView.alpha = 0.0
+            
+            self.controller = GCController.controllers()[0]
+            self.controller.playerIndex = .index1
+            if self.controller.gamepad != nil {
+                
+                self.controller.gamepad?.rightShoulder.valueChangedHandler = { [weak self] (button, value, pressed) in
+                    guard let `self` = self else { return }
+                    if pressed == false {
+                        // Toggle joystick
+                        if self.self.joystickMode == JOYSTICK_DISABLED {
+                            self.joystickMode = JOYSTICK_PORT1
+                        } else if self.joystickMode == JOYSTICK_PORT1 {
+                            self.joystickMode = JOYSTICK_PORT2
+                        } else if self.joystickMode == JOYSTICK_PORT2 {
+                            self.joystickMode = JOYSTICK_DISABLED
+                        }
+                        self._joystickModeButton.image = UIImage(named:self.sJoystickButtonImageNames[self.joystickMode])
+                    }
+                }
+                
+                self.controller.gamepad?.buttonA.valueChangedHandler = { [weak self] (button, value, pressed) in
+                    guard let `self` = self else { return }
+                    if pressed {
+                        sSetJoystickBit(bit:16)
+                    } else {
+                        sClearJoystickBit(bit:16)
+                        
+                    }
+                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
+                }
+                
+                self.controller.gamepad?.dpad.valueChangedHandler = { [weak self] (dpad, xAxis, yAxis) in
+                    guard let `self` = self else { return }
+                    
+                    // Handle Up
+                    if sIsSetJoystickBit(bit: 1) && yAxis <= 0 {
+                        sClearJoystickBit(bit: 1)
+                    } else if yAxis > 0.1 {
+                        sSetJoystickBit(bit: 1)
+                    }
+                    // Handle Down
+                    if sIsSetJoystickBit(bit: 2) && yAxis >= 0 {
+                        sClearJoystickBit(bit: 2)
+                    } else if yAxis < -0.1 {
+                        sSetJoystickBit(bit: 2)
+                    }
+                    // Handle Left
+                    if sIsSetJoystickBit(bit: 4) && xAxis >= 0 {
+                        sClearJoystickBit(bit: 4)
+                    } else if xAxis < -0.1 {
+                        sSetJoystickBit(bit: 4)
+                    }
+                    // Handle Right
+                    if sIsSetJoystickBit(bit: 8) && xAxis <= 0 {
+                        sClearJoystickBit(bit: 8)
+                    } else if xAxis > 0.1 {
+                        sSetJoystickBit(bit: 8)
+                    }
+                    sUpdateJoystickState(port:Int32(self.joystickMode - 1));
+                }
+                //Add controller pause handler here
+            }
+        } else {
+            //7
+            _joystickView.alpha = 1
+            _fireButtonView.alpha = 1
+            self.controller = nil;
+        }
+    }
+
+}

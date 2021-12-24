@@ -58,6 +58,13 @@
 			remoteGlobalIDString = 1F7B475F15284DAD00B63B6D;
 			remoteInfo = libx64;
 		};
+		A1A082B5277482DD002F319D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A14115C11D5B1966007A1A55 /* libx64.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FCE7EE91BEAB62400BA374A;
+			remoteInfo = "libx64 TV";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -187,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				A14115CB1D5B196B007A1A55 /* liblibx64.a */,
+				A1A082B6277482DD002F319D /* liblibx64 TV.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,6 +306,13 @@
 			fileType = archive.ar;
 			path = liblibx64.a;
 			remoteRef = A14115CA1D5B196B007A1A55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A1A082B6277482DD002F319D /* liblibx64 TV.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "liblibx64 TV.a";
+			remoteRef = A1A082B5277482DD002F319D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -541,7 +556,7 @@
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -553,6 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.c64;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -572,7 +588,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = C64Emulator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -584,6 +600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.c64;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "C64Emulator/C64Emulator-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "C64Emulator/libx64/vice/src C64Emulator/libx64/vice/src/c64 C64Emulator/libx64/vice/src/sid C64Emulator/libx64/vice/src/vicii C64Emulator/libx64/vice/src/arch/unix/ios/cocoa_touch C64Emulator/libx64/vice/src/arch/unix/ios C64Emulator/libx64/vice/src/arch/unix C64Emulator/libx64/vice/src/c64/cart C64Emulator/libx64/vice/src/drive C64Emulator/libx64/vice/src/c64exp C64Emulator/libx64/vice/src/video C64Emulator/libx64/vice/src/userport C64Emulator/libx64/vice/src/tape C64Emulator/libx64/vice/src/raster C64Emulator/libx64/vice/src/viciisc";

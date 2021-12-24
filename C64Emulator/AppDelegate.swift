@@ -49,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+            //        appearance.titleTextAttributes = @{NSForegroundColorAttributeName : UIColor.whiteColor};
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+
         return true
     }
 

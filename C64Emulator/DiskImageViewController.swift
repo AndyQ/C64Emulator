@@ -18,9 +18,11 @@ class DiskImageViewController: UITableViewController {
 
         mediaFiles = DatabaseManager.sharedInstance.getListOfDisks()
         
-        if let pos = mediaFiles.firstIndex(of: currentDiskName) {
-            DispatchQueue.main.async {
-                self.tableView.scrollToRow(at: IndexPath(row:pos, section:0), at: .middle, animated: true)
+        if currentDiskName != nil {
+            if let pos = mediaFiles.firstIndex(of: currentDiskName) {
+                DispatchQueue.main.async {
+                    self.tableView.scrollToRow(at: IndexPath(row:pos, section:0), at: .middle, animated: true)
+                }
             }
         }
     }

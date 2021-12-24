@@ -64,6 +64,7 @@
 #include "vdrive.h"
 #include "vice-event.h"
 
+extern int c64scene_fake_vsid;
 
 static void init_resource_fail(const char *module)
 {
@@ -179,7 +180,7 @@ int init_cmdline_options(void)
         init_cmdline_options_fail("UI");
         return -1;
     }
-    if (machine_class != VICE_MACHINE_VSID) {
+    if (machine_class != VICE_MACHINE_VSID && c64scene_fake_vsid == 0) {
         if (autostart_cmdline_options_init() < 0) {
             init_resource_fail("autostart");
             return -1;
@@ -260,8 +261,11 @@ int init_main(void)
     }
 
     if (machine_class != VICE_MACHINE_VSID) {
-        gfxoutput_init();
-        screenshot_init();
+        if (c64scene_fake_vsid == 0)
+        {
+            gfxoutput_init();
+            screenshot_init();
+        }
 
         drivecpu_early_init_all();
     }

@@ -160,7 +160,7 @@ inline static void line_becomes_bad(const int cycle)
         vicii.bad_line = 1;
 
         /* If in idle state, counter is not incremented.  */
-        if (vicii.idle_state)
+        if (vicii.idle_state && cycle >= VICII_FETCH_CYCLE)
             vicii.mem_counter_inc = 0;
 
         /* As we are on a bad line, switch to display state.  */
@@ -170,6 +170,8 @@ inline static void line_becomes_bad(const int cycle)
            Anyway, we cannot do it here as the `ycounter' handling
            must happen in as in idle state.  */
         vicii.force_display_state = 1;
+        
+        if (cycle == VICII_FETCH_CYCLE + VICII_SCREEN_TEXTCOLS + 7) vicii.mem_counter_inc = 0;
     }
     vicii.ycounter_reset_checked = 1;
 }

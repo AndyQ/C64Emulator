@@ -71,8 +71,9 @@ class DatabaseManager: NSObject {
             
         }
         
-        print( "DB File - \(dbFile)" )
+//        print( "DB File - \(dbFile)" )
         let db = FMDatabase(path: dbFile)
+        db.logsErrors = false
         
         guard db.open() else {
             print("Unable to open database")

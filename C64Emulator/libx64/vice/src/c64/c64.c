@@ -105,6 +105,8 @@
 
 machine_context_t machine_context;
 
+int c64scene_fake_vsid = 0;
+
 #define NUM_KEYBOARD_MAPPINGS 3
 
 const char *machine_keymap_res_name_list[NUM_KEYBOARD_MAPPINGS] = {
@@ -388,6 +390,13 @@ int machine_resources_init(void)
         || cartridge_resources_init() < 0) {
         return -1;
     }
+    
+    if (c64scene_fake_vsid)
+    {
+        if (psid_init_resources() < 0)
+            return -1;
+    }
+    
     return 0;
 }
 
@@ -439,6 +448,13 @@ int machine_cmdline_options_init(void)
         || cartridge_cmdline_options_init() < 0) {
         return -1;
     }
+    
+    if (c64scene_fake_vsid)
+    {
+        if (psid_init_cmdline_options() < 0)
+            return -1;
+    }
+    
     return 0;
 }
 
@@ -634,6 +650,12 @@ void machine_specific_reset(void)
     plus60k_reset();
     plus256k_reset();
     c64_256k_reset();
+    
+    if (c64scene_fake_vsid)
+    {
+        psid_init_driver();
+        psid_init_tune();
+    }
 }
 
 void machine_specific_powerup(void)
@@ -684,6 +706,19 @@ static void machine_vsync_hook(void)
 
     screenshot_record();
 
+    if (c64scene_fake_vsid)
+    {
+        unsigned int playtime;
+        static unsigned int time = 0;
+        
+        playtime = (psid_increment_frames() * machine_timing.cycles_per_rfsh) / machine_timing.cycles_per_sec;
+        if (playtime != time) {
+            printf("playtime: %d\n", playtime);
+            //vsid_ui_display_time(playtime);
+            time = playtime;
+        }
+    }
+    
     sub = clk_guard_prevent_overflow(maincpu_clk_guard);
 
     /* The drive has to deal both with our overflowing and its own one, so
