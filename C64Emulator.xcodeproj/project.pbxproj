@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A13EC7A4277DFB570030E13F /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC776277DFB570030E13F /* cpu.c */; };
+		A13EC7A5277DFB570030E13F /* flow.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC777277DFB570030E13F /* flow.c */; };
+		A13EC7A6277DFB570030E13F /* alu.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC778277DFB570030E13F /* alu.c */; };
+		A13EC7A7277DFB570030E13F /* acme.m in Sources */ = {isa = PBXBuildFile; fileRef = A13EC77D277DFB570030E13F /* acme.m */; };
+		A13EC7A8277DFB570030E13F /* typesystem.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC77E277DFB570030E13F /* typesystem.c */; };
+		A13EC7AA277DFB570030E13F /* platform.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC787277DFB570030E13F /* platform.c */; };
+		A13EC7AC277DFB570030E13F /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC78A277DFB570030E13F /* input.c */; };
+		A13EC7AD277DFB570030E13F /* pseudoopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC78D277DFB570030E13F /* pseudoopcodes.c */; };
+		A13EC7AE277DFB570030E13F /* symbol.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC791277DFB570030E13F /* symbol.c */; };
+		A13EC7AF277DFB570030E13F /* cliargs.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC792277DFB570030E13F /* cliargs.c */; };
+		A13EC7B0277DFB570030E13F /* mnemo.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC794277DFB570030E13F /* mnemo.c */; };
+		A13EC7B2277DFB570030E13F /* dynabuf.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC796277DFB570030E13F /* dynabuf.c */; };
+		A13EC7B3277DFB570030E13F /* global.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC797277DFB570030E13F /* global.c */; };
+		A13EC7B4277DFB570030E13F /* output.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC79B277DFB570030E13F /* output.c */; };
+		A13EC7B5277DFB570030E13F /* section.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC79C277DFB570030E13F /* section.c */; };
+		A13EC7B6277DFB570030E13F /* encoding.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC79D277DFB570030E13F /* encoding.c */; };
+		A13EC7B7277DFB570030E13F /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC79E277DFB570030E13F /* tree.c */; };
+		A13EC7B8277DFB570030E13F /* macro.c in Sources */ = {isa = PBXBuildFile; fileRef = A13EC79F277DFB570030E13F /* macro.c */; };
 		A17B025727789B8C0037EA17 /* DiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B025527789B8C0037EA17 /* DiskCell.swift */; };
 		A17B025827789B8C0037EA17 /* DiskItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B025627789B8C0037EA17 /* DiskItemCell.swift */; };
 		A17B025927789BA40037EA17 /* liblibx64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C243F2277895F100B6AD60 /* liblibx64.a */; };
@@ -21,24 +39,6 @@
 		A1C243272778943800B6AD60 /* Sourceful in Frameworks */ = {isa = PBXBuildFile; productRef = A1C243262778943800B6AD60 /* Sourceful */; };
 		A1C2439D277894FB00B6AD60 /* crt_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A1C2432A277894FA00B6AD60 /* crt_shader.vsh */; };
 		A1C243CF277894FB00B6AD60 /* crt_shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A1C24360277894FA00B6AD60 /* crt_shader.fsh */; };
-		A1C243D4277894FB00B6AD60 /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2436B277894FA00B6AD60 /* cpu.c */; };
-		A1C243D5277894FB00B6AD60 /* flow.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2436C277894FA00B6AD60 /* flow.c */; };
-		A1C243D6277894FB00B6AD60 /* alu.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2436D277894FA00B6AD60 /* alu.c */; };
-		A1C243D7277894FB00B6AD60 /* typesystem.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24372277894FA00B6AD60 /* typesystem.c */; };
-		A1C243D8277894FB00B6AD60 /* acme.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C24374277894FA00B6AD60 /* acme.m */; };
-		A1C243DA277894FB00B6AD60 /* platform.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2437C277894FA00B6AD60 /* platform.c */; };
-		A1C243DC277894FB00B6AD60 /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2437F277894FA00B6AD60 /* input.c */; };
-		A1C243DD277894FB00B6AD60 /* pseudoopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24382277894FA00B6AD60 /* pseudoopcodes.c */; };
-		A1C243DE277894FB00B6AD60 /* symbol.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24386277894FA00B6AD60 /* symbol.c */; };
-		A1C243DF277894FB00B6AD60 /* cliargs.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24387277894FA00B6AD60 /* cliargs.c */; };
-		A1C243E0277894FB00B6AD60 /* mnemo.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24388277894FA00B6AD60 /* mnemo.c */; };
-		A1C243E2277894FB00B6AD60 /* dynabuf.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2438A277894FA00B6AD60 /* dynabuf.c */; };
-		A1C243E3277894FB00B6AD60 /* global.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2438B277894FA00B6AD60 /* global.c */; };
-		A1C243E4277894FB00B6AD60 /* output.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C2438F277894FA00B6AD60 /* output.c */; };
-		A1C243E5277894FB00B6AD60 /* section.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24390277894FA00B6AD60 /* section.c */; };
-		A1C243E6277894FB00B6AD60 /* encoding.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24391277894FA00B6AD60 /* encoding.c */; };
-		A1C243E7277894FB00B6AD60 /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24392277894FA00B6AD60 /* tree.c */; };
-		A1C243E8277894FB00B6AD60 /* macro.c in Sources */ = {isa = PBXBuildFile; fileRef = A1C24393277894FA00B6AD60 /* macro.c */; };
 		A1C243EB2778955900B6AD60 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C243EA2778955900B6AD60 /* AudioToolbox.framework */; };
 		A1C2440A2778966500B6AD60 /* DiskContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C243FB2778962200B6AD60 /* DiskContentsViewController.swift */; };
 		A1C2440B2778966500B6AD60 /* EmulatorBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C243FE2778962500B6AD60 /* EmulatorBackgroundView.swift */; };
@@ -88,6 +88,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A13EC76D277DFB570030E13F /* pseudoopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pseudoopcodes.h; sourceTree = "<group>"; };
+		A13EC772277DFB570030E13F /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
+		A13EC774277DFB570030E13F /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		A13EC775277DFB570030E13F /* cliargs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cliargs.h; sourceTree = "<group>"; };
+		A13EC776277DFB570030E13F /* cpu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu.c; sourceTree = "<group>"; };
+		A13EC777277DFB570030E13F /* flow.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = flow.c; sourceTree = "<group>"; };
+		A13EC778277DFB570030E13F /* alu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alu.c; sourceTree = "<group>"; };
+		A13EC779277DFB570030E13F /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		A13EC77B277DFB570030E13F /* symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symbol.h; sourceTree = "<group>"; };
+		A13EC77C277DFB570030E13F /* dynabuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynabuf.h; sourceTree = "<group>"; };
+		A13EC77D277DFB570030E13F /* acme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = acme.m; sourceTree = "<group>"; };
+		A13EC77E277DFB570030E13F /* typesystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = typesystem.c; sourceTree = "<group>"; };
+		A13EC77F277DFB570030E13F /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
+		A13EC782277DFB570030E13F /* mnemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mnemo.h; sourceTree = "<group>"; };
+		A13EC783277DFB570030E13F /* encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
+		A13EC784277DFB570030E13F /* macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macro.h; sourceTree = "<group>"; };
+		A13EC785277DFB570030E13F /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
+		A13EC786277DFB570030E13F /* section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = section.h; sourceTree = "<group>"; };
+		A13EC787277DFB570030E13F /* platform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform.c; sourceTree = "<group>"; };
+		A13EC788277DFB570030E13F /* output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = output.h; sourceTree = "<group>"; };
+		A13EC78A277DFB570030E13F /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = "<group>"; };
+		A13EC78D277DFB570030E13F /* pseudoopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pseudoopcodes.c; sourceTree = "<group>"; };
+		A13EC78E277DFB570030E13F /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flow.h; sourceTree = "<group>"; };
+		A13EC78F277DFB570030E13F /* alu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alu.h; sourceTree = "<group>"; };
+		A13EC790277DFB570030E13F /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
+		A13EC791277DFB570030E13F /* symbol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = symbol.c; sourceTree = "<group>"; };
+		A13EC792277DFB570030E13F /* cliargs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cliargs.c; sourceTree = "<group>"; };
+		A13EC793277DFB570030E13F /* acme_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acme_log.h; sourceTree = "<group>"; };
+		A13EC794277DFB570030E13F /* mnemo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mnemo.c; sourceTree = "<group>"; };
+		A13EC796277DFB570030E13F /* dynabuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dynabuf.c; sourceTree = "<group>"; };
+		A13EC797277DFB570030E13F /* global.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = global.c; sourceTree = "<group>"; };
+		A13EC798277DFB570030E13F /* acme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acme.h; sourceTree = "<group>"; };
+		A13EC799277DFB570030E13F /* typesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typesystem.h; sourceTree = "<group>"; };
+		A13EC79A277DFB570030E13F /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		A13EC79B277DFB570030E13F /* output.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = output.c; sourceTree = "<group>"; };
+		A13EC79C277DFB570030E13F /* section.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = section.c; sourceTree = "<group>"; };
+		A13EC79D277DFB570030E13F /* encoding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encoding.c; sourceTree = "<group>"; };
+		A13EC79E277DFB570030E13F /* tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tree.c; sourceTree = "<group>"; };
+		A13EC79F277DFB570030E13F /* macro.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = macro.c; sourceTree = "<group>"; };
 		A17B025527789B8C0037EA17 /* DiskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCell.swift; sourceTree = "<group>"; };
 		A17B025627789B8C0037EA17 /* DiskItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskItemCell.swift; sourceTree = "<group>"; };
 		A17B025A27789BCA0037EA17 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -100,44 +139,6 @@
 		A1C243192778941B00B6AD60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1C2432A277894FA00B6AD60 /* crt_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = crt_shader.vsh; sourceTree = "<group>"; };
 		A1C24360277894FA00B6AD60 /* crt_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = crt_shader.fsh; sourceTree = "<group>"; };
-		A1C24362277894FA00B6AD60 /* pseudoopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pseudoopcodes.h; sourceTree = "<group>"; };
-		A1C24367277894FA00B6AD60 /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
-		A1C24369277894FA00B6AD60 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		A1C2436A277894FA00B6AD60 /* cliargs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cliargs.h; sourceTree = "<group>"; };
-		A1C2436B277894FA00B6AD60 /* cpu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu.c; sourceTree = "<group>"; };
-		A1C2436C277894FA00B6AD60 /* flow.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = flow.c; sourceTree = "<group>"; };
-		A1C2436D277894FA00B6AD60 /* alu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alu.c; sourceTree = "<group>"; };
-		A1C2436E277894FA00B6AD60 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		A1C24370277894FA00B6AD60 /* symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symbol.h; sourceTree = "<group>"; };
-		A1C24371277894FA00B6AD60 /* dynabuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynabuf.h; sourceTree = "<group>"; };
-		A1C24372277894FA00B6AD60 /* typesystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = typesystem.c; sourceTree = "<group>"; };
-		A1C24373277894FA00B6AD60 /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
-		A1C24374277894FA00B6AD60 /* acme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = acme.m; sourceTree = "<group>"; };
-		A1C24377277894FA00B6AD60 /* mnemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mnemo.h; sourceTree = "<group>"; };
-		A1C24378277894FA00B6AD60 /* encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
-		A1C24379277894FA00B6AD60 /* macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macro.h; sourceTree = "<group>"; };
-		A1C2437A277894FA00B6AD60 /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
-		A1C2437B277894FA00B6AD60 /* section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = section.h; sourceTree = "<group>"; };
-		A1C2437C277894FA00B6AD60 /* platform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform.c; sourceTree = "<group>"; };
-		A1C2437D277894FA00B6AD60 /* output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = output.h; sourceTree = "<group>"; };
-		A1C2437F277894FA00B6AD60 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = "<group>"; };
-		A1C24382277894FA00B6AD60 /* pseudoopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pseudoopcodes.c; sourceTree = "<group>"; };
-		A1C24383277894FA00B6AD60 /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flow.h; sourceTree = "<group>"; };
-		A1C24384277894FA00B6AD60 /* alu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alu.h; sourceTree = "<group>"; };
-		A1C24385277894FA00B6AD60 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
-		A1C24386277894FA00B6AD60 /* symbol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = symbol.c; sourceTree = "<group>"; };
-		A1C24387277894FA00B6AD60 /* cliargs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cliargs.c; sourceTree = "<group>"; };
-		A1C24388277894FA00B6AD60 /* mnemo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mnemo.c; sourceTree = "<group>"; };
-		A1C2438A277894FA00B6AD60 /* dynabuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dynabuf.c; sourceTree = "<group>"; };
-		A1C2438B277894FA00B6AD60 /* global.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = global.c; sourceTree = "<group>"; };
-		A1C2438C277894FA00B6AD60 /* acme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acme.h; sourceTree = "<group>"; };
-		A1C2438D277894FA00B6AD60 /* typesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typesystem.h; sourceTree = "<group>"; };
-		A1C2438E277894FA00B6AD60 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
-		A1C2438F277894FA00B6AD60 /* output.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = output.c; sourceTree = "<group>"; };
-		A1C24390277894FA00B6AD60 /* section.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = section.c; sourceTree = "<group>"; };
-		A1C24391277894FA00B6AD60 /* encoding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encoding.c; sourceTree = "<group>"; };
-		A1C24392277894FA00B6AD60 /* tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tree.c; sourceTree = "<group>"; };
-		A1C24393277894FA00B6AD60 /* macro.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = macro.c; sourceTree = "<group>"; };
 		A1C24394277894FA00B6AD60 /* libx64.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libx64.xcodeproj; path = C64Emulator/libx64.xcodeproj; sourceTree = "<group>"; };
 		A1C243EA2778955900B6AD60 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A1C243F72778961E00B6AD60 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		A1CD127F2778A15A00CB95A9 /* FolderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderItemCell.swift; sourceTree = "<group>"; };
 		A1CD12832778A16800CB95A9 /* FileItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemCell.swift; sourceTree = "<group>"; };
 		A1CD128B2778C7B500CB95A9 /* ROM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ROM; sourceTree = "<group>"; };
-		A1CD129527791F7400CB95A9 /* acme_log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acme_log.h; sourceTree = "<group>"; };
 		A1CD1296277920A100CB95A9 /* CodeLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLogViewController.swift; sourceTree = "<group>"; };
 		A1CD129C277B290E00CB95A9 /* MonitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +184,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13EC76C277DFB570030E13F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A13EC76D277DFB570030E13F /* pseudoopcodes.h */,
+				A13EC772277DFB570030E13F /* input.h */,
+				A13EC774277DFB570030E13F /* version.h */,
+				A13EC775277DFB570030E13F /* cliargs.h */,
+				A13EC776277DFB570030E13F /* cpu.c */,
+				A13EC777277DFB570030E13F /* flow.c */,
+				A13EC778277DFB570030E13F /* alu.c */,
+				A13EC779277DFB570030E13F /* config.h */,
+				A13EC77B277DFB570030E13F /* symbol.h */,
+				A13EC77C277DFB570030E13F /* dynabuf.h */,
+				A13EC77D277DFB570030E13F /* acme.m */,
+				A13EC77E277DFB570030E13F /* typesystem.c */,
+				A13EC77F277DFB570030E13F /* global.h */,
+				A13EC782277DFB570030E13F /* mnemo.h */,
+				A13EC783277DFB570030E13F /* encoding.h */,
+				A13EC784277DFB570030E13F /* macro.h */,
+				A13EC785277DFB570030E13F /* tree.h */,
+				A13EC786277DFB570030E13F /* section.h */,
+				A13EC787277DFB570030E13F /* platform.c */,
+				A13EC788277DFB570030E13F /* output.h */,
+				A13EC78A277DFB570030E13F /* input.c */,
+				A13EC78D277DFB570030E13F /* pseudoopcodes.c */,
+				A13EC78E277DFB570030E13F /* flow.h */,
+				A13EC78F277DFB570030E13F /* alu.h */,
+				A13EC790277DFB570030E13F /* cpu.h */,
+				A13EC791277DFB570030E13F /* symbol.c */,
+				A13EC792277DFB570030E13F /* cliargs.c */,
+				A13EC793277DFB570030E13F /* acme_log.h */,
+				A13EC794277DFB570030E13F /* mnemo.c */,
+				A13EC796277DFB570030E13F /* dynabuf.c */,
+				A13EC797277DFB570030E13F /* global.c */,
+				A13EC798277DFB570030E13F /* acme.h */,
+				A13EC799277DFB570030E13F /* typesystem.h */,
+				A13EC79A277DFB570030E13F /* platform.h */,
+				A13EC79B277DFB570030E13F /* output.c */,
+				A13EC79C277DFB570030E13F /* section.c */,
+				A13EC79D277DFB570030E13F /* encoding.c */,
+				A13EC79E277DFB570030E13F /* tree.c */,
+				A13EC79F277DFB570030E13F /* macro.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		A17B025427789B740037EA17 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,45 +292,7 @@
 		A1C24361277894FA00B6AD60 /* ACME */ = {
 			isa = PBXGroup;
 			children = (
-				A1C24362277894FA00B6AD60 /* pseudoopcodes.h */,
-				A1C24367277894FA00B6AD60 /* input.h */,
-				A1C24369277894FA00B6AD60 /* version.h */,
-				A1C2436A277894FA00B6AD60 /* cliargs.h */,
-				A1C2436B277894FA00B6AD60 /* cpu.c */,
-				A1C2436C277894FA00B6AD60 /* flow.c */,
-				A1C2436D277894FA00B6AD60 /* alu.c */,
-				A1C2436E277894FA00B6AD60 /* config.h */,
-				A1C24370277894FA00B6AD60 /* symbol.h */,
-				A1C24371277894FA00B6AD60 /* dynabuf.h */,
-				A1C24372277894FA00B6AD60 /* typesystem.c */,
-				A1C24373277894FA00B6AD60 /* global.h */,
-				A1C2438C277894FA00B6AD60 /* acme.h */,
-				A1CD129527791F7400CB95A9 /* acme_log.h */,
-				A1C24374277894FA00B6AD60 /* acme.m */,
-				A1C24377277894FA00B6AD60 /* mnemo.h */,
-				A1C24378277894FA00B6AD60 /* encoding.h */,
-				A1C24379277894FA00B6AD60 /* macro.h */,
-				A1C2437A277894FA00B6AD60 /* tree.h */,
-				A1C2437B277894FA00B6AD60 /* section.h */,
-				A1C2437C277894FA00B6AD60 /* platform.c */,
-				A1C2437D277894FA00B6AD60 /* output.h */,
-				A1C2437F277894FA00B6AD60 /* input.c */,
-				A1C24382277894FA00B6AD60 /* pseudoopcodes.c */,
-				A1C24383277894FA00B6AD60 /* flow.h */,
-				A1C24384277894FA00B6AD60 /* alu.h */,
-				A1C24385277894FA00B6AD60 /* cpu.h */,
-				A1C24386277894FA00B6AD60 /* symbol.c */,
-				A1C24387277894FA00B6AD60 /* cliargs.c */,
-				A1C24388277894FA00B6AD60 /* mnemo.c */,
-				A1C2438A277894FA00B6AD60 /* dynabuf.c */,
-				A1C2438B277894FA00B6AD60 /* global.c */,
-				A1C2438D277894FA00B6AD60 /* typesystem.h */,
-				A1C2438E277894FA00B6AD60 /* platform.h */,
-				A1C2438F277894FA00B6AD60 /* output.c */,
-				A1C24390277894FA00B6AD60 /* section.c */,
-				A1C24391277894FA00B6AD60 /* encoding.c */,
-				A1C24392277894FA00B6AD60 /* tree.c */,
-				A1C24393277894FA00B6AD60 /* macro.c */,
+				A13EC76C277DFB570030E13F /* src */,
 			);
 			path = ACME;
 			sourceTree = "<group>";
@@ -450,46 +458,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1C243D6277894FB00B6AD60 /* alu.c in Sources */,
 				A1C244112778966500B6AD60 /* DiskViewController.swift in Sources */,
 				A1CD12802778A15A00CB95A9 /* FolderItemCell.swift in Sources */,
-				A1C243D4277894FB00B6AD60 /* cpu.c in Sources */,
-				A1C243D7277894FB00B6AD60 /* typesystem.c in Sources */,
+				A13EC7A5277DFB570030E13F /* flow.c in Sources */,
 				A1C244122778966500B6AD60 /* EmulatorSettingsViewController.swift in Sources */,
-				A1C243DD277894FB00B6AD60 /* pseudoopcodes.c in Sources */,
+				A13EC7B5277DFB570030E13F /* section.c in Sources */,
 				A1C244132778966500B6AD60 /* EmulatorViewController.swift in Sources */,
-				A1C243E0277894FB00B6AD60 /* mnemo.c in Sources */,
 				A1C244102778966500B6AD60 /* DiskImageViewController.swift in Sources */,
 				A1C2440C2778966500B6AD60 /* C64ModelSettingsViewController.swift in Sources */,
 				A1C244162778966D00B6AD60 /* DiskManager.swift in Sources */,
+				A13EC7B3277DFB570030E13F /* global.c in Sources */,
 				A1C2440B2778966500B6AD60 /* EmulatorBackgroundView.swift in Sources */,
 				A17B025727789B8C0037EA17 /* DiskCell.swift in Sources */,
-				A1C243E3277894FB00B6AD60 /* global.c in Sources */,
-				A1C243E6277894FB00B6AD60 /* encoding.c in Sources */,
-				A1C243E2277894FB00B6AD60 /* dynabuf.c in Sources */,
-				A1C243DE277894FB00B6AD60 /* symbol.c in Sources */,
 				A1C2440D2778966500B6AD60 /* FireButtonView.swift in Sources */,
-				A1C243D8277894FB00B6AD60 /* acme.m in Sources */,
+				A13EC7B7277DFB570030E13F /* tree.c in Sources */,
+				A13EC7AE277DFB570030E13F /* symbol.c in Sources */,
 				A1C244192778966D00B6AD60 /* D64Image.m in Sources */,
-				A1C243E5277894FB00B6AD60 /* section.c in Sources */,
-				A1C243E7277894FB00B6AD60 /* tree.c in Sources */,
-				A1C243DA277894FB00B6AD60 /* platform.c in Sources */,
 				A1C2440A2778966500B6AD60 /* DiskContentsViewController.swift in Sources */,
-				A1C243DC277894FB00B6AD60 /* input.c in Sources */,
-				A1C243E8277894FB00B6AD60 /* macro.c in Sources */,
+				A13EC7B4277DFB570030E13F /* output.c in Sources */,
+				A13EC7AF277DFB570030E13F /* cliargs.c in Sources */,
+				A13EC7A6277DFB570030E13F /* alu.c in Sources */,
 				A1CD1297277920A100CB95A9 /* CodeLogViewController.swift in Sources */,
 				A17B025827789B8C0037EA17 /* DiskItemCell.swift in Sources */,
 				A1C244142778966D00B6AD60 /* StringExtensions.swift in Sources */,
 				A1CD12842778A16800CB95A9 /* FileItemCell.swift in Sources */,
 				A1C2440E2778966500B6AD60 /* CodeEditorViewController.swift in Sources */,
+				A13EC7B8277DFB570030E13F /* macro.c in Sources */,
 				A1C244172778966D00B6AD60 /* DatabaseManager.swift in Sources */,
 				A1C2430C2778941A00B6AD60 /* AppDelegate.swift in Sources */,
-				A1C243D5277894FB00B6AD60 /* flow.c in Sources */,
+				A13EC7AA277DFB570030E13F /* platform.c in Sources */,
+				A13EC7A7277DFB570030E13F /* acme.m in Sources */,
+				A13EC7B0277DFB570030E13F /* mnemo.c in Sources */,
 				A1C244182778966D00B6AD60 /* diskimage.c in Sources */,
-				A1C243E4277894FB00B6AD60 /* output.c in Sources */,
+				A13EC7B2277DFB570030E13F /* dynabuf.c in Sources */,
+				A13EC7A8277DFB570030E13F /* typesystem.c in Sources */,
 				A1C2430E2778941A00B6AD60 /* SceneDelegate.swift in Sources */,
 				A1CD129D277B290E00CB95A9 /* MonitorViewController.swift in Sources */,
-				A1C243DF277894FB00B6AD60 /* cliargs.c in Sources */,
+				A13EC7AD277DFB570030E13F /* pseudoopcodes.c in Sources */,
+				A13EC7AC277DFB570030E13F /* input.c in Sources */,
+				A13EC7B6277DFB570030E13F /* encoding.c in Sources */,
+				A13EC7A4277DFB570030E13F /* cpu.c in Sources */,
 				A1C2440F2778966500B6AD60 /* JoystickView.swift in Sources */,
 				A1C244152778966D00B6AD60 /* WebServer.swift in Sources */,
 			);

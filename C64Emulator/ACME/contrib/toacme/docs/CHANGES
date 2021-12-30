@@ -1,0 +1,58 @@
+
+2015-02-04
+	Release 0.12
+	Added "VisAss" converter mode.
+	Removed "umlaut fixing" and just went ahead with UTF-8.
+	Fixed home page (used the ACME sourceforge page).
+
+2012-10-08
+	Release 0.11
+	Beautified source, and added space after ',' in addressing modes.
+
+2006-10-04
+	Release 0.10
+	Adjusted support for illegals to latest changes in ACME.
+
+2006-03-12
+	Release 0.9
+	Improved "Giga Assembler" mode. Thanks to Andreas Paul for his help.
+	Fixed unimportant bug: Attempted to close output file twice.
+
+2005-06-16
+	Release 0.8
+	Merged all converters into one program ("toacme").
+
+2005-06-08
+	Release 0.7
+
+2005-06-07
+	Release 0.6
+
+2005-06-02
+	Release 0.5
+	Added converters for Flash8-AssBlaster and Giga-Assembler.
+	Added minimal disassembler.
+
+2003-02-18
+	Release 0.4 beta
+	Now "marked labels" will be converted to global labels,
+	"unmarked labels" will be converted to local labels.
+	Now macro calls are converted correctly.
+
+2003-02-12
+	Release 0.4 alpha
+	Thanks to Stefan Hübner for sending fixes for AssBlaster macro
+	problems and label scope.
+
+2000-05-09
+	Release 0.03
+	Attempt on disassembly mode - quickly aborted :)
+	Illegal opcodes are commented out when generated.
+
+1999-08-17?
+	Release 0.02 (indentation now two TABs instead of one)
+	Added DOS version.
+
+1999-08-15
+	Release 0.01
+	(RISCOS version)
