@@ -191,6 +191,11 @@
         monitor_startup_trap();
 }
 
+-(void)stopMonitor
+{
+    //monitor_close();
+}
+
 -(NSArray *)getRegisters:(int)memSpace
 {
     mon_reg_list_t *pMonRegs = mon_register_list_get(memSpace);

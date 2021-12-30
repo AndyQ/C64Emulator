@@ -15,4 +15,7 @@ extern "C" {
 #import "libx64/vice/src/arch/unix/ios/cocoa_touch/viceapplicationprotocol.h"
 #include "D64Image.h"
 
+#include "acme.h"
+#include "acme_log.h"
+
 #import <sqlite3.h>

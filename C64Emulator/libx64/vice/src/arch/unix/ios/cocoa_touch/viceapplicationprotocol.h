@@ -59,17 +59,17 @@ thread is passed through this protocol.
 
 // ----- monitor -----
 // open the monitor
-//-(void)openMonitor;
+-(void)openMonitor;
 // close the monitor
-//-(void)closeMonitor;
+-(void)closeMonitor;
 
 // suspend monitor
-//-(void)suspendMonitor;
+-(void)suspendMonitor;
 // resume monitor
-//-(void)resumeMonitor;
+-(void)resumeMonitor;
 
 // print monitor message
-//-(void)printMonitorMessage:(NSString *)msg;
+-(void)printMonitorMessage:(NSString *)msg;
 
 // begin entering line
 -(void)beginLineInputWithPrompt:(NSString *)prompt;
@@ -77,7 +77,7 @@ thread is passed through this protocol.
 -(void)endLineInput;
 
 // update monitor state
-//-(void)updateMonitor;
+-(void)updateMonitor;
 
 // ----- notifications -----
 // post a remove notification

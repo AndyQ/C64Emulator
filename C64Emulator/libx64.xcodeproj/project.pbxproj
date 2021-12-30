@@ -1649,10 +1649,13 @@
 		1FCE7EE51BEAB62400BA374A /* ShaderUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7B64BC152C1CE100B63B6D /* ShaderUtilities.h */; };
 		1FFA1A77152CE1910014C2AF /* soundaudioqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA1A76152CE1910014C2AF /* soundaudioqueue.c */; };
 		1FFA1A7A152CE65F0014C2AF /* soundcoreaudio.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA1A79152CE65F0014C2AF /* soundcoreaudio.c */; };
+		A13EC769277DF3240030E13F /* uimon.m in Sources */ = {isa = PBXBuildFile; fileRef = A13EC768277DF3240030E13F /* uimon.m */; };
+		A13EC76B277DF44F0030E13F /* viceapplicationprotocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A13EC76A277DF44F0030E13F /* viceapplicationprotocol.h */; };
 		A1A082AB2771EE27002F319D /* MetalRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = A1A082A92771EE27002F319D /* MetalRenderer.h */; };
 		A1A082AC2771EE27002F319D /* MetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A082AA2771EE27002F319D /* MetalRenderer.m */; };
 		A1A082B127732474002F319D /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A082AF27732473002F319D /* Metal.framework */; };
 		A1A082B227732474002F319D /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A082B027732474002F319D /* MetalKit.framework */; };
+		A1CD12902778CB0100CB95A9 /* MetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A082AA2771EE27002F319D /* MetalRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2489,6 +2492,8 @@
 		1FCE7EE91BEAB62400BA374A /* liblibx64 TV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "liblibx64 TV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFA1A76152CE1910014C2AF /* soundaudioqueue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soundaudioqueue.c; sourceTree = "<group>"; };
 		1FFA1A79152CE65F0014C2AF /* soundcoreaudio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soundcoreaudio.c; sourceTree = "<group>"; };
+		A13EC768277DF3240030E13F /* uimon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uimon.m; sourceTree = "<group>"; };
+		A13EC76A277DF44F0030E13F /* viceapplicationprotocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viceapplicationprotocol.h; sourceTree = "<group>"; };
 		A1A082A92771EE27002F319D /* MetalRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalRenderer.h; sourceTree = "<group>"; };
 		A1A082AA2771EE27002F319D /* MetalRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalRenderer.m; sourceTree = "<group>"; };
 		A1A082AF27732473002F319D /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -3487,6 +3492,7 @@
 		1F7B63341528F54C00B63B6D /* cocoa_touch */ = {
 			isa = PBXGroup;
 			children = (
+				A13EC768277DF3240030E13F /* uimon.m */,
 				1F7B63351528F54C00B63B6D /* ui.m */,
 				1F7B63EF152A52C100B63B6D /* c64ui.m */,
 				1F7B6400152A538B00B63B6D /* vsidui.m */,
@@ -3501,6 +3507,7 @@
 				1F7B63471528F9DE00B63B6D /* vicemetalview.h */,
 				A1A082A92771EE27002F319D /* MetalRenderer.h */,
 				A1A082AA2771EE27002F319D /* MetalRenderer.m */,
+				A13EC76A277DF44F0030E13F /* viceapplicationprotocol.h */,
 				1F7B634A1528F9DF00B63B6D /* vicemachinecontroller.m */,
 				1F7B63491528F9DF00B63B6D /* vicemachinecontroller.h */,
 				1F3F1B75182EA59600B58D4D /* vicemachinenotifier.m */,
@@ -3723,6 +3730,7 @@
 				1F7B47C015284EBB00B63B6D /* wave6581__ST.h in Headers */,
 				1F7B47C115284EBB00B63B6D /* wave6581_P_T.h in Headers */,
 				1F7B47C215284EBB00B63B6D /* wave6581_PS_.h in Headers */,
+				A13EC76B277DF44F0030E13F /* viceapplicationprotocol.h in Headers */,
 				1F7B47C315284EBB00B63B6D /* wave6581_PST.h in Headers */,
 				1F7B47C415284EBB00B63B6D /* wave8580__ST.h in Headers */,
 				1F7B47C515284EBB00B63B6D /* wave8580_P_T.h in Headers */,
@@ -4708,6 +4716,7 @@
 				1F7B5E5C1528B56900B63B6D /* render2x2ntsc.c in Sources */,
 				1F7B5E5E1528B56900B63B6D /* render2x2pal.c in Sources */,
 				1F7B5E601528B56900B63B6D /* render2x4.c in Sources */,
+				A13EC769277DF3240030E13F /* uimon.m in Sources */,
 				1F7B5E621528B56900B63B6D /* render2x4crt.c in Sources */,
 				1F7B5E641528B56900B63B6D /* renderscale2x.c in Sources */,
 				1F7B5E661528B56900B63B6D /* renderyuv.c in Sources */,
@@ -5374,6 +5383,7 @@
 				1FCE7D151BEAB62400BA374A /* joystick.c in Sources */,
 				1FCE7D161BEAB62400BA374A /* kbdbuf.c in Sources */,
 				1FCE7D171BEAB62400BA374A /* keyboard.c in Sources */,
+				A1CD12902778CB0100CB95A9 /* MetalRenderer.m in Sources */,
 				1FCE7D181BEAB62400BA374A /* lib.c in Sources */,
 				1FCE7D191BEAB62400BA374A /* libm_math.c in Sources */,
 				1FCE7D1A1BEAB62400BA374A /* lightpen.c in Sources */,

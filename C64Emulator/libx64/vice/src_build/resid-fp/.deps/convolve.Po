@@ -1,2 +1,0 @@
-convolve.o: \
-  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-fp/convolve.cc

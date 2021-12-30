@@ -1,8 +1,0 @@
-version.o: \
-  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/version.cc \
-  /Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/residdtv-config.h \
-  siddtvdefs.h
-
-/Users/sid/Sources/vice-emu/trunk/vice/src/resid-dtv/residdtv-config.h:
-
-siddtvdefs.h:

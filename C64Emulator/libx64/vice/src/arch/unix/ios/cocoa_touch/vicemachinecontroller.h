@@ -64,6 +64,7 @@
 // ----- Monitor -----
 // activate monitor
 -(void)activateMonitor;
+-(void)stopMonitor;
 // read machine registers
 -(NSArray *)getRegisters:(int)memSpace;
 // read machine data

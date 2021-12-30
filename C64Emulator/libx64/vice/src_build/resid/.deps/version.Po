@@ -1,7 +1,0 @@
-version.o: /Users/sid/Sources/vice-emu/trunk/vice/src/resid/version.cc \
-  /Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h \
-  siddefs.h
-
-/Users/sid/Sources/vice-emu/trunk/vice/src/resid/resid-config.h:
-
-siddefs.h:

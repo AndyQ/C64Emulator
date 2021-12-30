@@ -1,6 +1,0 @@
-libm_math.o: /Users/sid/Sources/vice-emu/trunk/vice/src/libm_math.c \
-  /Users/sid/Sources/vice-emu/trunk/vice/src/vice.h config.h
-
-/Users/sid/Sources/vice-emu/trunk/vice/src/vice.h:
-
-config.h:

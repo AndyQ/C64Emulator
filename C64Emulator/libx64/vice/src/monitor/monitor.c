@@ -461,7 +461,7 @@ void monitor_cpu_type_set(const char *cpu_type)
     }
     if (monitor_cpu_type_p) {
         monitor_cpu_for_memspace[default_memspace]=monitor_cpu_type_p;
-        //uimon_notify_change();
+        uimon_notify_change();
     } else {
         if (strcmp(cpu_type,"")!=0) {
             mon_out("Unknown CPU type `%s'\n", cpu_type);
@@ -2177,18 +2177,18 @@ static void monitor_open(void)
     } else {
 #if 0
         if (mon_console_close_on_leaving) {
-            //console_log = uimon_window_open();
-            //uimon_set_interface(mon_interfaces, NUM_MEMSPACES);
+            console_log = uimon_window_open();
+            uimon_set_interface(mon_interfaces, NUM_MEMSPACES);
         } else {
-            //console_log = uimon_window_resume();
+            console_log = uimon_window_resume();
             mon_console_close_on_leaving = 1;
         }
 #endif
         if (console_log) {
-            //console_log = uimon_window_resume();
+            console_log = uimon_window_resume();
         } else {
-            //console_log = uimon_window_open();
-            //uimon_set_interface(mon_interfaces, NUM_MEMSPACES);
+            console_log = uimon_window_open();
+            uimon_set_interface(mon_interfaces, NUM_MEMSPACES);
         }
     }
 
@@ -2209,7 +2209,7 @@ static void monitor_open(void)
     monitor_trap_triggered = FALSE;
     vsync_suspend_speed_eval();
 
-    //uimon_notify_change();
+    uimon_notify_change();
 
     dot_addr[e_comp_space] = new_addr(e_comp_space,
         ((WORD)((monitor_cpu_for_memspace[e_comp_space]->mon_register_get_val)(e_comp_space, e_PC))));
@@ -2266,7 +2266,7 @@ static int monitor_process(char *cmd)
 
     last_cmd = cmd;
 
-    //uimon_notify_change(); /* @SRT */
+    uimon_notify_change(); /* @SRT */
 
     return exit_mon;
 }
@@ -2298,9 +2298,9 @@ static void monitor_close(int check)
 
     if ( ! monitor_is_remote() ) {
         if (mon_console_close_on_leaving) {
-            //uimon_window_close();
+            uimon_window_close();
         } else {
-            //uimon_window_suspend();
+            uimon_window_suspend();
         }
     }
 

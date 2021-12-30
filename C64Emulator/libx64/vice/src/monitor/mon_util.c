@@ -61,7 +61,7 @@ static int mon_buffer_flush(void)
 
     if (bigbuffer && bigbufferwrite) {
         bigbufferwrite = 0;
-        //rv = uimon_out(bigbuffer);
+        rv = uimon_out(bigbuffer);
     }
 
     return rv;
@@ -104,7 +104,7 @@ static int mon_out_buffered(const char *buffer)
         mon_buffer_add(buffer, (unsigned int)strlen(buffer));
     } else {
         rv = mon_buffer_flush();
-        //rv = uimon_out(buffer) || rv;
+        rv = uimon_out(buffer) || rv;
     }
 
     return rv;
@@ -199,8 +199,8 @@ void mon_set_command(console_t *console_log, char *command,
 {
     pchCommandLine = command;
 
-    //uimon_out(command);
-    //uimon_out("\n");
+    uimon_out(command);
+    uimon_out("\n");
 
     if (pAfter)
         (*pAfter)();
@@ -228,7 +228,7 @@ char *uimon_in(const char *prompt)
             mon_buffer_flush();
 
             /* get input from the user */
-            //p = uimon_get_in(&pchCommandLine, prompt);
+            p = uimon_get_in(&pchCommandLine, prompt);
 #ifdef HAVE_NETWORK
         }
 #endif
