@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FMDB",
+        "repositoryURL": "https://github.com/ccgus/fmdb",
+        "state": {
+          "branch": "master",
+          "revision": "d31d362cd5cf8a121c3823ebfb65d961f0eea658",
+          "version": null
+        }
+      },
+      {
+        "package": "GCDWebServer",
+        "repositoryURL": "https://github.com/nostradani/GCDWebServer",
+        "state": {
+          "branch": "master",
+          "revision": "14f9eedb296c5b71fec971d8256ef3bfc20a2245",
+          "version": null
+        }
+      },
+      {
+        "package": "Sourceful",
+        "repositoryURL": "https://github.com/twostraws/Sourceful",
+        "state": {
+          "branch": "main",
+          "revision": "04f7e85900451ebdc34345ee19bb0139f05f3a01",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
